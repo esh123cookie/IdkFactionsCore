@@ -23,6 +23,7 @@ class Warp extends PluginCommand{
     private $owner;
     
     private $config;
+    private $cords;
     
     public function __construct(string $name, Main $owner)
     {
@@ -32,5 +33,79 @@ class Warp extends PluginCommand{
     }
     
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
-          
-    
+            if($sender->hasPermission("warp.use")) {
+               $this->openWarpUI($sender);   
+            } else {
+               $sender->sendMessage("§7(§c!§7) §cYou do not have permission to use this command");
+            }
+    }
+               
+                
+    public function openWarpUI(CommandSender $sender)
+    {
+        $this->config = new Config($this->getPlugin()->getDataFolder() . "/warps.yml", Config::YAML);
+        $this->cords = new Config($this->getPlugin()->getDataFolder() . "/cords.yml", Config::YAML);
+        if(!($sender instanceof Player)){
+                return true;
+            }
+            $form = new SimpleForm(function (Player $sender, $data){
+            if ($data === null) {
+                return;
+            }
+            switch ($data) {
+            	case 0: 
+	        $x = $this->cords->get("warp1x");
+	        $y = $this->cords->get("warp1y");
+	        $z = $this->cords->get("warp1z");
+	        $world = $this->cords->get("warp1level");
+	        if($world == null) {
+	           $sender->sendMessage("§7(§c!§7) §cSpawn has not been set yet");
+	        }else{
+     	       $world = $this->getPlugin()->getServer()->getLevelByName($world);
+     	       $sender->teleport($world->getSafeSpawn());
+               $sender->teleport(new Vector3($x, $y, $z, 0, 0));
+               $sender->sendMessage("§7(§a!§7) §aYou are being warped to spawn..."); 
+               }
+               break;
+               case 1: 
+	        $x = $this->cords->get("warp2x");
+	        $y = $this->cords->get("warp2y");
+	        $z = $this->cords->get("warp2z");
+	        $world = $this->cords->get("warp2level");
+	        if($world == null) {
+	           $sender->sendMessage("§7(§c!§7) §cSpawn has not been set yet");
+	        }else{
+     	       $world = $this->getPlugin()->getServer()->getLevelByName($world);
+     	       $sender->teleport($world->getSafeSpawn());
+               $sender->teleport(new Vector3($x, $y, $z, 0, 0));
+               $sender->sendMessage("§7(§a!§7) §aYou are being warped to spawn..."); 
+               }
+               break;  
+               case 2: 
+	        $x = $this->cords->get("warp3x");
+	        $y = $this->cords->get("warp3y");
+	        $z = $this->cords->get("warp3z");
+	        $world = $this->cords->get("warp3level");
+	        if($world == null) {
+	           $sender->sendMessage("§7(§c!§7) §cSpawn has not been set yet");
+	        }else{
+     	       $world = $this->getPlugin()->getServer()->getLevelByName($world);
+     	       $sender->teleport($world->getSafeSpawn());
+               $sender->teleport(new Vector3($x, $y, $z, 0, 0));
+               $sender->sendMessage("§7(§a!§7) §aYou are being warped to spawn..."); 
+               }
+               break;
+               case 3:
+               //exit
+               break;
+            }
+        });
+        $form->setTitle($this->config->get("title"));
+	    $form->setContent($this->config->get("content"));
+        $form->addButton($this->config->get("button1"));
+        $form->addButton($this->config->get("button2"));
+        $form->addButton($this->config->get("button3"));
+        $form->addButton($this->config->get("exit-button"));
+        $form->sendToPlayer($sender);
+    }
+}
