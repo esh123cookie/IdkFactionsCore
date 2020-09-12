@@ -102,6 +102,8 @@ class Main extends PluginBase implements Listener {
     public $server;
   
     public $playerFolder;
+	  
+    public $kitFolder;
 	
     public $player;
 	
@@ -113,6 +115,10 @@ class Main extends PluginBase implements Listener {
         if(!file_exists($this->playerFolder)) {
            $this->playerFolder = $this->getDataFolder() . "Players/";
            @mkdir($this->playerFolder, 0777, true);
+	}
+        if(!file_exists($this->kitFolder)) {
+           $this->kitFolder = $this->getDataFolder() . "Kits/";
+           @mkdir($this->kitFolder, 0777, true);
 	}
         //var
         $this->server = Main::getInstance()->getServer();
