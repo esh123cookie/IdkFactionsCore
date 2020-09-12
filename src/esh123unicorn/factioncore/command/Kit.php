@@ -82,11 +82,6 @@ class Kit extends PluginCommand{
                     
                case 1:
                $this->config = new Config($this->getPlugin()->kitFolder() . "/kit2.yml", Config::YAML);
-	           $tools = Enchantment::getEnchantment($this->config->get("Swordenchant1"));
-	           $armor = Enchantment::getEnchantment($this->config->get("Armorenchant1"));
-	           $tools2 = Enchantment::getEnchantment($this->config->get("Swordenchant2"));
-	           $armor2 = Enchantment::getEnchantment($this->config->get("Armorenchant2"));
-               
                if(!$sender->hasPermission($this->config->get("perm"))){
                   $sender->sendMessage("§7(§c!§7) §cYou don't have permission to use this kit");
                }else{ 
@@ -108,11 +103,6 @@ class Kit extends PluginCommand{
                     
                case 2:
                $this->config = new Config($this->getPlugin()->kitFolder() . "/kit3.yml", Config::YAML);
-	           $tools = Enchantment::getEnchantment($this->config->get("Swordenchant1"));
-	           $armor = Enchantment::getEnchantment($this->config->get("Armorenchant1"));
-	           $tools2 = Enchantment::getEnchantment($this->config->get("Swordenchant2"));
-	           $armor2 = Enchantment::getEnchantment($this->config->get("Armorenchant2"));
-               
                if(!$sender->hasPermission($this->config->get("perm"))){
                   $sender->sendMessage("§7(§c!§7) §cYou don't have permission to use this kit");
                }else{ 
@@ -134,11 +124,6 @@ class Kit extends PluginCommand{
                     
                case 0:
                $this->config = new Config($this->getPlugin()->kitFolder() . "/kit4.yml", Config::YAML);
-	           $tools = Enchantment::getEnchantment($this->config->get("Swordenchant1"));
-	           $armor = Enchantment::getEnchantment($this->config->get("Armorenchant1"));
-	           $tools2 = Enchantment::getEnchantment($this->config->get("Swordenchant2"));
-	           $armor2 = Enchantment::getEnchantment($this->config->get("Armorenchant2"));
-               
                if(!$sender->hasPermission($this->config->get("perm"))){
                   $sender->sendMessage("§7(§c!§7) §cYou don't have permission to use this kit");
                }else{ 
@@ -160,11 +145,6 @@ class Kit extends PluginCommand{
                     
                case 0:
                $this->config = new Config($this->getPlugin()->kitFolder() . "/kit5.yml", Config::YAML);
-	           $tools = Enchantment::getEnchantment($this->config->get("Swordenchant1"));
-	           $armor = Enchantment::getEnchantment($this->config->get("Armorenchant1"));
-	           $tools2 = Enchantment::getEnchantment($this->config->get("Swordenchant2"));
-	           $armor2 = Enchantment::getEnchantment($this->config->get("Armorenchant2"));
-               
                if(!$sender->hasPermission($this->config->get("perm"))){
                   $sender->sendMessage("§7(§c!§7) §cYou don't have permission to use this kit");
                }else{ 
@@ -185,36 +165,341 @@ class Kit extends PluginCommand{
                break;    
  	       }
 	});
-        $form->setTitle("§l§a-=Kits§l=-");
-	$form->setContent("§8You are given §2Slytherin§8 Kit by default. To get better kits you need to level up your wizardry\n\n§bYour level§8:§a $xp");
-	if(!isset($this->getPlugin()->skit[$sender->getName()])){
-	$form->addButton($sender->hasPermission("slytherin.use") === true ? "§8[§r§2Slytherin§8]§r\n§aUNLOCKED" : "§8[§r§2Slytherin§8]§r\n§cLOCKED");
-	}elseif(($this->getPlugin()->skit[$sender->getName()] >= 0) and ($sender->hasPermission("slytherin.kit"))){
-	    $form->addButton("§8[§r§2Slytherin§8]§r\n§c ". (round(($this->getPlugin()->skit[$sender->getName()] - time()) / 60)). "Minutes");
+	$config = new Config($this->getPlugin()->kitFolder() . "/kits.yml", Config::YAML);
+        $kit1 = new Config($this->getPlugin()->kitFolder() . "/kit1.yml", Config::YAML);
+        $kit2 = new Config($this->getPlugin()->kitFolder() . "/kit2.yml", Config::YAML);
+        $kit3 = new Config($this->getPlugin()->kitFolder() . "/kit3.yml", Config::YAML);
+        $kit4 = new Config($this->getPlugin()->kitFolder() . "/kit4.yml", Config::YAML);
+        $kit5 = new Config($this->getPlugin()->kitFolder() . "/kit5.yml", Config::YAML);
+        $form->setTitle($config->get("title"));
+	$form->setContent($config->get("content"));
+	if(!isset($this->kit1[$sender->getName()])){
+	   $form->addButton($sender->hasPermission($kit1->get("perm")) === true ? $config->get("button1")."\n".$config->get("unlocked") : $config->get("button1")."\n".$config->get("locked"));
+	}elseif(($this->kit1[$sender->getName()] >= 0) and ($sender->hasPermission($kit1->get("perm")))){
+	    $form->addButton($config->get("button1") "\n§c ". (round(($this->kit1[$sender->getName()] - time()) / 60)). "Minutes");
 	}
-	if(!isset($this->getPlugin()->hpkit[$sender->getName()])){
-	   $form->addButton($sender->hasPermission("harrypotter.kit") === true ? "§8[§fHarryPotter§r§8]§r\n§aUNLOCKED" : "§8[§fHarryPotter§r§8]§r\n§cLOCKED");
-	}elseif(($this->getPlugin()->hpkit[$sender->getName()] >= 0) and ($sender->hasPermission("harrypotter.kit"))){
-	    $form->addButton("§8[§fHarryPotter§r§8]§r\n§c ". (round(($this->getPlugin()->hpkit[$sender->getName()] - time()) / 60)). "Minutes");
+	if(!isset($this->kit2[$sender->getName()])){
+	   $form->addButton($sender->hasPermission($kit2->get("perm")) === true ? $config->get("button2")."\n".$config->get("unlocked") : $config->get("button2")."\n".$config->get("locked"));
+	}elseif(($this->kit2[$sender->getName()] >= 0) and ($sender->hasPermission($kit2->get("perm")))){
+	    $form->addButton($config->get("button2") "\n§c ". (round(($this->kit2[$sender->getName()] - time()) / 60)). "Minutes");
 	}
-	if(!isset($this->getPlugin()->dekit[$sender->getName()])){
-	$form->addButton($sender->hasPermission("deatheater.kit") === true ? "§8[§k§c--§r§cDeathEater§r§k§c--§r§8]§r\n§aUNLOCKED" : "§8[§k§c--§r§cDeathEater§r§k§c--§r§8]§r\n§cLOCKED");
-	}elseif(($this->getPlugin()->dekit[$sender->getName()] >= 0) and ($sender->hasPermission("deatheater.kit"))){
-	    $form->addButton("§8[§k§c--§r§cDeathEater§r§k§c--§r§8]§r\n§c ". (round(($this->getPlugin()->dekit[$sender->getName()] - time()) / 60)). "Minutes");
+	if(!isset($this->kit3[$sender->getName()])){
+	   $form->addButton($sender->hasPermission($kit3->get("perm")) === true ? $config->get("button3")."\n".$config->get("unlocked") : $config->get("button3")."\n".$config->get("locked"));
+	}elseif(($this->kit3[$sender->getName()] >= 0) and ($sender->hasPermission($kit3->get("perm")))){
+	    $form->addButton($config->get("button3") "\n§c ". (round(($this->kit3[$sender->getName()] - time()) / 60)). "Minutes");
 	}
-	if(!isset($this->getPlugin()->voldkit[$sender->getName()])){
-	$form->addButton($sender->hasPermission("voldemort.kit") === true ? "§8[§k§c--§r§4Voldemort§r§k§c--§r§8]§r\n§aUNLOCKED" : "§8[§k§c--§r§4Voldemort§r§k§c--§r§8]§r\n§cLOCKED");
-	}elseif(($this->getPlugin()->voldkit[$sender->getName()] >= 0) and ($sender->hasPermission("voldemort.kit"))){
-	    $form->addButton("§8[§k§c--§r§4Voldemort§r§k§c--§r§8]§r\n§c ". (round(($this->getPlugin()->voldkit[$sender->getName()] - time()) / 60)). "Minutes");
+	if(!isset($this->kit4[$sender->getName()])){
+	   $form->addButton($sender->hasPermission($kit4->get("perm")) === true ? $config->get("button4")."\n".$config->get("unlocked") : $config->get("button4")."\n".$config->get("locked"));
+	}elseif(($this->kit4[$sender->getName()] >= 0) and ($sender->hasPermission($kit4->get("perm")))){
+	    $form->addButton($config->get("button4") "\n§c ". (round(($this->kit4[$sender->getName()] - time()) / 60)). "Minutes");
+	}
+	if(!isset($this->kit5[$sender->getName()])){
+	   $form->addButton($sender->hasPermission($kit5->get("perm")) === true ? $config->get("button5")."\n".$config->get("unlocked") : $config->get("button6")."\n".$config->get("locked"));
+	}elseif(($this->kit5[$sender->getName()] >= 0) and ($sender->hasPermission($kit5->get("perm")))){
+	    $form->addButton($config->get("button5") "\n§c ". (round(($this->kit5[$sender->getName()] - time()) / 60)). "Minutes");
 	}
         $form->sendToPlayer($sender);
         return $form;
     }
+	
+    public function kit1Items(Player $player) { 
+	       $config = new Config($this->getPlugin()->kitFolder() . "/kit1.yml", Config::YAML);
+	       $kit = new Config($this->getPlugin()->kitFolder() . "/kits.yml", Config::YAML);
+	       $sword = Enchantment::getEnchantment($config->get("Swordenchant1"));
+	       $armor = Enchantment::getEnchantment($config->get("Armorenchant1"));
+	       $sword2 = Enchantment::getEnchantment($config->get("Swordenchant2"));
+	       $armor2 = Enchantment::getEnchantment($config->get("Armorenchant2"));
+	       $tool = Enchantment::getEnchantment($config->get("Toolenchant1"));
+	       $tool2 = Enchantment::getEnchantment($config->get("Toolenchant2"));
+	    	
+	       $inv = $player->getInventory();
+	       $helmet = Item::get($config->get("helmet") 1);
+	       $helmet->setCustomName($kits->get("button1"));
+	       $helmet->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
+	       $helmet->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+               $sender->getInventory()->addItem($helmet);
+                //chestplate
+	       $chest = Item::get($config->get("chestplate") 1);
+	       $chest->setCustomName($kits->get("button1"));
+	       $chest->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
+	       $chest->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+               $sender->getInventory()->addItem($chest);
+                //leggings
+	       $legs = Item::get($config->get("leggings"), 1);
+	       $legs->setCustomName($kits->get("button1"));
+	       $legs->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
+	       $legs->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+               $sender->getInventory()->addItem($legs);
+                //boots
+	       $boots = Item::get($config->get("boots"), 1);
+	       $boots->setCustomName($kits->get("button1"));
+	       $boots->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
+	       $boots->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+               $sender->getInventory()->addItem($boots);
+		//sword
+	       $sword = Item::get($config->get("sword"), 1);
+	       $sword->setCustomName($kits->get("button1"));
+	       $sword->addEnchantment(new EnchantmentInstance($sword, $config->get("Swordlevel1")));
+	       $sword->addEnchantment(new EnchantmentInstance($sword2, $config->get("Swordlevel1")));
+               $sender->getInventory()->addItem($sword);
+		//pickaxe
+	       $pickaxe = Item::get($config->get("pickaxe"), 1);
+	       $pickaxe->setCustomName($kits->get("button1"));
+	       $pickaxe->addEnchantment(new EnchantmentInstance($tool, $config->get("Toollevel1")));
+	       $pickaxe->addEnchantment(new EnchantmentInstance($tool2, $config->get("Toollevel2")));
+               $sender->getInventory()->addItem($pickaxe);
+		//axe
+	       $axe = Item::get($config->get("axe"), 1);
+	       $axe->setCustomName($kits->get("button1"));
+	       $axe->addEnchantment(new EnchantmentInstance($tool, $config->get("Toollevel1")));
+	       $axe->addEnchantment(new EnchantmentInstance($tool2, $config->get("Toollevel2")));
+               $sender->getInventory()->addItem($axe);
+		//hoe
+	       $hoe = Item::get($config->get("hoe"), 1);
+	       $hoe->setCustomName($kits->get("button1"));
+	       $hoe->addEnchantment(new EnchantmentInstance($tool, $config->get("Toollevel1")));
+	       $hoe->addEnchantment(new EnchantmentInstance($tool2, $config->get("Toollevel2")));
+               $sender->getInventory()->addItem($hoe);
+    }
+	
+    public function kit2Items(Player $player) { 
+	       $config = new Config($this->getPlugin()->kitFolder() . "/kit2.yml", Config::YAML);
+	       $kit = new Config($this->getPlugin()->kitFolder() . "/kits.yml", Config::YAML);
+	       $sword = Enchantment::getEnchantment($config->get("Swordenchant1"));
+	       $armor = Enchantment::getEnchantment($config->get("Armorenchant1"));
+	       $sword2 = Enchantment::getEnchantment($config->get("Swordenchant2"));
+	       $armor2 = Enchantment::getEnchantment($config->get("Armorenchant2"));
+	       $tool = Enchantment::getEnchantment($config->get("Toolenchant1"));
+	       $tool2 = Enchantment::getEnchantment($config->get("Toolenchant2"));
+	    	
+	       $inv = $player->getInventory();
+	       $helmet = Item::get($config->get("helmet") 1);
+	       $helmet->setCustomName($kits->get("button2"));
+	       $helmet->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
+	       $helmet->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+               $sender->getInventory()->addItem($helmet);
+                //chestplate
+	       $chest = Item::get($config->get("chestplate") 1);
+	       $chest->setCustomName($kits->get("button2"));
+	       $chest->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
+	       $chest->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+               $sender->getInventory()->addItem($chest);
+                //leggings
+	       $legs = Item::get($config->get("leggings"), 1);
+	       $legs->setCustomName($kits->get("button2"));
+	       $legs->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
+	       $legs->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+               $sender->getInventory()->addItem($legs);
+                //boots
+	       $boots = Item::get($config->get("boots"), 1);
+	       $boots->setCustomName($kits->get("button2"));
+	       $boots->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
+	       $boots->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+               $sender->getInventory()->addItem($boots);
+		//sword
+	       $sword = Item::get($config->get("sword"), 1);
+	       $sword->setCustomName($kits->get("button2"));
+	       $sword->addEnchantment(new EnchantmentInstance($sword, $config->get("Swordlevel1")));
+	       $sword->addEnchantment(new EnchantmentInstance($sword2, $config->get("Swordlevel1")));
+               $sender->getInventory()->addItem($sword);
+		//pickaxe
+	       $pickaxe = Item::get($config->get("pickaxe"), 1);
+	       $pickaxe->setCustomName($kits->get("button2"));
+	       $pickaxe->addEnchantment(new EnchantmentInstance($tool, $config->get("Toollevel1")));
+	       $pickaxe->addEnchantment(new EnchantmentInstance($tool2, $config->get("Toollevel2")));
+               $sender->getInventory()->addItem($pickaxe);
+		//axe
+	       $axe = Item::get($config->get("axe"), 1);
+	       $axe->setCustomName($kits->get("button2"));
+	       $axe->addEnchantment(new EnchantmentInstance($tool, $config->get("Toollevel1")));
+	       $axe->addEnchantment(new EnchantmentInstance($tool2, $config->get("Toollevel2")));
+               $sender->getInventory()->addItem($axe);
+		//hoe
+	       $hoe = Item::get($config->get("hoe"), 1);
+	       $hoe->setCustomName($kits->get("button2"));
+	       $hoe->addEnchantment(new EnchantmentInstance($tool, $config->get("Toollevel1")));
+	       $hoe->addEnchantment(new EnchantmentInstance($tool2, $config->get("Toollevel2")));
+               $sender->getInventory()->addItem($hoe);
+    }
+	
+    public function kit3Items(Player $player) { 
+	       $config = new Config($this->getPlugin()->kitFolder() . "/kit3.yml", Config::YAML);
+	       $kit = new Config($this->getPlugin()->kitFolder() . "/kits.yml", Config::YAML);
+	       $sword = Enchantment::getEnchantment($config->get("Swordenchant1"));
+	       $armor = Enchantment::getEnchantment($config->get("Armorenchant1"));
+	       $sword2 = Enchantment::getEnchantment($config->get("Swordenchant2"));
+	       $armor2 = Enchantment::getEnchantment($config->get("Armorenchant2"));
+	       $tool = Enchantment::getEnchantment($config->get("Toolenchant1"));
+	       $tool2 = Enchantment::getEnchantment($config->get("Toolenchant2"));
+	    	
+	       $inv = $player->getInventory();
+	       $helmet = Item::get($config->get("helmet") 1);
+	       $helmet->setCustomName($kits->get("button3"));
+	       $helmet->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
+	       $helmet->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+               $sender->getInventory()->addItem($helmet);
+                //chestplate
+	       $chest = Item::get($config->get("chestplate") 1);
+	       $chest->setCustomName($kits->get("button3"));
+	       $chest->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
+	       $chest->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+               $sender->getInventory()->addItem($chest);
+                //leggings
+	       $legs = Item::get($config->get("leggings"), 1);
+	       $legs->setCustomName($kits->get("button3"));
+	       $legs->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
+	       $legs->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+               $sender->getInventory()->addItem($legs);
+                //boots
+	       $boots = Item::get($config->get("boots"), 1);
+	       $boots->setCustomName($kits->get("button3"));
+	       $boots->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
+	       $boots->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+               $sender->getInventory()->addItem($boots);
+		//sword
+	       $sword = Item::get($config->get("sword"), 1);
+	       $sword->setCustomName($kits->get("button3"));
+	       $sword->addEnchantment(new EnchantmentInstance($sword, $config->get("Swordlevel1")));
+	       $sword->addEnchantment(new EnchantmentInstance($sword2, $config->get("Swordlevel1")));
+               $sender->getInventory()->addItem($sword);
+		//pickaxe
+	       $pickaxe = Item::get($config->get("pickaxe"), 1);
+	       $pickaxe->setCustomName($kits->get("button3"));
+	       $pickaxe->addEnchantment(new EnchantmentInstance($tool, $config->get("Toollevel1")));
+	       $pickaxe->addEnchantment(new EnchantmentInstance($tool2, $config->get("Toollevel2")));
+               $sender->getInventory()->addItem($pickaxe);
+		//axe
+	       $axe = Item::get($config->get("axe"), 1);
+	       $axe->setCustomName($kits->get("button3"));
+	       $axe->addEnchantment(new EnchantmentInstance($tool, $config->get("Toollevel1")));
+	       $axe->addEnchantment(new EnchantmentInstance($tool2, $config->get("Toollevel2")));
+               $sender->getInventory()->addItem($axe);
+		//hoe
+	       $hoe = Item::get($config->get("hoe"), 1);
+	       $hoe->setCustomName($kits->get("button3"));
+	       $hoe->addEnchantment(new EnchantmentInstance($tool, $config->get("Toollevel1")));
+	       $hoe->addEnchantment(new EnchantmentInstance($tool2, $config->get("Toollevel2")));
+               $sender->getInventory()->addItem($hoe);
+    }
+	
+    public function kit4Items(Player $player) { 
+	       $config = new Config($this->getPlugin()->kitFolder() . "/kit4.yml", Config::YAML);
+	       $kit = new Config($this->getPlugin()->kitFolder() . "/kits.yml", Config::YAML);
+	       $sword = Enchantment::getEnchantment($config->get("Swordenchant1"));
+	       $armor = Enchantment::getEnchantment($config->get("Armorenchant1"));
+	       $sword2 = Enchantment::getEnchantment($config->get("Swordenchant2"));
+	       $armor2 = Enchantment::getEnchantment($config->get("Armorenchant2"));
+	       $tool = Enchantment::getEnchantment($config->get("Toolenchant1"));
+	       $tool2 = Enchantment::getEnchantment($config->get("Toolenchant2"));
+	    	
+	       $inv = $player->getInventory();
+	       $helmet = Item::get($config->get("helmet") 1);
+	       $helmet->setCustomName($kits->get("button4"));
+	       $helmet->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
+	       $helmet->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+               $sender->getInventory()->addItem($helmet);
+                //chestplate
+	       $chest = Item::get($config->get("chestplate") 1);
+	       $chest->setCustomName($kits->get("button4"));
+	       $chest->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
+	       $chest->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+               $sender->getInventory()->addItem($chest);
+                //leggings
+	       $legs = Item::get($config->get("leggings"), 1);
+	       $legs->setCustomName($kits->get("button4"));
+	       $legs->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
+	       $legs->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+               $sender->getInventory()->addItem($legs);
+                //boots
+	       $boots = Item::get($config->get("boots"), 1);
+	       $boots->setCustomName($kits->get("button4"));
+	       $boots->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
+	       $boots->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+               $sender->getInventory()->addItem($boots);
+		//sword
+	       $sword = Item::get($config->get("sword"), 1);
+	       $sword->setCustomName($kits->get("button4"));
+	       $sword->addEnchantment(new EnchantmentInstance($sword, $config->get("Swordlevel1")));
+	       $sword->addEnchantment(new EnchantmentInstance($sword2, $config->get("Swordlevel1")));
+               $sender->getInventory()->addItem($sword);
+		//pickaxe
+	       $pickaxe = Item::get($config->get("pickaxe"), 1);
+	       $pickaxe->setCustomName($kits->get("button4"));
+	       $pickaxe->addEnchantment(new EnchantmentInstance($tool, $config->get("Toollevel1")));
+	       $pickaxe->addEnchantment(new EnchantmentInstance($tool2, $config->get("Toollevel2")));
+               $sender->getInventory()->addItem($pickaxe);
+		//axe
+	       $axe = Item::get($config->get("axe"), 1);
+	       $axe->setCustomName($kits->get("button4"));
+	       $axe->addEnchantment(new EnchantmentInstance($tool, $config->get("Toollevel1")));
+	       $axe->addEnchantment(new EnchantmentInstance($tool2, $config->get("Toollevel2")));
+               $sender->getInventory()->addItem($axe);
+		//hoe
+	       $hoe = Item::get($config->get("hoe"), 1);
+	       $hoe->setCustomName($kits->get("button4"));
+	       $hoe->addEnchantment(new EnchantmentInstance($tool, $config->get("Toollevel1")));
+	       $hoe->addEnchantment(new EnchantmentInstance($tool2, $config->get("Toollevel2")));
+               $sender->getInventory()->addItem($hoe);
+    }
+	
+    public function kit5Items(Player $player) { 
+	       $config = new Config($this->getPlugin()->kitFolder() . "/kit5.yml", Config::YAML);
+	       $kit = new Config($this->getPlugin()->kitFolder() . "/kits.yml", Config::YAML);
+	       $sword = Enchantment::getEnchantment($config->get("Swordenchant1"));
+	       $armor = Enchantment::getEnchantment($config->get("Armorenchant1"));
+	       $sword2 = Enchantment::getEnchantment($config->get("Swordenchant2"));
+	       $armor2 = Enchantment::getEnchantment($config->get("Armorenchant2"));
+	       $tool = Enchantment::getEnchantment($config->get("Toolenchant1"));
+	       $tool2 = Enchantment::getEnchantment($config->get("Toolenchant2"));
+	    	
+	       $inv = $player->getInventory();
+	       $helmet = Item::get($config->get("helmet") 1);
+	       $helmet->setCustomName($kits->get("button5"));
+	       $helmet->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
+	       $helmet->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+               $sender->getInventory()->addItem($helmet);
+                //chestplate
+	       $chest = Item::get($config->get("chestplate") 1);
+	       $chest->setCustomName($kits->get("button5"));
+	       $chest->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
+	       $chest->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+               $sender->getInventory()->addItem($chest);
+                //leggings
+	       $legs = Item::get($config->get("leggings"), 1);
+	       $legs->setCustomName($kits->get("button5"));
+	       $legs->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
+	       $legs->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+               $sender->getInventory()->addItem($legs);
+                //boots
+	       $boots = Item::get($config->get("boots"), 1);
+	       $boots->setCustomName($kits->get("button5"));
+	       $boots->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
+	       $boots->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+               $sender->getInventory()->addItem($boots);
+	       $boots = Item::get(301, 0, 1);
+		//sword
+	       $sword = Item::get($config->get("sword"), 1);
+	       $sword->setCustomName($kits->get("button5"));
+	       $sword->addEnchantment(new EnchantmentInstance($sword, $config->get("Swordlevel1")));
+	       $sword->addEnchantment(new EnchantmentInstance($sword2, $config->get("Swordlevel1")));
+               $sender->getInventory()->addItem($sword);
+		//pickaxe
+	       $pickaxe = Item::get($config->get("pickaxe"), 1);
+	       $pickaxe->setCustomName($kits->get("button5"));
+	       $pickaxe->addEnchantment(new EnchantmentInstance($tool, $config->get("Toollevel1")));
+	       $pickaxe->addEnchantment(new EnchantmentInstance($tool2, $config->get("Toollevel2")));
+               $sender->getInventory()->addItem($pickaxe);
+		//axe
+	       $axe = Item::get($config->get("axe"), 1);
+	       $axe->setCustomName($kits->get("button5"));
+	       $axe->addEnchantment(new EnchantmentInstance($tool, $config->get("Toollevel1")));
+	       $axe->addEnchantment(new EnchantmentInstance($tool2, $config->get("Toollevel2")));
+               $sender->getInventory()->addItem($axe);
+		//hoe
+	       $hoe = Item::get($config->get("hoe"), 1);
+	       $hoe->setCustomName($kits->get("button5"));
+	       $hoe->addEnchantment(new EnchantmentInstance($tool, $config->get("Toollevel1")));
+	       $hoe->addEnchantment(new EnchantmentInstance($tool2, $config->get("Toollevel2")));
+               $sender->getInventory()->addItem($hoe);
+    }
 }
-
-    
-    
-           
-        
-        
-      
