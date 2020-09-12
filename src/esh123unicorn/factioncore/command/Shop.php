@@ -70,6 +70,102 @@ class Shop extends PluginCommand{
         $form->sendToPlayer($player);
     }
 	
+    public function misk(Player $player) { 
+        $this->config = new Config($this->getPlugin()->getDataFolder() . "/shop.yml", Config::YAML);
+		$name = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+		$api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+		$form = $api->createSimpleForm(function (Player $sender, int $data = null){
+		$result = $data;
+		if($result === null){
+			return true;
+			}
+			switch($result){
+               case 0:
+            $this->goldenapple($player);
+               break;
+               case 1:
+            $this->enchantedapple($player);
+               break;
+               case 2:
+            $this->steak($player);
+               break;
+            }
+        });
+        $form->setTitle($this->config->get("title"));
+	$form->setContent($this->config->get("content") . "§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($player));
+        $form->addButton($name->get("goldenapple"));
+	$form->addButton($name->get("enchantedapple"));	
+	$form->addButton($name->get("steak"));	
+        $form->sendToPlayer($player);
+    }
+	
+    public function goldenapple(Player $sender) { 
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("goldenapple");
+      $price = $p->get("goldenapple");
+      $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+      $f = $api->createCustomForm(function(Player $sender, ?array $data){
+      if(!isset($data)) return;
+	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
+	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
+	     $item = Item::get(322, 1, $data[1]);
+	     $sender->getInventory()->addItem($item);
+             EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
+	  }else{
+	     $sender->sendMessage("§7(§c!§7) §cYou do not have enough money to buy $data[1] " . $itemName);
+             }
+	  });
+	  $f->setTitle($this->config->get("title"));
+	  $f->addLabel("§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($sender) . "\n\n§aPrice§7: §e" . $price);
+      	  $f->addInput("Amount: ");
+	  $f->sendToPlayer($sender);
+    }
+    public function enchantedapple(Player $sender) { 
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("enchantedapple");
+      $price = $p->get("enchantedapple");
+      $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+      $f = $api->createCustomForm(function(Player $sender, ?array $data){
+      if(!isset($data)) return;
+	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
+	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
+	     $item = Item::get(466, 1, $data[1]);
+	     $sender->getInventory()->addItem($item);
+             EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
+	  }else{
+	     $sender->sendMessage("§7(§c!§7) §cYou do not have enough money to buy $data[1] " . $itemName);
+             }
+	  });
+	  $f->setTitle($this->config->get("title"));
+	  $f->addLabel("§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($sender) . "\n\n§aPrice§7: §e" . $price);
+      	  $f->addInput("Amount: ");
+	  $f->sendToPlayer($sender);
+    }
+    public function steak(Player $sender) {
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("steak");
+      $price = $p->get("steak");
+      $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+      $f = $api->createCustomForm(function(Player $sender, ?array $data){
+      if(!isset($data)) return;
+	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
+	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
+	     $item = Item::get(364, 1, $data[1]);
+	     $sender->getInventory()->addItem($item);
+             EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
+	  }else{
+	     $sender->sendMessage("§7(§c!§7) §cYou do not have enough money to buy $data[1] " . $itemName);
+             }
+	  });
+	  $f->setTitle($this->config->get("title"));
+	  $f->addLabel("§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($sender) . "\n\n§aPrice§7: §e" . $price);
+      	  $f->addInput("Amount: ");
+	  $f->sendToPlayer($sender);
+    }
+	    
     public function building(Player $player) { 
         $this->config = new Config($this->getPlugin()->getDataFolder() . "/shop.yml", Config::YAML);
 	$name = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
@@ -254,7 +350,7 @@ class Shop extends PluginCommand{
             }
         });
         $form->setTitle($this->config->get("title"));
-	$form->setContent($name->get("content") . "§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($player));
+	$form->setContent($this->config->get("content") . "§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($player));
 	    
 	//logs
         $form->addButton($name->get("oak-log"));
