@@ -62,10 +62,77 @@ class Shop extends PluginCommand{
             }
         });
         $form->setTitle($this->config->get("title"));
-	    $form->setContent($this->config->get("content") . "§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($player));
+	$form->setContent($this->config->get("content") . "§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($player));
         $form->addButton($this->config->get("wall-gen-button"));
-	    $form->addButton($this->config->get("building-button"));
+	$form->addButton($this->config->get("building-button"));
         $form->addButton($this->config->get("misk-button"));
+        $form->addButton("§cExit");
+        $form->sendToPlayer($player);
+    }
+	
+    public function building(Player $player) { 
+        $this->config = new Config($this->getPlugin()->getDataFolder() . "/shop.yml", Config::YAML);
+	$name = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+		$api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+		$form = $api->createSimpleForm(function (Player $sender, int $data = null){
+		$result = $data;
+		if($result === null){
+			return true;
+			}
+			switch($result){
+               case 0:
+            $this->oaklog($player);
+               break;
+               case 1:
+            $this->sprucelog($player);
+               break;
+               case 2:
+            $this->birchlog($player);
+               break;
+               case 3:
+            $this->junglelog($player);
+               break;
+               case 3:
+            $this->darklog($player);
+               break;
+               case 5:
+            $this->acacialog($player);
+               break;
+	//wood							
+               case 0:
+            $this->oakwood($player);
+               break;
+               case 1:
+            $this->sprucewood($player);
+               break;
+               case 2:
+            $this->birchwood($player);
+               break;
+               case 3:
+            $this->junglewood($player);
+               break;
+               case 3:
+            $this->darkwood($player);
+               break;
+               case 5:
+            $this->acaciawood($player);
+               break;		
+					
+            }
+        });
+        $form->setTitle($this->config->get("title"));
+	$form->setContent($name->get("content") . "§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($player));
+	    
+	//logs
+        $form->addButton($name->get("oak-log"));
+	$form->addButton($name->get("spruce-log"));
+        $form->addButton($name->get("birch-log"));
+        $form->addButton($name->get("jungle-log"));
+        $form->addButton($name->get("dark-log"));
+        $form->addButton($name->get("acacia-log"));
+	    
+	//wood
+	    
         $form->addButton("§cExit");
         $form->sendToPlayer($player);
     }
@@ -75,20 +142,20 @@ class Shop extends PluginCommand{
       $itemName = $this->config->get("wall-gen-button");
       $price = $this->config->get("wall-price");
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
-	  $f = $api->createCustomForm(function(Player $sender, ?array $data){
+      $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get($config->get("wall-id"), $data[1])->setCustomName($config->get("gen-name"));
 	     $sender->getInventory()->addItem($item);
-         EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
+             EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
 	     $sender->sendMessage("§7(§c!§7) §cYou do not have enough money to buy $data[1] " . $itemName);
-         }
+             }
 	  });
 	  $f->setTitle($this->config->get("title"));
 	  $f->addLabel("§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($sender) . "\n\n§aPrice§7: §e" . $price);
-      $f->addInput("Amount: ");
+      	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
 	}
 }
