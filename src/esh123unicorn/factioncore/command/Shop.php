@@ -217,7 +217,40 @@ class Shop extends PluginCommand{
                break;	
                case 38:
             $this->lava($player);
+               break;				
+               case 39:
+            $this->sand($player);
                break;	
+               case 40:
+            $this->sandstone($player);
+               break;
+               case 41:
+            $this->redsandstone($player);
+               break;	
+               case 42:
+            $this->smoothsandstone($player);
+               break;	
+               case 43:
+            $this->chiseledsandstone($player);
+               break;	
+               case 44:
+            $this->gold($player);
+               break;	
+               case 45:
+            $this->iron($player);
+               break;	
+               case 46:
+            $this->diamond($player);
+               break;	
+               case 47:
+            $this->coal($player);
+               break;	
+               case 48:
+            $this->redstone($player);
+               break;	
+               case 49:
+            $this->brick($player);
+               break;					
             }
         });
         $form->setTitle($this->config->get("title"));
@@ -260,8 +293,6 @@ class Shop extends PluginCommand{
         $form->addButton($name->get("diorite"));
         $form->addButton($name->get("granite"));
         $form->addButton($name->get("andesite"));
-	    
-	//blocks
         $form->addButton($name->get("polished-diorite"));
         $form->addButton($name->get("polished-granite"));
         $form->addButton($name->get("polished-andesite"));   
@@ -271,12 +302,22 @@ class Shop extends PluginCommand{
         $form->addButton($name->get("podzol"));
         $form->addButton($name->get("water"));
         $form->addButton($name->get("lava"));
-   
+        $form->addButton($name->get("sand"));
+        $form->addButton($name->get("sandstone"));
+        $form->addButton($name->get("redsandstone"));
+        $form->addButton($name->get("smooth-sandstone"));
+        $form->addButton($name->get("chiseled-sandstone"));
+        $form->addButton($name->get("gold-block"));
+        $form->addButton($name->get("iron-block"));
+        $form->addButton($name->get("diamond-block"));
+        $form->addButton($name->get("coal-block"));
+        $form->addButton($name->get("redstone-block"));
+        $form->addButton($name->get("brick"));
         $form->addButton("§cExit");
         $form->sendToPlayer($player);
     }
 	
-    public function walls(Player $player) { 
+    public function walls(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/config.yml", Config::YAML);
       $itemName = $this->config->get("wall-gen-button");
       $price = $this->config->get("wall-price");
@@ -298,7 +339,7 @@ class Shop extends PluginCommand{
 	  $f->sendToPlayer($sender);
     }
 	
-    public function oaklog(Player $player) { 
+    public function oaklog(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("oak-log");
@@ -308,7 +349,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(17, 0, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(17, 0, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -320,7 +361,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function sprucelog(Player $player) { 
+    public function sprucelog(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("spruce-log");
@@ -330,7 +371,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(17, 1, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(17, 1, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -342,7 +383,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function birchlog(Player $player) { 
+    public function birchlog(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("birch-log");
@@ -352,7 +393,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(17, 2, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(17, 2, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -364,7 +405,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function junglelog(Player $player) { 
+    public function junglelog(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("jungle-log");
@@ -374,7 +415,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(17, 3, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(17, 3, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -386,7 +427,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function darklog(Player $player) { 
+    public function darklog(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("dark-log");
@@ -396,7 +437,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(162, 1, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(162, 1, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -408,7 +449,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function acacialog(Player $player) { 
+    public function acacialog(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("acacia-log");
@@ -418,7 +459,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(162, 0, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(162, 0, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -431,7 +472,7 @@ class Shop extends PluginCommand{
 	  $f->sendToPlayer($sender);
     }
 	
-    public function oakwood(Player $player) { 
+    public function oakwood(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("oak-wood");
@@ -441,7 +482,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(5, 0, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(5, 0, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -453,7 +494,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function sprucewood(Player $player) { 
+    public function sprucewood(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("spruce-wood");
@@ -463,7 +504,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(5, 1, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(5, 1, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -475,7 +516,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function birchwood(Player $player) { 
+    public function birchwood(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("birch-wood");
@@ -485,7 +526,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(5, 2, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(5, 2, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -497,7 +538,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function junglewood(Player $player) { 
+    public function junglewood(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("jungle-wood");
@@ -507,7 +548,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(5, 3, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(5, 3, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -519,7 +560,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function darkwood(Player $player) { 
+    public function darkwood(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("dark-wood");
@@ -529,7 +570,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(5, 5, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(5, 5, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -541,7 +582,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function acaciawood(Player $player) { 
+    public function acaciawood(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("acacia-wood");
@@ -551,7 +592,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(5, 4, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(5, 4, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -564,7 +605,7 @@ class Shop extends PluginCommand{
 	  $f->sendToPlayer($sender);
     }
 	
-    public function wool(Player $player) {
+    public function wool(Player $sender) {
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("wool");
@@ -574,7 +615,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(35, 0, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(35, 0, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -586,7 +627,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function oranage(Player $player) {
+    public function oranage(Player $sender) {
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("orange-wool");
@@ -596,7 +637,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(35, 1, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(35, 1, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -608,7 +649,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function magenta(Player $player) {
+    public function magenta(Player $sender) {
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("magenta-wool");
@@ -618,7 +659,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(35, 2, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(35, 2, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -630,7 +671,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function lightblue(Player $player) {
+    public function lightblue(Player $sender) {
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("light-blue-wool");
@@ -640,7 +681,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(35, 3, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(35, 3, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -652,7 +693,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function yellow(Player $player) {
+    public function yellow(Player $sender) {
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("yellow-wool");
@@ -662,7 +703,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(35, 4, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(35, 4, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -674,7 +715,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function lime(Player $player) {
+    public function lime(Player $sender) {
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("lime-wool");
@@ -684,7 +725,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(35, 5, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(35, 5, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -696,7 +737,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function pink(Player $player) {
+    public function pink(Player $sender) {
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("pink-wool");
@@ -706,7 +747,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(35, 6, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(35, 6, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -718,7 +759,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function gray(Player $player) {
+    public function gray(Player $sender) {
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("gray-wool");
@@ -728,7 +769,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(35, 7, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(35, 7, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -740,7 +781,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function lightgray(Player $player) {
+    public function lightgray(Player $sender) {
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("light-gray-wool");
@@ -750,7 +791,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(35, 8, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(35, 8, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -762,7 +803,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function cyan(Player $player) {
+    public function cyan(Player $sender) {
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("cyan-wool");
@@ -772,7 +813,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(35, 9, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(35, 9, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -784,7 +825,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function purple(Player $player) {
+    public function purple(Player $sender) {
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("purple-wool");
@@ -794,7 +835,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(35, 10, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(35, 10, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -806,7 +847,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function blue(Player $player) {
+    public function blue(Player $sender) {
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("blue-wool");
@@ -816,7 +857,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(35, 11, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(35, 11, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -828,7 +869,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function brown(Player $player) {
+    public function brown(Player $sender) {
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("brown-wool");
@@ -838,7 +879,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(35, 12, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(35, 12, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -850,7 +891,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function green(Player $player) {
+    public function green(Player $sender) {
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("green-wool");
@@ -860,7 +901,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(35, 13, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(35, 13, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -872,7 +913,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function red(Player $player) {
+    public function red(Player $sender) {
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("red-wool");
@@ -882,7 +923,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(35, 14, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(35, 14, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -894,7 +935,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function black(Player $player) {
+    public function black(Player $sender) {
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("black-wool");
@@ -904,7 +945,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(35, 15, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(35, 15, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -917,7 +958,7 @@ class Shop extends PluginCommand{
 	  $f->sendToPlayer($sender);
     }
 	
-    public function stone(Player $player) { 
+    public function stone(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("stone");
@@ -927,7 +968,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(1, 0, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(1, 0, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -939,7 +980,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function cobble(Player $player) { 
+    public function cobble(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("cobble");
@@ -949,7 +990,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(4, 0, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(4, 0, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -961,7 +1002,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function quartz(Player $player) { 
+    public function quartz(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("quartz");
@@ -971,7 +1012,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(155, 0, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(155, 0, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -983,7 +1024,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function obsidian(Player $player) { 
+    public function obsidian(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("obsidian");
@@ -993,7 +1034,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(49, 0, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(49, 0, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -1005,7 +1046,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function ice(Player $player) { 
+    public function ice(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("ice");
@@ -1015,7 +1056,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(79, 0, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(79, 0, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -1027,7 +1068,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function diorite(Player $player) { 
+    public function diorite(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("diorite");
@@ -1037,7 +1078,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(1, 3, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(1, 3, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -1049,7 +1090,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function granite(Player $player) { 
+    public function granite(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("granite");
@@ -1059,7 +1100,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(1, 1, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(1, 1, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -1071,7 +1112,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function andesite(Player $player) { 
+    public function andesite(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("andesite");
@@ -1081,7 +1122,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(1, 5, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(1, 5, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -1093,7 +1134,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function pdiorite(Player $player) { 
+    public function pdiorite(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("polished-diorite");
@@ -1103,7 +1144,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(1, 4, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(1, 4, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -1115,7 +1156,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function pgranite(Player $player) { 
+    public function pgranite(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("polished-granite");
@@ -1125,7 +1166,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(1, 2, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(1, 2, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -1137,7 +1178,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function pandesite(Player $player) { 
+    public function pandesite(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("polished-andesite");
@@ -1147,7 +1188,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(1, 6, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(1, 6, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -1159,7 +1200,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function grass(Player $player) { 
+    public function grass(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("grass");
@@ -1169,7 +1210,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(2, 0, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(2, 0, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -1181,7 +1222,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function dirt(Player $player) { 
+    public function dirt(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("dirt");
@@ -1191,7 +1232,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(3, 0, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(3, 0, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -1203,7 +1244,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function coarsedirt(Player $player) { 
+    public function coarsedirt(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("coarse-dirt");
@@ -1213,7 +1254,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(3, 1, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(3, 1, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -1225,7 +1266,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function podzol(Player $player) { 
+    public function podzol(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("podzol");
@@ -1235,7 +1276,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(243, 0, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(243, 0, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -1247,7 +1288,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function water(Player $player) { 
+    public function water(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("water");
@@ -1257,7 +1298,7 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(8, 0, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(8, 0, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
@@ -1269,7 +1310,7 @@ class Shop extends PluginCommand{
       	  $f->addInput("Amount: ");
 	  $f->sendToPlayer($sender);
     }
-    public function lava(Player $player) {
+    public function lava(Player $sender) {
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("lava");
@@ -1279,7 +1320,250 @@ class Shop extends PluginCommand{
       if(!isset($data)) return;
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get(10, 0, $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get(10, 0, $data[1]);
+	     $sender->getInventory()->addItem($item);
+             EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
+	  }else{
+	     $sender->sendMessage("§7(§c!§7) §cYou do not have enough money to buy $data[1] " . $itemName);
+             }
+	  });
+	  $f->setTitle($this->config->get("title"));
+	  $f->addLabel("§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($sender) . "\n\n§aPrice§7: §e" . $price);
+      	  $f->addInput("Amount: ");
+	  $f->sendToPlayer($sender);
+    }
+	
+    public function sand(Player $sender) { 
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("sand");
+      $price = $p->get("sand");
+      $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+      $f = $api->createCustomForm(function(Player $sender, ?array $data){
+      if(!isset($data)) return;
+	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
+	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
+	     $item = Item::get(12, 0, $data[1]);
+	     $sender->getInventory()->addItem($item);
+             EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
+	  }else{
+	     $sender->sendMessage("§7(§c!§7) §cYou do not have enough money to buy $data[1] " . $itemName);
+             }
+	  });
+	  $f->setTitle($this->config->get("title"));
+	  $f->addLabel("§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($sender) . "\n\n§aPrice§7: §e" . $price);
+      	  $f->addInput("Amount: ");
+	  $f->sendToPlayer($sender);
+    }
+    public function sandstone(Player $sender) { 
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("sandstone");
+      $price = $p->get("sandstone");
+      $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+      $f = $api->createCustomForm(function(Player $sender, ?array $data){
+      if(!isset($data)) return;
+	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
+	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
+	     $item = Item::get(24, 0, $data[1]);
+	     $sender->getInventory()->addItem($item);
+             EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
+	  }else{
+	     $sender->sendMessage("§7(§c!§7) §cYou do not have enough money to buy $data[1] " . $itemName);
+             }
+	  });
+	  $f->setTitle($this->config->get("title"));
+	  $f->addLabel("§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($sender) . "\n\n§aPrice§7: §e" . $price);
+      	  $f->addInput("Amount: ");
+	  $f->sendToPlayer($sender);
+    }
+    public function redsandstone(Player $sender) { 
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("redsandstone");
+      $price = $p->get("redsandstone");
+      $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+      $f = $api->createCustomForm(function(Player $sender, ?array $data){
+      if(!isset($data)) return;
+	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
+	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
+	     $item = Item::get(179, 0, $data[1]);
+	     $sender->getInventory()->addItem($item);
+             EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
+	  }else{
+	     $sender->sendMessage("§7(§c!§7) §cYou do not have enough money to buy $data[1] " . $itemName);
+             }
+	  });
+	  $f->setTitle($this->config->get("title"));
+	  $f->addLabel("§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($sender) . "\n\n§aPrice§7: §e" . $price);
+      	  $f->addInput("Amount: ");
+	  $f->sendToPlayer($sender);
+    }
+    public function smoothsandstone(Player $sender) { 
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("smooth-sandstone");
+      $price = $p->get("smooth-sandstone");
+      $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+      $f = $api->createCustomForm(function(Player $sender, ?array $data){
+      if(!isset($data)) return;
+	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
+	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
+	     $item = Item::get(24, 2, $data[1]);
+	     $sender->getInventory()->addItem($item);
+             EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
+	  }else{
+	     $sender->sendMessage("§7(§c!§7) §cYou do not have enough money to buy $data[1] " . $itemName);
+             }
+	  });
+	  $f->setTitle($this->config->get("title"));
+	  $f->addLabel("§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($sender) . "\n\n§aPrice§7: §e" . $price);
+      	  $f->addInput("Amount: ");
+	  $f->sendToPlayer($sender);
+    }
+    public function chiseledsandstone(Player $sender) { 
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("chiseled-sandstone");
+      $price = $p->get("chiseled-sandstone");
+      $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+      $f = $api->createCustomForm(function(Player $sender, ?array $data){
+      if(!isset($data)) return;
+	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
+	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
+	     $item = Item::get(24, 1, $data[1]);
+	     $sender->getInventory()->addItem($item);
+             EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
+	  }else{
+	     $sender->sendMessage("§7(§c!§7) §cYou do not have enough money to buy $data[1] " . $itemName);
+             }
+	  });
+	  $f->setTitle($this->config->get("title"));
+	  $f->addLabel("§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($sender) . "\n\n§aPrice§7: §e" . $price);
+      	  $f->addInput("Amount: ");
+	  $f->sendToPlayer($sender);
+    }
+    public function gold(Player $sender) { 
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("gold-block");
+      $price = $p->get("gold-block");
+      $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+      $f = $api->createCustomForm(function(Player $sender, ?array $data){
+      if(!isset($data)) return;
+	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
+	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
+	     $item = Item::get(41, 0, $data[1]);
+	     $sender->getInventory()->addItem($item);
+             EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
+	  }else{
+	     $sender->sendMessage("§7(§c!§7) §cYou do not have enough money to buy $data[1] " . $itemName);
+             }
+	  });
+	  $f->setTitle($this->config->get("title"));
+	  $f->addLabel("§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($sender) . "\n\n§aPrice§7: §e" . $price);
+      	  $f->addInput("Amount: ");
+	  $f->sendToPlayer($sender);
+    }
+    public function iron(Player $sender) { 
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("iron-block");
+      $price = $p->get("iron-block");
+      $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+      $f = $api->createCustomForm(function(Player $sender, ?array $data){
+      if(!isset($data)) return;
+	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
+	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
+	     $item = Item::get(42, 0, $data[1]);
+	     $sender->getInventory()->addItem($item);
+             EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
+	  }else{
+	     $sender->sendMessage("§7(§c!§7) §cYou do not have enough money to buy $data[1] " . $itemName);
+             }
+	  });
+	  $f->setTitle($this->config->get("title"));
+	  $f->addLabel("§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($sender) . "\n\n§aPrice§7: §e" . $price);
+      	  $f->addInput("Amount: ");
+	  $f->sendToPlayer($sender);
+    }
+    public function diamond(Player $sender) {
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("diamond-block");
+      $price = $p->get("diamond-block");
+      $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+      $f = $api->createCustomForm(function(Player $sender, ?array $data){
+      if(!isset($data)) return;
+	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
+	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
+	     $item = Item::get(57, 0, $data[1]);
+	     $sender->getInventory()->addItem($item);
+             EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
+	  }else{
+	     $sender->sendMessage("§7(§c!§7) §cYou do not have enough money to buy $data[1] " . $itemName);
+             }
+	  });
+	  $f->setTitle($this->config->get("title"));
+	  $f->addLabel("§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($sender) . "\n\n§aPrice§7: §e" . $price);
+      	  $f->addInput("Amount: ");
+	  $f->sendToPlayer($sender);
+    }
+    public function coal(Player $sender) { 
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("coal-block");
+      $price = $p->get("coal-block");
+      $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+      $f = $api->createCustomForm(function(Player $sender, ?array $data){
+      if(!isset($data)) return;
+	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
+	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
+	     $item = Item::get(173, 0, $data[1]);
+	     $sender->getInventory()->addItem($item);
+             EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
+	  }else{
+	     $sender->sendMessage("§7(§c!§7) §cYou do not have enough money to buy $data[1] " . $itemName);
+             }
+	  });
+	  $f->setTitle($this->config->get("title"));
+	  $f->addLabel("§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($sender) . "\n\n§aPrice§7: §e" . $price);
+      	  $f->addInput("Amount: ");
+	  $f->sendToPlayer($sender);
+    }
+    public function redstone(Player $sender) { 
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("redstone-block");
+      $price = $p->get("redstone-block");
+      $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+      $f = $api->createCustomForm(function(Player $sender, ?array $data){
+      if(!isset($data)) return;
+	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
+	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
+	     $item = Item::get(152, 0, $data[1]);
+	     $sender->getInventory()->addItem($item);
+             EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
+	  }else{
+	     $sender->sendMessage("§7(§c!§7) §cYou do not have enough money to buy $data[1] " . $itemName);
+             }
+	  });
+	  $f->setTitle($this->config->get("title"));
+	  $f->addLabel("§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($sender) . "\n\n§aPrice§7: §e" . $price);
+      	  $f->addInput("Amount: ");
+	  $f->sendToPlayer($sender);
+    }
+    public function brick(Player $sender) { 
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("brick");
+      $price = $p->get("brick");
+      $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+      $f = $api->createCustomForm(function(Player $sender, ?array $data){
+      if(!isset($data)) return;
+	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
+	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
+	     $item = Item::get(45, 0, $data[1]);
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
