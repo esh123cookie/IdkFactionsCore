@@ -5,7 +5,8 @@ namespace esh123unicorn\factioncore;
 //core commands
 
 //core events
-use esh123unicorn\factioncore\EventListener;
+use esh123unicorn\factioncore\event\EventListener;
+use esh123unicorn\factioncore\event\StoreData;
 
 //config
 use pocketmine\utils\config;
@@ -119,6 +120,7 @@ class Main extends PluginBase implements Listener {
         //events
         $this->server->getPluginManager()->registerEvents($this, $this);
         $this->server->getPluginManager()->registerEvents(new EventListener($this), $this); //done
+        $this->server->getPluginManager()->registerEvents(new StoreData($this), $this); //done
     }
 	
     /**
