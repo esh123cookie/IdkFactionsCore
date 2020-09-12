@@ -99,5 +99,13 @@ class DataBackUps implements Listener{
     public function getPlugin(){
 	return $this->plugin;
     }
-
+	
+    public function displayFaction(PlayerChatEvent $event) {
+	    $player = $event->getPlayer();
+            $message = $event->getMessage();
+	    $config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
+	    $event->setMessage($config->get("faction-text-prefix") . $this->plugin->getFaction($player) . $config->get("faction-text-suffix"));
+    }
+	
+    
   
