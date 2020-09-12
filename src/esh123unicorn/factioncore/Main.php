@@ -127,6 +127,9 @@ class Main extends PluginBase implements Listener {
         $this->server->getPluginManager()->registerEvents($this, $this);
         $this->server->getPluginManager()->registerEvents(new EventListener($this), $this); //done
         $this->server->getPluginManager()->registerEvents(new StoreData($this), $this); //done
+	    
+	$this->storeKitsItems();
+	$this->storeKitsUI();
     }
 	
     /**
