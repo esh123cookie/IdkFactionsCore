@@ -1,6 +1,6 @@
 <?php
 
-namespace esh123unicorn\factions;
+namespace esh123unicorn\factioncore;
 
 //config
 use pocketmine\utils\config;
@@ -85,4 +85,49 @@ use function strtolower; //string lowers all letters
 use function strtoupper; //string upper letters all
 
 class Main extends PluginBase implements Listener {
+  
+    /** @var ProviderInterface */
+    private $provider;
+	
+    /** @var null  */
+    private static $instance = null;
+  
+    public $server;
+  
+    public $playerFolder;
+  
+    public function onEnable()
+    {
+        self::$instance = $this;
+        if(!file_exists($this->playerFolder)) {
+           $this->playerFolder = $this->getDataFolder() . "Players/";
+           @mkdir($this->playerFolder, 0777, true);
+	      }
+        //var
+        $this->server = Main::getInstance()->getServer();
+      
+        //events
+        $this->server->getPluginManager()->registerEvents($this, $this);
+      
+    }
+  
+    
+      
+        
+  
+        
+  
+    public function getPlayers(): int{
+	foreach($this->getServer()->getOnlinePlayers() as $this->players) {
+	return (int) $this->players;
+	}
+    }
+  
+    /**
+    * @return static
+    */
+    public static function getInstance() : self {
+        return self::$instance;
+    }
+}
 
