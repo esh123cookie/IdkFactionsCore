@@ -45,13 +45,17 @@ class LevelUp extends PluginCommand{
         $this->config = new Config($this->getPlugin()->getDataFolder() . "/levelup.yml", Config::YAML);
         $level = $this->getPlugin()->getLevel($player);
         $nextLevel = $this->getPlugin()->getNextLevel($player);
-	    if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($level * $this->config->get("economy-multiplier"))){
+	if($nextLevel >= $this->config->get("levels")) {
+	   $player->sendMessage($this->config->get("max-level-message"));
+	}else{
+	   if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($level * $this->config->get("economy-multiplier"))){
            $this->getPlugin()->getServer()->broadcastMessage($this->config->get("levelup-message") . " " . $nextLevel);
            $playerConfig = new Config($this->getPlugin()->playerFolder . ucfirst($player->getName()) . ".yml", Config::YAML);
            $playerConfig->set("level", $level + 1);
            $playerConfig->save();
         }else{
            $player->sendMessage($this->config->get("not-enough-money-message"));
+	   }
         }
     }
 }
