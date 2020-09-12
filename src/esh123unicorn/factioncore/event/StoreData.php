@@ -297,7 +297,7 @@ class DataBackUps implements Listener{
     }
 	
     public function storeShopUI(): void { 
-              if(!file_exists($this->plugin->getDataFolder() . "/levelup.yml")) {
+              if(!file_exists($this->plugin->getDataFolder() . "/shop.yml")) {
 		 $config = new Config($this->plugin->getDataFolder() . "/shop.yml", Config::YAML);
             	 $shop = [
       	    		$config->setNested("title", "Shop"),
