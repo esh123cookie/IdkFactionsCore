@@ -18,7 +18,7 @@ use jojoe77777\FormAPI;
 use jojoe77777\FormAPI\SimpleForm;
 use jojoe77777\FormAPI\CustomForm;
 
-class Warp extends PluginCommand{
+class Spawn extends PluginCommand{
 
     private $owner;
     
@@ -29,43 +29,35 @@ class Warp extends PluginCommand{
     {
         parent::__construct($name, $owner);
         $this->owner = $owner;
-        $this->setPermission("warp.use");
+        $this->setPermission("spawn.use");
     }
     
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
-            if($sender->hasPermission("warp.use")) {
-               $this->openWarpUI($sender);   
+            if($sender->hasPermission("spawn.use")) {
+               $this->openSpawn($sender);   
             } else {
                $sender->sendMessage("§7(§c!§7) §cYou do not have permission to use this command");
             }
     }
                
                 
-    public function openWarpUI(CommandSender $sender)
+    public function openSpawn(Player $sender)
     {
-        $this->config = new Config($this->getPlugin()->getDataFolder() . "/warps.yml", Config::YAML);
-        $this->cords = new Config($this->getPlugin()->getDataFolder() . "/cords.yml", Config::YAML);
-        if(!($sender instanceof Player)){
-                return true;
-            }
-            $form = new SimpleForm(function (Player $sender, $data){
-            if ($data === null) {
-                return;
-            }
-            switch ($data) {
-            	case 0: 
+        	$this->config = new Config($this->getPlugin()->getDataFolder() . "/warps.yml", Config::YAML);
+        	$this->cords = new Config($this->getPlugin()->getDataFolder() . "/cords.yml", Config::YAML);] 
 	        $x = $this->cords->get("warp1x");
 	        $y = $this->cords->get("warp1y");
 	        $z = $this->cords->get("warp1z");
 	        $world = $this->cords->get("warp1level");
+	    
 	        if($world == null) {
 	           $sender->sendMessage("§7(§c!§7) §cSpawn has not been set yet");
 	        }else{
-     	       $world = $this->getPlugin()->getServer()->getLevelByName($world);
-     	       $sender->teleport($world->getSafeSpawn());
-               $sender->teleport(new Vector3($x, $y, $z, 0, 0));
-               $sender->sendMessage("§7(§a!§7) §aYou are being warped to spawn..."); 
-               }
-               break;
+			
+     	       	   $world = $this->getPlugin()->getServer()->getLevelByName($world);
+     	       	   $sender->teleport($world->getSafeSpawn());
+               	   $sender->teleport(new Vector3($x, $y, $z, 0, 0));
+               	   $sender->sendMessage("§7(§a!§7) §aYou are being warped to spawn..."); 
+		}
     }
 }
