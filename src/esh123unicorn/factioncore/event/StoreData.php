@@ -352,20 +352,6 @@ class DataBackUps implements Listener{
       	    	 ];
       	    	 $config->save(); 
 	      }
-	    
-    public function storeShopUI(): void { 
-              if(!file_exists($this->plugin->getDataFolder() . "/shop.yml")) {
-		 $config = new Config($this->plugin->getDataFolder() . "/shop.yml", Config::YAML);
-            	 $shop = [
-      	    		$config->setNested("title", "Shop"),
-      	    		$config->setNested("content", "Shop"),
-      	    		$config->setNested("wall-gen-button", "Wall Gen"),
-      	    		$config->setNested("building-button", "Building"),
-      	    		$config->setNested("misk-button", "Misk")
-			//addmore soon
-      	    	 ];
-      	    	 $config->save(); 
-	      }
     }
 	
     public function storeShopNames(): void { 
