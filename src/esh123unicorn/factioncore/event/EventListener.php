@@ -29,6 +29,8 @@ use pocketmine\event\entity\EntityMotionEvent;
 use pocketmine\event\block\SignChangeEvent;
 use pocketmine\event\player\PlayerChatEvent;
 
+use twisted\bettervoting\event\PlayerVoteEvent;
+
 //config
 use pocketmine\utils\config;
 
@@ -91,6 +93,8 @@ class DataBackUps implements Listener{
     private $plugin;
 	
     public $config;
+	
+    public $position = [];
 
     public function __construct(Main $plugin) {
         $this->plugin = $plugin;
@@ -107,5 +111,33 @@ class DataBackUps implements Listener{
 	    $event->setMessage($config->get("faction-text-prefix") . $this->plugin->getFaction($player) . $config->get("faction-text-suffix"));
     }
 	
-    
-  
+    public function onVote(PlayerVoteEvent $event) {
+	    $player = $event->getPlayer();
+	    $player->sendMessage("");
+	    $this->plugin->getServer()->broadcastMessage("");
+    }
+	
+    public function wallGenerator(BlockPlaceEvent $event) {
+	    $player = $event->getPlayer();
+	    $block = $event->getBlock();
+	    $blockName = $block->getName();
+	    $blockId = $block->getId();
+	    $config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
+	    
+	    if($blockName == $config->get("gen-name") and $blockId == $config->get("gen-id")) { 
+	       $level = $block->getLevel();
+	       $x = $block->getX();
+	       $y = $block->getY();
+	       $z = $block->getZ();
+	       
+	       $place = $y->distance($config->get("max-distance"));
+	       $pos = [];
+	       foreach($place as $valueY) {
+		       $pos[] = (int) $valueY;
+	       }
+	       $this->position[$valueY] = $pos;
+	       $position = ($block->getX(), $this->position[$valueY], $block->getZ());
+	       $this->plugin->getServer()->getLevel()->setBlock($position, $config->get("get-id"), true, true);
+	    }
+    }
+}
