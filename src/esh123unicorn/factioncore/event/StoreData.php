@@ -372,8 +372,38 @@ class DataBackUps implements Listener{
               if(!file_exists($this->plugin->getDataFolder() . "/shopnames.yml")) {
 		 $config = new Config($this->plugin->getDataFolder() . "/shopnames.yml", Config::YAML);
             	 $shop = [
-      	    		$config->setNested("logs", "log"),
-      	    		$config->setNested("wood", "wood"),
+      	    		$config->setNested("oak-logs", "log"),
+      	    		$config->setNested("spruce-logs", "log"),
+      	    		$config->setNested("birch-logs", "log"),
+      	    		$config->setNested("jungle-logs", "log"),
+      	    		$config->setNested("dark-logs", "log"),
+      	    		$config->setNested("acacia-logs", "log"),
+			 
+      	    		$config->setNested("oak-wood", "wood"),
+      	    		$config->setNested("spruce-wood", "wood"),
+      	    		$config->setNested("birch-wood", "wood"),
+      	    		$config->setNested("jungle-wood", "wood"),
+      	    		$config->setNested("dark-wood", "wood"),
+      	    		$config->setNested("acacia-wood", "wood"),
+			 
+      	    		$config->setNested("wool", "name"),
+      	    		$config->setNested("orange-wool", "name"),
+      	    		$config->setNested("magenta-wool", "name"),
+      	    		$config->setNested("light-blue-wool", "name"),
+      	    		$config->setNested("yellow-wool", "name"),
+      	    		$config->setNested("lime-wool", "name"),
+      	    		$config->setNested("pink-wool", "name"),
+      	    		$config->setNested("gray-wool", "name"),
+      	    		$config->setNested("light-gray-wool", "name"),
+      	    		$config->setNested("cyan-wool", "name"),
+      	    		$config->setNested("purple-wool", "name"),
+      	    		$config->setNested("blue-wool", "name"),
+      	    		$config->setNested("brown-wool", "name"),
+      	    		$config->setNested("green-wool", "name"),
+      	    		$config->setNested("red-wool", "name"),
+      	    		$config->setNested("black-wool", "name"),
+			
+			 
       	    		$config->setNested("stone", "stone"),
       	    		$config->setNested("cobble", "cobble"),
       	    		$config->setNested("quartz", "name"),
@@ -398,7 +428,6 @@ class DataBackUps implements Listener{
       	    		$config->setNested("smooth-sandstone", "name"),
       	    		$config->setNested("chiseled-sandstone", "name"),
       	    		$config->setNested("chiseled-sandstone", "name"),
-      	    		$config->setNested("wool", "name"),
       	    		$config->setNested("gold-block", "name"),
       	    		$config->setNested("iron-block", "name"),
       	    		$config->setNested("diamond-block", "name"),
