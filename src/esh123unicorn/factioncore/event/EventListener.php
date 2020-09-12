@@ -87,5 +87,17 @@ use function strtoupper; //string upper letters all
 use function ucfirst; //first letter of string capital
 
 class DataBackUps implements Listener{
+  
+    private $plugin;
+	
+    public $config;
+
+    public function __construct(Main $plugin) {
+        $this->plugin = $plugin;
+    }
+	
+    public function getPlugin(){
+	return $this->plugin;
+    }
 
   
