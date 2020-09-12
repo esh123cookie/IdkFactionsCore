@@ -2,10 +2,15 @@
 
 namespace esh123unicorn\factioncore;
 
+//core commands
+
+//core events
+use esh123unicorn\factioncore\EventListener;
+
 //config
 use pocketmine\utils\config;
 
-//event
+//pocketmine event
 use pocketmine\event\player\PlayerItemConsumeEvent;
 use pocketmine\event\player\PlayerLoginEvent;
 use pocketmine\event\player\PlayerJoinEvent;
@@ -83,6 +88,7 @@ use function round;
 use function strtotime; //string to time
 use function strtolower; //string lowers all letters
 use function strtoupper; //string upper letters all
+use function ucfirst; //first letter of string capital
 
 class Main extends PluginBase implements Listener {
   
@@ -95,6 +101,10 @@ class Main extends PluginBase implements Listener {
     public $server;
   
     public $playerFolder;
+	
+    public $player;
+	
+    public $level;
   
     public function onEnable()
     {
@@ -102,24 +112,68 @@ class Main extends PluginBase implements Listener {
         if(!file_exists($this->playerFolder)) {
            $this->playerFolder = $this->getDataFolder() . "Players/";
            @mkdir($this->playerFolder, 0777, true);
-	      }
+	}
         //var
         $this->server = Main::getInstance()->getServer();
       
         //events
         $this->server->getPluginManager()->registerEvents($this, $this);
-      
+        $this->server->getPluginManager()->registerEvents(new EventListener($this), $this); //done
+    }
+	
+    /**
+    * @param Player $player
+    * @return bool
+    */
+    public function playerExists(Player $player): bool{
+		$config = new Config($this->playerFolder . ucfirst($player->getName()) . ".yml", Config::YAML);
+		return ($config->exists("level")) ? true : false;
+    }
+	
+    /**
+    * @param Player $player
+    */
+    public function registerPlayer(Player $player): void{
+		$config = new Config($this->playerFolder . ucfirst($player->getName()) . ".yml", Config::YAML);
+		if(!$config->exists("level")){
+			$config->setAll([
+				"player" => $player->getName(), 
+				"ip" => $player->getAddress(), 
+				"level" => null
+			]);
+			$config->save();
+		}
     }
   
-    
-      
-        
-  
-        
+    /**
+    * @param Player $player
+    * @return string
+    */
+    public function getLevel(Player $player): int{
+		$config = new Config($this->playerFolder . ucfirst($player->getName()) . ".yml", Config::YAML);
+	    	$this->level = (int) $config->get("level");
+		return $this->level;
+    }
+	
+    /**
+    * @param Player $player
+    * @return string
+    */
+    public function getPerviousLevel(Player $player): int{
+		return (int) $this->getLevel($player) - 1;
+    }
+	
+    /**
+    * @param Player $player
+    * @return string
+    */
+    public function getNextLevel(Player $player): int{
+		return (int) $this->getLevel($player) + 1;
+    }
   
     public function getPlayers(): int{
-	foreach($this->getServer()->getOnlinePlayers() as $this->players) {
-	return (int) $this->players;
+	foreach($this->getServer()->getOnlinePlayers() as $this->player) {
+	return (int) $this->player;
 	}
     }
   
