@@ -55,7 +55,9 @@ class DataBackUps implements Listener{
 		 $config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
             	 $array = [
       	    		$config->setNested("faction-text-prefix", "§7["),
-      	    		$config->setNested("faction-text-suffix", "§7]")
+      	    		$config->setNested("faction-text-suffix", "§7]"),
+      	    		$config->setNested("gen-id", 1,0),
+      	    		$config->setNested("gen-name", "WALL-GENERATOR")
       	    	 ];
       	    	 $config->save();
 	      }
