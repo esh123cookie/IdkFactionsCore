@@ -6,6 +6,7 @@ namespace esh123unicorn\factioncore;
 use esh123unicorn\factioncore\command\Kit;
 use esh123unicorn\factioncore\command\warp\Warp;
 use esh123unicorn\factioncore\command\warp\Make;
+use esh123unicorn\factioncore\command\warp\Spawn;
 
 //core events
 use esh123unicorn\factioncore\event\EventListener;
@@ -137,6 +138,7 @@ class Main extends PluginBase implements Listener {
         $commandMap->register("fcore", new Kit("kits", $this));
         $commandMap->register("fcore", new Warp("warps", $this));
         $commandMap->register("fcore", new Make("make", $this));
+        $commandMap->register("fcore", new Spawn("spawn", $this));
 	
 	    
 	$this->storeKitsItems();
