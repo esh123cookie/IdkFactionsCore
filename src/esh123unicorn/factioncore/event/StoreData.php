@@ -204,15 +204,11 @@ class DataBackUps implements Listener{
             	 $userinterface = [
       	    		$warp->setNested("title", "Warps"),
       	    		$warp->setNested("content", "click to warp:"),
-      	    		$warp->setNested("button1", "kit1"),
-      	    		$warp->setNested("button2", "kit2"),
-      	    		$warp->setNested("button3", "kit3"),
-      	    		$warp->setNested("button4", "kit4"),
-      	    		$warp->setNested("button5", "kit5"),
+      	    		$warp->setNested("button1", "warp1"),
+      	    		$warp->setNested("button2", "warp2"),
       	    		$warp->setNested("exit-button", "Exit")
       	    	 ];
       	    	 $warp->save();
 	      }
     }
 }
-	    
