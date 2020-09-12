@@ -42,4 +42,53 @@ class Shop extends PluginCommand{
     }
     
     public function openShop(Player $player) { 
+        $this->config = new Config($this->getPlugin()->getDataFolder() . "/shop.yml", Config::YAML);
+		$api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+		$form = $api->createSimpleForm(function (Player $sender, int $data = null){
+		$result = $data;
+		if($result === null){
+			return true;
+			}
+			switch($result){
+               case 0:
+            $this->walls($player);
+               break;
+               case 0:
+            $this->building($player);
+               break;
+               case 0:
+            $this->misk($player);
+               break;
+            }
+        });
+        $form->setTitle($this->config->get("title"));
+	    $form->setContent($this->config->get("content") . "§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($player));
+        $form->addButton($this->config->get("wall-gen-button"));
+	    $form->addButton($this->config->get("building-button"));
+        $form->addButton($this->config->get("misk-button"));
+        $form->addButton("§cExit");
+        $form->sendToPlayer($player);
+    }
     
+    public function walls(Player $player) { 
+      $config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
+      $itemName = $this->config->get("wall-gen-button");
+      $price = $this->config->get("wall-price");
+      $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+	  $f = $api->createCustomForm(function(Player $sender, ?array $data){
+      if(!isset($data)) return;
+	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
+	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
+	     $item = Item::get($config->get("wall-id"), $data[1])->setCustomName($config->get("gen-name"));
+	     $sender->getInventory()->addItem($item);
+         EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
+	  }else{
+	     $sender->sendMessage("§7(§c!§7) §cYou do not have enough money to buy $data[1] " . $itemName);
+         }
+	  });
+	  $f->setTitle($this->config->get("title"));
+	  $f->addLabel("§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($sender) . "\n\n§aPrice§7: §e" . $price);
+      $f->addInput("Amount: ");
+	  $f->sendToPlayer($sender);
+	}
+}
