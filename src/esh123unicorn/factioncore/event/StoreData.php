@@ -279,4 +279,16 @@ class DataBackUps implements Listener{
       	    	 $cord->save(); 
 	      }
     }
+	
+    public function storeLevelUpInfo(): void { 
+              if(!file_exists($this->plugin->getDataFolder() . "/levelup.yml")) {
+		 $config = new Config($this->plugin->getDataFolder() . "/levelup.yml", Config::YAML);
+            	 $level = [
+      	    		$config->setNested("levels", 10),
+      	    		$config->setNested("economy-multiplier", 50),
+      	    		$config->setNested("levelup-message", "you leveled up to level ")
+      	    	 ];
+      	    	 $config->save(); 
+	      }
+    }
 }
