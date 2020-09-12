@@ -324,7 +324,7 @@ class DataBackUps implements Listener{
       	    		$config->setNested("ice", 10),
       	    		$config->setNested("diorite", 10),
       	    		$config->setNested("granite", 20),
-      	    		$config->setNested("Andesite", 30),
+      	    		$config->setNested("andesite", 30),
       	    		$config->setNested("polished-diorite", 30),
       	    		$config->setNested("polished-granite", 50),
       	    		$config->setNested("polished-andesite", 50),
@@ -332,14 +332,12 @@ class DataBackUps implements Listener{
       	    		$config->setNested("dirt", 1),
       	    		$config->setNested("coarse-dirt", 10),
       	    		$config->setNested("podzol", 5),
-      	    		$config->setNested("andesite", 30),
       	    		$config->setNested("water", 30),
       	    		$config->setNested("lava", 30),
       	    		$config->setNested("sand", 30),
       	    		$config->setNested("sandstone", 30),
       	    		$config->setNested("redsandstone", 30),
       	    		$config->setNested("smooth-sandstone", 30),
-      	    		$config->setNested("chiseled-sandstone", 30),
       	    		$config->setNested("chiseled-sandstone", 30),
       	    		$config->setNested("wool", 30),
       	    		$config->setNested("gold-block", 30),
@@ -348,7 +346,9 @@ class DataBackUps implements Listener{
       	    		$config->setNested("coal-block", 30),
       	    		$config->setNested("redstone-block", 30),
       	    		$config->setNested("brick", 30),
-      	    		$config->setNested("iron-block", 30)
+      	    		$config->setNested("goldenapple", 30),
+      	    		$config->setNested("enchantedapple", 30),
+      	    		$config->setNested("steak", 30)
       	    	 ];
       	    	 $config->save(); 
 	      }
@@ -364,14 +364,12 @@ class DataBackUps implements Listener{
       	    		$config->setNested("jungle-logs", "log"),
       	    		$config->setNested("dark-logs", "log"),
       	    		$config->setNested("acacia-logs", "log"),
-			 
       	    		$config->setNested("oak-wood", "wood"),
       	    		$config->setNested("spruce-wood", "wood"),
       	    		$config->setNested("birch-wood", "wood"),
       	    		$config->setNested("jungle-wood", "wood"),
       	    		$config->setNested("dark-wood", "wood"),
       	    		$config->setNested("acacia-wood", "wood"),
-			 
       	    		$config->setNested("wool", "name"),
       	    		$config->setNested("orange-wool", "name"),
       	    		$config->setNested("magenta-wool", "name"),
@@ -388,8 +386,6 @@ class DataBackUps implements Listener{
       	    		$config->setNested("green-wool", "name"),
       	    		$config->setNested("red-wool", "name"),
       	    		$config->setNested("black-wool", "name"),
-			
-			 
       	    		$config->setNested("stone", "stone"),
       	    		$config->setNested("cobble", "cobble"),
       	    		$config->setNested("quartz", "name"),
@@ -405,7 +401,6 @@ class DataBackUps implements Listener{
       	    		$config->setNested("dirt", "name"),
       	    		$config->setNested("coarse-dirt", "name"),
       	    		$config->setNested("podzol", "name"),
-      	    		$config->setNested("andesite", "name"),
       	    		$config->setNested("water", "name"),
       	    		$config->setNested("lava", "name"),
       	    		$config->setNested("sand", "name"),
@@ -413,14 +408,15 @@ class DataBackUps implements Listener{
       	    		$config->setNested("redsandstone", "name"),
       	    		$config->setNested("smooth-sandstone", "name"),
       	    		$config->setNested("chiseled-sandstone", "name"),
-      	    		$config->setNested("chiseled-sandstone", "name"),
       	    		$config->setNested("gold-block", "name"),
       	    		$config->setNested("iron-block", "name"),
       	    		$config->setNested("diamond-block", "name"),
       	    		$config->setNested("coal-block", "name"),
       	    		$config->setNested("redstone-block", "name"),
       	    		$config->setNested("brick", "name"),
-      	    		$config->setNested("iron-block", "name")
+      	    		$config->setNested("goldenapple", "name"),
+      	    		$config->setNested("enchantedapple", "name"),
+      	    		$config->setNested("steak", "name")
       	    	 ];
       	    	 $config->save(); 
 	      }
