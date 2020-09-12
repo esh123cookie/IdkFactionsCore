@@ -397,7 +397,7 @@ class DataBackUps implements Listener{
       	    		$config->setNested("ice", "name"),
       	    		$config->setNested("diorite", "name"),
       	    		$config->setNested("granite", "name"),
-      	    		$config->setNested("Andesite", "name"),
+      	    		$config->setNested("andesite", "name"),
       	    		$config->setNested("polished-diorite", "name"),
       	    		$config->setNested("polished-granite", "name"),
       	    		$config->setNested("polished-andesite", "name"),
