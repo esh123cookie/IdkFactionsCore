@@ -182,9 +182,8 @@ class Kit extends PluginCommand{
                      }
                   }
                }   
-               break;
-                    
- 	    }
+               break;    
+ 	       }
 	});
         $form->setTitle("§l§a-=Kits§l=-");
 	$form->setContent("§8You are given §2Slytherin§8 Kit by default. To get better kits you need to level up your wizardry\n\n§bYour level§8:§a $xp");
@@ -211,6 +210,7 @@ class Kit extends PluginCommand{
         $form->sendToPlayer($sender);
         return $form;
     }
+}
 
     
     
