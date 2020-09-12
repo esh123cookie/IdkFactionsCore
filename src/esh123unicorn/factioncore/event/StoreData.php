@@ -94,6 +94,7 @@ class DataBackUps implements Listener{
               if(!file_exists($this->plugin->kitFolder() . "/kits1.yml")) {
 		 $kit = new Config($this->plugin->kitFolder() . "/kit1.yml", Config::YAML);
             	 $userinterface = [
+      	    		$kit->setNested("claim-message", "claimed kit1"),
       	    		$kit->setNested("cooldown", 60),
       	    		$kit->setNested("perm", "kit1.use"), 
       	    		$kit->setNested("helmet", "310,0"),
@@ -118,6 +119,7 @@ class DataBackUps implements Listener{
               if(!file_exists($this->plugin->kitFolder() . "/kits2.yml")) {
 		 $kit = new Config($this->plugin->kitFolder() . "/kit2.yml", Config::YAML);
             	 $userinterface = [
+      	    		$kit->setNested("claim-message", "claimed kit1"),
       	    		$kit->setNested("cooldown", 60),
       	    		$kit->setNested("perm", "kit1.use"), 
       	    		$kit->setNested("helmet", "310,0"),
@@ -142,6 +144,7 @@ class DataBackUps implements Listener{
               if(!file_exists($this->plugin->kitFolder() . "/kits3.yml")) {
 		 $kit = new Config($this->plugin->kitFolder() . "/kit3.yml", Config::YAML);
             	 $userinterface = [
+      	    		$kit->setNested("claim-message", "claimed kit1"),
       	    		$kit->setNested("cooldown", 60),
       	    		$kit->setNested("perm", "kit1.use"), 
       	    		$kit->setNested("helmet", "310,0"),
@@ -166,6 +169,7 @@ class DataBackUps implements Listener{
               if(!file_exists($this->plugin->kitFolder() . "/kits4.yml")) {
 		 $kit = new Config($this->plugin->kitFolder() . "/kit4.yml", Config::YAML);
             	 $userinterface = [
+      	    		$kit->setNested("claim-message", "claimed kit1"),
       	    		$kit->setNested("cooldown", 60),
       	    		$kit->setNested("perm", "kit1.use"), 
       	    		$kit->setNested("helmet", "310,0"),
@@ -190,6 +194,7 @@ class DataBackUps implements Listener{
               if(!file_exists($this->plugin->kitFolder() . "/kits5.yml")) {
 		 $kit = new Config($this->plugin->kitFolder() . "/kit5.yml", Config::YAML);
             	 $userinterface = [
+      	    		$kit->setNested("claim-message", "claimed kit1"),
       	    		$kit->setNested("cooldown", 60),
       	    		$kit->setNested("perm", "kit1.use"), 
       	    		$kit->setNested("helmet", "310,0"),
