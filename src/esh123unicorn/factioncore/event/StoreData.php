@@ -303,9 +303,52 @@ class DataBackUps implements Listener{
       	    		$config->setNested("title", "Shop"),
       	    		$config->setNested("content", "Shop"),
       	    		$config->setNested("wall-gen-button", "Wall Gen"),
-      	    		$config->setNested("equiptment-button", "Tools"),
+      	    		$config->setNested("building-button", "Building"),
       	    		$config->setNested("misk-button", "Misk")
 			//addmore soon
+      	    	 ];
+      	    	 $config->save(); 
+	      }
+    }
+	
+    public function storeShopPrices(): void { 
+              if(!file_exists($this->plugin->getDataFolder() . "/prices.yml")) {
+		 $config = new Config($this->plugin->getDataFolder() . "/prices.yml", Config::YAML);
+            	 $shop = [
+      	    		$config->setNested("logs", 5),
+      	    		$config->setNested("wood", 2),
+      	    		$config->setNested("stone", 3),
+      	    		$config->setNested("cobble", 2),
+      	    		$config->setNested("quartz", 15),
+      	    		$config->setNested("obsidian", 1000),
+      	    		$config->setNested("ice", 10),
+      	    		$config->setNested("diorite", 10),
+      	    		$config->setNested("granite", 20),
+      	    		$config->setNested("Andesite", 30),
+      	    		$config->setNested("polished-diorite", 30),
+      	    		$config->setNested("polished-granite", 50),
+      	    		$config->setNested("polished-andesite", 50),
+      	    		$config->setNested("grass", 2),
+      	    		$config->setNested("dirt", 1),
+      	    		$config->setNested("coarse-dirt", 10),
+      	    		$config->setNested("podzol", 5),
+      	    		$config->setNested("andesite", 30),
+      	    		$config->setNested("water", 30),
+      	    		$config->setNested("lava", 30),
+      	    		$config->setNested("sand", 30),
+      	    		$config->setNested("sandstone", 30),
+      	    		$config->setNested("redsandstone", 30),
+      	    		$config->setNested("smooth-sandstone", 30),
+      	    		$config->setNested("chiseled-sandstone", 30),
+      	    		$config->setNested("chiseled-sandstone", 30),
+      	    		$config->setNested("wool", 30),
+      	    		$config->setNested("gold-block", 30),
+      	    		$config->setNested("iron-block", 30),
+      	    		$config->setNested("diamond-block", 30),
+      	    		$config->setNested("coal-block", 30),
+      	    		$config->setNested("redstone-block", 30),
+      	    		$config->setNested("brick", 30),
+      	    		$config->setNested("iron-block", 30)
       	    	 ];
       	    	 $config->save(); 
 	      }
