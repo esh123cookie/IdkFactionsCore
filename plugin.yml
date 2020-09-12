@@ -1,0 +1,7 @@
+name: FactionsCore
+author: Esh123unicorn
+description: A factions core
+version: 1.3.20
+main: esh123unicorn\factions\Main
+api: [3.0.0, 3.7.9, 4.0.0, 4.7.9, 5.0.0]
+depend: ["FactionsPro"]
