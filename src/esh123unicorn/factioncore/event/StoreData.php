@@ -230,13 +230,20 @@ class DataBackUps implements Listener{
               if(!file_exists($this->plugin->getDataFolder() . "/cords.yml")) {
 		 $cord = new Config($this->plugin->getDataFolder() . "/cords.yml", Config::YAML);
             	 $setup = [
+      	    		$cord->setNested("warp1level", "null"),
       	    		$cord->setNested("warp1x", null),
       	    		$cord->setNested("warp1y", null),
       	    		$cord->setNested("warp1z", null),
 			 
+      	    		$cord->setNested("warp2level", "null"),
       	    		$cord->setNested("warp2x", null),
       	    		$cord->setNested("warp2y", null),
-      	    		$cord->setNested("warp2z", null)
+      	    		$cord->setNested("warp2z", null),
+			 
+      	    		$cord->setNested("warp3level", "null"),
+      	    		$cord->setNested("warp3x", null),
+      	    		$cord->setNested("warp3y", null),
+      	    		$cord->setNested("warp3z", null)
       	    	 ];
       	    	 $cord->save(); 
 	      }
