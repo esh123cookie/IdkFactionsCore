@@ -107,8 +107,9 @@ class DataBackUps implements Listener{
     public function displayFaction(PlayerChatEvent $event) {
 	    $player = $event->getPlayer();
             $message = $event->getMessage();
+	    $level = $this->plugin->getLevel($player);
 	    $config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
-	    $event->setMessage($config->get("faction-text-prefix") . $this->plugin->getFaction($player) . $config->get("faction-text-suffix"));
+	    $event->setMessage($config->get("faction-text-prefix") . $this->plugin->getFaction($player) . $config->get("faction-text-suffix") . " " . $config->get("level-text-prefix") . $level . $config->get("level-text-suffix") . " " . $message);
     }
 	
     public function onVote(PlayerVoteEvent $event) {
