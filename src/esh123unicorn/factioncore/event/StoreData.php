@@ -289,7 +289,8 @@ class DataBackUps implements Listener{
       	    		$config->setNested("levels", 10),
       	    		$config->setNested("economy-multiplier", 50),
       	    		$config->setNested("levelup-message", "You leveled up to level "),
-      	    		$config->setNested("not-enough-money-message", "Not enough money to level up")
+      	    		$config->setNested("not-enough-money-message", "Not enough money to level up"),
+      	    		$config->setNested("max-level-message", "Your level is already max")
       	    	 ];
       	    	 $config->save(); 
 	      }
