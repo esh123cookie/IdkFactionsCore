@@ -50,6 +50,17 @@ class DataBackUps implements Listener{
 	return $this->plugin;
     }
 	
+    public function storeConfig(): void { 
+              if(!file_exists($this->plugin->getDataFolder() . "/config.yml")) {
+		 $config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
+            	 $array = [
+      	    		$config->setNested("faction-text-prefix", "§7["),
+      	    		$config->setNested("faction-text-suffix", "§7]")
+      	    	 ];
+      	    	 $config->save();
+	      }
+    }
+	
     public function storeKitsUI(): void { 
               if(!file_exists($this->plugin->kitFolder() . "/kits.yml")) {
 		 $kit = new Config($this->plugin->kitFolder() . "/kits.yml", Config::YAML);
@@ -199,8 +210,8 @@ class DataBackUps implements Listener{
     }
 	
     public function storeWarpsUI(): void { 
-              if(!file_exists($this->getDataFolder() . "/warps.yml")) {
-		 $warp = new Config($this->getDataFolder() . "/warps.yml", Config::YAML);
+              if(!file_exists($this->plugin->getDataFolder() . "/warps.yml")) {
+		 $warp = new Config($this->plugin->getDataFolder() . "/warps.yml", Config::YAML);
             	 $userinterface = [
       	    		$warp->setNested("title", "Warps"),
       	    		$warp->setNested("content", "click to warp:"),
@@ -213,8 +224,8 @@ class DataBackUps implements Listener{
     }
 	
     public function storeCoordinates(): void { 
-              if(!file_exists($this->getDataFolder() . "/cords.yml")) {
-		 $cord = new Config($this->getDataFolder() . "/cords.yml", Config::YAML);
+              if(!file_exists($this->plugin->getDataFolder() . "/cords.yml")) {
+		 $cord = new Config($this->plugin->getDataFolder() . "/cords.yml", Config::YAML);
             	 $setup = [
       	    		$cord->setNested("warp1x", null),
       	    		$cord->setNested("warp1y", null),
