@@ -3,6 +3,9 @@
 namespace esh123unicorn\factioncore;
 
 //core commands
+use esh123unicorn\factioncore\command\Kit;
+use esh123unicorn\factioncore\command\warp\Warp;
+use esh123unicorn\factioncore\command\warp\Make;
 
 //core events
 use esh123unicorn\factioncore\event\EventListener;
@@ -129,6 +132,12 @@ class Main extends PluginBase implements Listener {
         $this->server->getPluginManager()->registerEvents($this, $this);
         $this->server->getPluginManager()->registerEvents(new EventListener($this), $this); //done
         $this->server->getPluginManager()->registerEvents(new StoreData($this), $this); //done
+	    
+        $commandMap = $this->server->getCommandMap();
+        $commandMap->register("fcore", new Kit("kits", $this));
+        $commandMap->register("fcore", new Warp("warps", $this));
+        $commandMap->register("fcore", new Make("make", $this));
+	
 	    
 	$this->storeKitsItems();
 	$this->storeKitsUI();
