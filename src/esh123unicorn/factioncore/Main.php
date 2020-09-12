@@ -108,6 +108,8 @@ class Main extends PluginBase implements Listener {
     public $player;
 	
     public $level;
+	
+    public $faction;
   
     public function onEnable()
     {
@@ -131,6 +133,20 @@ class Main extends PluginBase implements Listener {
 	$this->storeKitsItems();
 	$this->storeKitsUI();
     }
+	
+    public function getAPI()
+    {
+        return $this->server->getPluginManager()->getPlugin("FactionsPro");
+    }
+	
+    /**
+    * @param Player $player
+    * @return bool
+    */
+    public function getFaction(Player $player): string{ 
+	$this->faction = $this->getAPI()->getFaction($player->getName());
+	return $this->faction;
+    }				     
 	
     /**
     * @param Player $player
