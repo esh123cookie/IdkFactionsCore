@@ -50,6 +50,7 @@ class Make extends PluginCommand{
 			$this->config->set("warp1z", $this->valueZ);
 			$this->config->set("warp1level", $this->level);
 			$sender->sendMessage("§7(§a!§7) §aYou create spawn in world §c" . $level . $this->valueX . $this->valueY . $this->valueZ);
+			$this->config->saveAll();
                         break;
                     case 'bosses':
 			$this->config->set("warp2x", $this->valueX);
@@ -57,6 +58,7 @@ class Make extends PluginCommand{
 			$this->config->set("warp2z", $this->valueZ);
 			$this->config->set("warp2level", $this->level);
 			$sender->sendMessage("§7(§a!§7) §aYou create bosses in world §c" . $level . $this->valueX . $this->valueY . $this->valueZ);
+			$this->config->saveAll();
                         break;
                     case 'pvp':
 			$this->config->set("warp3x", $this->valueX);
@@ -64,6 +66,7 @@ class Make extends PluginCommand{
 			$this->config->set("warp3z", $this->valueZ);
 			$this->config->set("warp3level", $this->level);
 			$sender->sendMessage("§7(§a!§7) §aYou create pvp in world §c" . $level . $this->valueX . $this->valueY . $this->valueZ);
+			$this->config->saveAll();
                         break;
 			}
 	    }
