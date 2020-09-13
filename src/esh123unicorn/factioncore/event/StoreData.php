@@ -89,9 +89,9 @@ class StoreData implements Listener{
               if(!file_exists($this->plugin->kitFolder . "/config.yml")) {
 		 $config = new Config($this->plugin->kitFolder . "/config.yml", Config::YAML);
             	 $c = [
-      	    		$c->setNested("unlocked", "UNLOCKED"),
-      	    		$c->setNested("locked", "LOCKED"),
-      	    		$c->setNested("time", "TIME: ")
+      	    		$config->setNested("unlocked", "UNLOCKED"),
+      	    		$config->setNested("locked", "LOCKED"),
+      	    		$config->setNested("time", "TIME: ")
 		 ];
 	      }
 
