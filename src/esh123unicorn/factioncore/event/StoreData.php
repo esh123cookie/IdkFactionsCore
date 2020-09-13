@@ -69,8 +69,8 @@ class StoreData implements Listener{
     }
 	
     public function storeKitsUI(): void { 
-              if(!file_exists($this->plugin->kitFolder() . "/kits.yml")) {
-		 $kit = new Config($this->plugin->kitFolder() . "/kits.yml", Config::YAML);
+              if(!file_exists($this->plugin->kitFolder . "/kits.yml")) {
+		 $kit = new Config($this->plugin->kitFolder . "/kits.yml", Config::YAML);
             	 $userinterface = [
       	    		$kit->setNested("title", "Kits"),
       	    		$kit->setNested("content", "pick a kit:"),
@@ -86,8 +86,8 @@ class StoreData implements Listener{
     }
 	
     public function storeKitsItems(): void {  
-              if(!file_exists($this->plugin->kitFolder() . "/config.yml")) {
-		 $config = new Config($this->plugin->kitFolder() . "/config.yml", Config::YAML);
+              if(!file_exists($this->plugin->kitFolder . "/config.yml")) {
+		 $config = new Config($this->plugin->kitFolder . "/config.yml", Config::YAML);
             	 $c = [
       	    		$c->setNested("unlocked", "UNLOCKED"),
       	    		$c->setNested("locked", "LOCKED"),
@@ -95,8 +95,8 @@ class StoreData implements Listener{
 		 ];
 	      }
 
-              if(!file_exists($this->plugin->kitFolder() . "/kits1.yml")) {
-		 $kit = new Config($this->plugin->kitFolder() . "/kit1.yml", Config::YAML);
+              if(!file_exists($this->plugin->kitFolder . "/kits1.yml")) {
+		 $kit = new Config($this->plugin->kitFolder . "/kit1.yml", Config::YAML);
             	 $userinterface = [
       	    		$kit->setNested("claim-message", "claimed kit1"),
       	    		$kit->setNested("cooldown", 60),
@@ -125,8 +125,8 @@ class StoreData implements Listener{
       	    	 $kit->save();
 	      }
 	    
-              if(!file_exists($this->plugin->kitFolder() . "/kits2.yml")) {
-		 $kit = new Config($this->plugin->kitFolder() . "/kit2.yml", Config::YAML);
+              if(!file_exists($this->plugin->kitFolder . "/kits2.yml")) {
+		 $kit = new Config($this->plugin->kitFolder . "/kit2.yml", Config::YAML);
             	 $userinterface = [
       	    		$kit->setNested("claim-message", "claimed kit1"),
       	    		$kit->setNested("cooldown", 60),
@@ -155,8 +155,8 @@ class StoreData implements Listener{
       	    	 $kit->save();
 	      }
 	    
-              if(!file_exists($this->plugin->kitFolder() . "/kits3.yml")) {
-		 $kit = new Config($this->plugin->kitFolder() . "/kit3.yml", Config::YAML);
+              if(!file_exists($this->plugin->kitFolder . "/kits3.yml")) {
+		 $kit = new Config($this->plugin->kitFolder . "/kit3.yml", Config::YAML);
             	 $userinterface = [
       	    		$kit->setNested("claim-message", "claimed kit1"),
       	    		$kit->setNested("cooldown", 60),
@@ -185,8 +185,8 @@ class StoreData implements Listener{
       	    	 $kit->save();
 	      }
 	    
-              if(!file_exists($this->plugin->kitFolder() . "/kits4.yml")) {
-		 $kit = new Config($this->plugin->kitFolder() . "/kit4.yml", Config::YAML);
+              if(!file_exists($this->plugin->kitFolder . "/kits4.yml")) {
+		 $kit = new Config($this->plugin->kitFolder . "/kit4.yml", Config::YAML);
             	 $userinterface = [
       	    		$kit->setNested("claim-message", "claimed kit1"),
       	    		$kit->setNested("cooldown", 60),
@@ -215,8 +215,8 @@ class StoreData implements Listener{
       	    	 $kit->save();
 	      }
 	    
-              if(!file_exists($this->plugin->kitFolder() . "/kits5.yml")) {
-		 $kit = new Config($this->plugin->kitFolder() . "/kit5.yml", Config::YAML);
+              if(!file_exists($this->plugin->kitFolder . "/kits5.yml")) {
+		 $kit = new Config($this->plugin->kitFolder . "/kit5.yml", Config::YAML);
             	 $userinterface = [
       	    		$kit->setNested("claim-message", "claimed kit1"),
       	    		$kit->setNested("cooldown", 60),
