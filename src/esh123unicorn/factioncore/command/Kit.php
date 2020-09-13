@@ -176,27 +176,27 @@ class Kit extends PluginCommand{
 	if(!isset($this->kit1[$sender->getName()])){
 	   $form->addButton($sender->hasPermission($kit1->get("perm")) === true ? $config->get("button1")."\n".$config->get("unlocked") : $config->get("button1")."\n".$config->get("locked"));
 	}elseif(($this->kit1[$sender->getName()] >= 0) and ($sender->hasPermission($kit1->get("perm")))){
-	    $form->addButton($config->get("button1") "\n§c ". (round(($this->kit1[$sender->getName()] - time()) / 60)). "Minutes");
+	    $form->addButton($config->get("button1") . "\n§c " . (round(($this->kit1[$sender->getName()] - time()) / 60)). "Minutes");
 	}
 	if(!isset($this->kit2[$sender->getName()])){
 	   $form->addButton($sender->hasPermission($kit2->get("perm")) === true ? $config->get("button2")."\n".$config->get("unlocked") : $config->get("button2")."\n".$config->get("locked"));
 	}elseif(($this->kit2[$sender->getName()] >= 0) and ($sender->hasPermission($kit2->get("perm")))){
-	    $form->addButton($config->get("button2") "\n§c ". (round(($this->kit2[$sender->getName()] - time()) / 60)). "Minutes");
+	    $form->addButton($config->get("button2") . "\n§c " . (round(($this->kit2[$sender->getName()] - time()) / 60)). "Minutes");
 	}
 	if(!isset($this->kit3[$sender->getName()])){
 	   $form->addButton($sender->hasPermission($kit3->get("perm")) === true ? $config->get("button3")."\n".$config->get("unlocked") : $config->get("button3")."\n".$config->get("locked"));
 	}elseif(($this->kit3[$sender->getName()] >= 0) and ($sender->hasPermission($kit3->get("perm")))){
-	    $form->addButton($config->get("button3") "\n§c ". (round(($this->kit3[$sender->getName()] - time()) / 60)). "Minutes");
+	    $form->addButton($config->get("button3") . "\n§c " . (round(($this->kit3[$sender->getName()] - time()) / 60)). "Minutes");
 	}
 	if(!isset($this->kit4[$sender->getName()])){
 	   $form->addButton($sender->hasPermission($kit4->get("perm")) === true ? $config->get("button4")."\n".$config->get("unlocked") : $config->get("button4")."\n".$config->get("locked"));
 	}elseif(($this->kit4[$sender->getName()] >= 0) and ($sender->hasPermission($kit4->get("perm")))){
-	    $form->addButton($config->get("button4") "\n§c ". (round(($this->kit4[$sender->getName()] - time()) / 60)). "Minutes");
+	    $form->addButton($config->get("button4") . "\n§c " . (round(($this->kit4[$sender->getName()] - time()) / 60)). "Minutes");
 	}
 	if(!isset($this->kit5[$sender->getName()])){
 	   $form->addButton($sender->hasPermission($kit5->get("perm")) === true ? $config->get("button5")."\n".$config->get("unlocked") : $config->get("button6")."\n".$config->get("locked"));
 	}elseif(($this->kit5[$sender->getName()] >= 0) and ($sender->hasPermission($kit5->get("perm")))){
-	    $form->addButton($config->get("button5") "\n§c ". (round(($this->kit5[$sender->getName()] - time()) / 60)). "Minutes");
+	    $form->addButton($config->get("button5") . "\n§c " . (round(($this->kit5[$sender->getName()] - time()) / 60)). "Minutes");
 	}
         $form->sendToPlayer($sender);
         return $form;
