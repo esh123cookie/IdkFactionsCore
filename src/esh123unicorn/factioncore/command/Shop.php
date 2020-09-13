@@ -12,6 +12,13 @@ use pocketmine\level\LevelExpection;
 use pocketmine\level\LevelProvider;
 use pocketmine\level\ProviderManager;
 use pocketmine\level\Position;
+use pocketmine\block\BlockFactory;
+use pocketmine\item\enchantment\Enchantment;
+use pocketmine\item\enchantment\EnchantmentInstance;
+use pocketmine\item\Item;
+use pocketmine\item\Armor;
+use pocketmine\item\Tool;
+use pocketmine\item\ItemFactory;
 
 //form ui
 use jojoe77777\FormAPI;
