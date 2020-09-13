@@ -107,6 +107,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("goldenapple");
+      $price = $p->get("goldenapple");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(322, 1, $data[1]);
@@ -129,6 +133,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("enchantedapple");
+      $price = $p->get("enchantedapple");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(466, 1, $data[1]);
@@ -151,6 +159,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("steak");
+      $price = $p->get("steak");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(364, 1, $data[1]);
@@ -420,6 +432,9 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/config.yml", Config::YAML);
+      $itemName = $this->config->get("wall-gen-button");
+      $price = $this->config->get("wall-price");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get($config->get("wall-id"), $data[1])->setCustomName($config->get("gen-name"));
@@ -443,6 +458,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("oak-log");
+      $price = $p->get("logs");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(17, 0, $data[1]);
@@ -465,6 +484,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("spruce-log");
+      $price = $p->get("logs");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(17, 1, $data[1]);
@@ -487,6 +510,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("birch-log");
+      $price = $p->get("logs");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(17, 2, $data[1]);
@@ -509,6 +536,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("jungle-log");
+      $price = $p->get("logs");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(17, 3, $data[1]);
@@ -531,6 +562,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("dark-log");
+      $price = $p->get("logs");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(162, 1, $data[1]);
@@ -553,6 +588,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("acacia-log");
+      $price = $p->get("logs");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(162, 0, $data[1]);
@@ -576,6 +615,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("oak-wood");
+      $price = $p->get("wood");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(5, 0, $data[1]);
@@ -598,6 +641,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("spruce-wood");
+      $price = $p->get("wood");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(5, 1, $data[1]);
@@ -620,6 +667,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("birch-wood");
+      $price = $p->get("wood");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(5, 2, $data[1]);
@@ -642,6 +693,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("jungle-wood");
+      $price = $p->get("wood");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(5, 3, $data[1]);
@@ -664,6 +719,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("dark-wood");
+      $price = $p->get("wood");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(5, 5, $data[1]);
@@ -686,6 +745,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("acacia-wood");
+      $price = $p->get("wood");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(5, 4, $data[1]);
@@ -709,6 +772,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("wool");
+      $price = $p->get("wool");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(35, 0, $data[1]);
@@ -731,6 +798,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("orange-wool");
+      $price = $p->get("wool");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(35, 1, $data[1]);
@@ -753,6 +824,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("magenta-wool");
+      $price = $p->get("wool");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(35, 2, $data[1]);
@@ -775,6 +850,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("light-blue-wool");
+      $price = $p->get("wool");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(35, 3, $data[1]);
@@ -797,6 +876,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("yellow-wool");
+      $price = $p->get("wool");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(35, 4, $data[1]);
@@ -819,6 +902,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("lime-wool");
+      $price = $p->get("wool");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(35, 5, $data[1]);
@@ -841,6 +928,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("pink-wool");
+      $price = $p->get("wool");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(35, 6, $data[1]);
@@ -863,6 +954,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("gray-wool");
+      $price = $p->get("wool");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(35, 7, $data[1]);
@@ -885,6 +980,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("light-gray-wool");
+      $price = $p->get("wool");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(35, 8, $data[1]);
@@ -907,6 +1006,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("cyan-wool");
+      $price = $p->get("wool");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(35, 9, $data[1]);
@@ -929,6 +1032,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("purple-wool");
+      $price = $p->get("wool");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(35, 10, $data[1]);
@@ -951,6 +1058,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("blue-wool");
+      $price = $p->get("wool");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(35, 11, $data[1]);
@@ -973,6 +1084,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("brown-wool");
+      $price = $p->get("wool");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(35, 12, $data[1]);
@@ -995,6 +1110,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("green-wool");
+      $price = $p->get("wool");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(35, 13, $data[1]);
@@ -1017,6 +1136,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("red-wool");
+      $price = $p->get("wool");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(35, 14, $data[1]);
@@ -1039,6 +1162,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("black-wool");
+      $price = $p->get("wool");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(35, 15, $data[1]);
@@ -1062,6 +1189,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("stone");
+      $price = $p->get("stone");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(1, 0, $data[1]);
@@ -1084,6 +1215,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("cobble");
+      $price = $p->get("cobble");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(4, 0, $data[1]);
@@ -1106,6 +1241,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("quartz");
+      $price = $p->get("quartz");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(155, 0, $data[1]);
@@ -1128,6 +1267,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("obsidian");
+      $price = $p->get("obsidian");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(49, 0, $data[1]);
@@ -1150,6 +1293,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("ice");
+      $price = $p->get("ice");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(79, 0, $data[1]);
@@ -1172,6 +1319,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("diorite");
+      $price = $p->get("diorite");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(1, 3, $data[1]);
@@ -1194,6 +1345,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("granite");
+      $price = $p->get("granite");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(1, 1, $data[1]);
@@ -1216,6 +1371,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("andesite");
+      $price = $p->get("andesite");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(1, 5, $data[1]);
@@ -1238,6 +1397,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("polished-diorite");
+      $price = $p->get("polished-diorite");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(1, 4, $data[1]);
@@ -1260,6 +1423,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("polished-granite");
+      $price = $p->get("polished-granite");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(1, 2, $data[1]);
@@ -1279,9 +1446,16 @@ class Shop extends PluginCommand{
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("polished-andesite");
       $price = $p->get("polished-andesite");
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("polished-andesite");
+      $price = $p->get("polished-andesite");
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
-      if(!isset($data)) return;
+      if(!isset($data)) return;      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("polished-andesite");
+      $price = $p->get("polished-andesite");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(1, 6, $data[1]);
@@ -1304,6 +1478,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("grass");
+      $price = $p->get("grass");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(2, 0, $data[1]);
@@ -1326,6 +1504,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("dirt");
+      $price = $p->get("dirt");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(3, 0, $data[1]);
@@ -1348,6 +1530,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("coarse-dirt");
+      $price = $p->get("coarse-dirt");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(3, 1, $data[1]);
@@ -1370,6 +1556,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("podzol");
+      $price = $p->get("podzol");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(243, 0, $data[1]);
@@ -1392,6 +1582,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("water");
+      $price = $p->get("water");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(8, 0, $data[1]);
@@ -1414,6 +1608,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("lava");
+      $price = $p->get("lava");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(10, 0, $data[1]);
@@ -1437,6 +1635,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("sand");
+      $price = $p->get("sand");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(12, 0, $data[1]);
@@ -1459,6 +1661,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("sandstone");
+      $price = $p->get("sandstone");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(24, 0, $data[1]);
@@ -1481,6 +1687,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("redsandstone");
+      $price = $p->get("redsandstone");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(179, 0, $data[1]);
@@ -1503,6 +1713,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("smooth-sandstone");
+      $price = $p->get("smooth-sandstone");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(24, 2, $data[1]);
@@ -1525,6 +1739,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("chiseled-sandstone");
+      $price = $p->get("chiseled-sandstone");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(24, 1, $data[1]);
@@ -1547,6 +1765,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("gold-block");
+      $price = $p->get("gold-block");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(41, 0, $data[1]);
@@ -1569,6 +1791,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("iron-block");
+      $price = $p->get("iron-block");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(42, 0, $data[1]);
@@ -1591,6 +1817,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("diamond-block");
+      $price = $p->get("diamond-block");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(57, 0, $data[1]);
@@ -1613,6 +1843,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("coal-block");
+      $price = $p->get("coal-block");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(173, 0, $data[1]);
@@ -1635,6 +1869,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("redstone-block");
+      $price = $p->get("redstone-block");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(152, 0, $data[1]);
@@ -1657,6 +1895,10 @@ class Shop extends PluginCommand{
       $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
       $f = $api->createCustomForm(function(Player $sender, ?array $data){
       if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("brick");
+      $price = $p->get("brick");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
 	     $item = Item::get(45, 0, $data[1]);
