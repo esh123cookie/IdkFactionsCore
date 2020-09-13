@@ -365,13 +365,14 @@ class Shop extends PluginCommand{
                break;	
                case 49:
             $this->brick($player);
-               break;					
+               break;	
+               case 50:
+	//exit
+               break;
             }
         });
         $form->setTitle($this->config->get("title"));
 	$form->setContent($this->config->get("content") . "§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($player));
-	    
-	//logs
         $form->addButton($name->get("oak-log"));
 	$form->addButton($name->get("spruce-log"));
         $form->addButton($name->get("birch-log"));
