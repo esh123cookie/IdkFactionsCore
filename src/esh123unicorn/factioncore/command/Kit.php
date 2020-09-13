@@ -55,7 +55,7 @@ class Kit extends PluginCommand{
 			}
 			switch($result){
                case 0:
-               $this->config = new Config($this->getPlugin()->kitFolder() . "/kit1.yml", Config::YAML);
+               $this->config = new Config($this->getPlugin()->kitFolder . "/kit1.yml", Config::YAML);
 	           $tools = Enchantment::getEnchantment($this->config->get("Swordenchant1"));
 	           $armor = Enchantment::getEnchantment($this->config->get("Armorenchant1"));
 	           $tools2 = Enchantment::getEnchantment($this->config->get("Swordenchant2"));
@@ -81,7 +81,7 @@ class Kit extends PluginCommand{
                break;
                     
                case 1:
-               $this->config = new Config($this->getPlugin()->kitFolder() . "/kit2.yml", Config::YAML);
+               $this->config = new Config($this->getPlugin()->kitFolder . "/kit2.yml", Config::YAML);
                if(!$sender->hasPermission($this->config->get("perm"))){
                   $sender->sendMessage("§7(§c!§7) §cYou don't have permission to use this kit");
                }else{ 
@@ -102,7 +102,7 @@ class Kit extends PluginCommand{
                break;
                     
                case 2:
-               $this->config = new Config($this->getPlugin()->kitFolder() . "/kit3.yml", Config::YAML);
+               $this->config = new Config($this->getPlugin()->kitFolder . "/kit3.yml", Config::YAML);
                if(!$sender->hasPermission($this->config->get("perm"))){
                   $sender->sendMessage("§7(§c!§7) §cYou don't have permission to use this kit");
                }else{ 
@@ -123,7 +123,7 @@ class Kit extends PluginCommand{
                break;
                     
                case 0:
-               $this->config = new Config($this->getPlugin()->kitFolder() . "/kit4.yml", Config::YAML);
+               $this->config = new Config($this->getPlugin()->kitFolder . "/kit4.yml", Config::YAML);
                if(!$sender->hasPermission($this->config->get("perm"))){
                   $sender->sendMessage("§7(§c!§7) §cYou don't have permission to use this kit");
                }else{ 
@@ -144,7 +144,7 @@ class Kit extends PluginCommand{
                break;
                     
                case 0:
-               $this->config = new Config($this->getPlugin()->kitFolder() . "/kit5.yml", Config::YAML);
+               $this->config = new Config($this->getPlugin()->kitFolder . "/kit5.yml", Config::YAML);
                if(!$sender->hasPermission($this->config->get("perm"))){
                   $sender->sendMessage("§7(§c!§7) §cYou don't have permission to use this kit");
                }else{ 
@@ -165,12 +165,12 @@ class Kit extends PluginCommand{
                break;    
  	       }
 	});
-	$config = new Config($this->getPlugin()->kitFolder() . "/kits.yml", Config::YAML);
-        $kit1 = new Config($this->getPlugin()->kitFolder() . "/kit1.yml", Config::YAML);
-        $kit2 = new Config($this->getPlugin()->kitFolder() . "/kit2.yml", Config::YAML);
-        $kit3 = new Config($this->getPlugin()->kitFolder() . "/kit3.yml", Config::YAML);
-        $kit4 = new Config($this->getPlugin()->kitFolder() . "/kit4.yml", Config::YAML);
-        $kit5 = new Config($this->getPlugin()->kitFolder() . "/kit5.yml", Config::YAML);
+	$config = new Config($this->getPlugin()->kitFolder . "/kits.yml", Config::YAML);
+        $kit1 = new Config($this->getPlugin()->kitFolder . "/kit1.yml", Config::YAML);
+        $kit2 = new Config($this->getPlugin()->kitFolder . "/kit2.yml", Config::YAML);
+        $kit3 = new Config($this->getPlugin()->kitFolder . "/kit3.yml", Config::YAML);
+        $kit4 = new Config($this->getPlugin()->kitFolder . "/kit4.yml", Config::YAML);
+        $kit5 = new Config($this->getPlugin()->kitFolder . "/kit5.yml", Config::YAML);
         $form->setTitle($config->get("title"));
 	$form->setContent($config->get("content"));
 	if(!isset($this->kit1[$sender->getName()])){
@@ -203,8 +203,8 @@ class Kit extends PluginCommand{
     }
 	
     public function kit1Items(Player $player) { 
-	       $config = new Config($this->getPlugin()->kitFolder() . "/kit1.yml", Config::YAML);
-	       $kit = new Config($this->getPlugin()->kitFolder() . "/kits.yml", Config::YAML);
+	       $config = new Config($this->getPlugin()->kitFolder . "/kit1.yml", Config::YAML);
+	       $kit = new Config($this->getPlugin()->kitFolder . "/kits.yml", Config::YAML);
 	       $sword = Enchantment::getEnchantment($config->get("Swordenchant1"));
 	       $armor = Enchantment::getEnchantment($config->get("Armorenchant1"));
 	       $sword2 = Enchantment::getEnchantment($config->get("Swordenchant2"));
@@ -263,8 +263,8 @@ class Kit extends PluginCommand{
     }
 	
     public function kit2Items(Player $player) { 
-	       $config = new Config($this->getPlugin()->kitFolder() . "/kit2.yml", Config::YAML);
-	       $kit = new Config($this->getPlugin()->kitFolder() . "/kits.yml", Config::YAML);
+	       $config = new Config($this->getPlugin()->kitFolder . "/kit2.yml", Config::YAML);
+	       $kit = new Config($this->getPlugin()->kitFolder . "/kits.yml", Config::YAML);
 	       $sword = Enchantment::getEnchantment($config->get("Swordenchant1"));
 	       $armor = Enchantment::getEnchantment($config->get("Armorenchant1"));
 	       $sword2 = Enchantment::getEnchantment($config->get("Swordenchant2"));
@@ -323,8 +323,8 @@ class Kit extends PluginCommand{
     }
 	
     public function kit3Items(Player $player) { 
-	       $config = new Config($this->getPlugin()->kitFolder() . "/kit3.yml", Config::YAML);
-	       $kit = new Config($this->getPlugin()->kitFolder() . "/kits.yml", Config::YAML);
+	       $config = new Config($this->getPlugin()->kitFolder . "/kit3.yml", Config::YAML);
+	       $kit = new Config($this->getPlugin()->kitFolder . "/kits.yml", Config::YAML);
 	       $sword = Enchantment::getEnchantment($config->get("Swordenchant1"));
 	       $armor = Enchantment::getEnchantment($config->get("Armorenchant1"));
 	       $sword2 = Enchantment::getEnchantment($config->get("Swordenchant2"));
@@ -383,8 +383,8 @@ class Kit extends PluginCommand{
     }
 	
     public function kit4Items(Player $player) { 
-	       $config = new Config($this->getPlugin()->kitFolder() . "/kit4.yml", Config::YAML);
-	       $kit = new Config($this->getPlugin()->kitFolder() . "/kits.yml", Config::YAML);
+	       $config = new Config($this->getPlugin()->kitFolder . "/kit4.yml", Config::YAML);
+	       $kit = new Config($this->getPlugin()->kitFolder . "/kits.yml", Config::YAML);
 	       $sword = Enchantment::getEnchantment($config->get("Swordenchant1"));
 	       $armor = Enchantment::getEnchantment($config->get("Armorenchant1"));
 	       $sword2 = Enchantment::getEnchantment($config->get("Swordenchant2"));
@@ -443,8 +443,8 @@ class Kit extends PluginCommand{
     }
 	
     public function kit5Items(Player $player) { 
-	       $config = new Config($this->getPlugin()->kitFolder() . "/kit5.yml", Config::YAML);
-	       $kit = new Config($this->getPlugin()->kitFolder() . "/kits.yml", Config::YAML);
+	       $config = new Config($this->getPlugin()->kitFolder . "/kit5.yml", Config::YAML);
+	       $kit = new Config($this->getPlugin()->kitFolder . "/kits.yml", Config::YAML);
 	       $sword = Enchantment::getEnchantment($config->get("Swordenchant1"));
 	       $armor = Enchantment::getEnchantment($config->get("Armorenchant1"));
 	       $sword2 = Enchantment::getEnchantment($config->get("Swordenchant2"));
