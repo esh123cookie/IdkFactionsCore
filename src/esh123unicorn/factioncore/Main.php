@@ -152,6 +152,8 @@ class Main extends PluginBase implements Listener {
 	$this->storeWarpsUI();
 	$this->storeLevelUpInfo();
 	$this->storeShopUI();
+	$this->storeShopPrices();
+	$this->storeShopNames();
     }
 	
     public function getAPI()
