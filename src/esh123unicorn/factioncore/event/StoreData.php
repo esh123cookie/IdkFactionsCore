@@ -115,14 +115,14 @@ class StoreData implements Listener{
       	    		$kit->setNested("Armorlevel1", 1),
       	    		$kit->setNested("Armorenchant2", 2),
       	    		$kit->setNested("Armorlevel2", 1),
-      	    		$kit->setNested("Toolenchant1", 1),
-      	    		$kit->setNested("Toollevel1", 1),
-      	    		$kit->setNested("Toolenchant2", 2),
-      	    		$kit->setNested("Toollevel2", 1),
-      	    		$kit->setNested("Swordenchant1", 1),
-      	    		$kit->setNested("Swordlevel1", 1),
-      	    		$kit->setNested("Swordenchant2", 2),
-      	    		$kit->setNested("Swordlevel2", 1)
+      	    		$kit->setNested("Toolenchant1", null),
+      	    		$kit->setNested("Toollevel1", null),
+      	    		$kit->setNested("Toolenchant2", null),
+      	    		$kit->setNested("Toollevel2", null),
+      	    		$kit->setNested("Swordenchant1", null),
+      	    		$kit->setNested("Swordlevel1", null),
+      	    		$kit->setNested("Swordenchant2", null),
+      	    		$kit->setNested("Swordlevel2", null)
       	    	 ];
       	    	 $kit->save();
 	      }
