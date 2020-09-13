@@ -18,6 +18,7 @@ use pocketmine\inventory\Inventory;
 use pocketmine\item\Armor;
 use pocketmine\item\Tool;
 use pocketmine\math\Vector3;
+use pocketmine\utils\config;
 
 class Kit extends PluginCommand{
 
