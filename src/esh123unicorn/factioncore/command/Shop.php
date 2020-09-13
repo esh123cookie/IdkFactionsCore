@@ -444,7 +444,7 @@ class Shop extends PluginCommand{
       $price = $this->config->get("wall-price");
 	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
 	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
-	     $item = Item::get($config->get("wall-id"), $data[1])->setCustomName($config->get("gen-name"));
+	     $item = Item::get($config->get("gen-id"), $config->get("gen-meta"), $data[1])->setCustomName($config->get("gen-name"));
 	     $sender->getInventory()->addItem($item);
              EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
 	  }else{
