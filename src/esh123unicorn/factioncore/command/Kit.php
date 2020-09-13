@@ -213,13 +213,13 @@ class Kit extends PluginCommand{
 	       $tool2 = Enchantment::getEnchantment($config->get("Toolenchant2"));
 	    	
 	       $inv = $player->getInventory();
-	       $helmet = Item::get($config->get("helmet") 1);
+	       $helmet = Item::get($config->get("helmet"), 1);
 	       $helmet->setCustomName($kits->get("button1"));
 	       $helmet->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
 	       $helmet->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($helmet);
                 //chestplate
-	       $chest = Item::get($config->get("chestplate") 1);
+	       $chest = Item::get($config->get("chestplate"), 1);
 	       $chest->setCustomName($kits->get("button1"));
 	       $chest->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
 	       $chest->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
@@ -273,13 +273,13 @@ class Kit extends PluginCommand{
 	       $tool2 = Enchantment::getEnchantment($config->get("Toolenchant2"));
 	    	
 	       $inv = $player->getInventory();
-	       $helmet = Item::get($config->get("helmet") 1);
+	       $helmet = Item::get($config->get("helmet"), 1);
 	       $helmet->setCustomName($kits->get("button2"));
 	       $helmet->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
 	       $helmet->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($helmet);
                 //chestplate
-	       $chest = Item::get($config->get("chestplate") 1);
+	       $chest = Item::get($config->get("chestplate"), 1);
 	       $chest->setCustomName($kits->get("button2"));
 	       $chest->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
 	       $chest->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
@@ -333,13 +333,13 @@ class Kit extends PluginCommand{
 	       $tool2 = Enchantment::getEnchantment($config->get("Toolenchant2"));
 	    	
 	       $inv = $player->getInventory();
-	       $helmet = Item::get($config->get("helmet") 1);
+	       $helmet = Item::get($config->get("helmet"), 1);
 	       $helmet->setCustomName($kits->get("button3"));
 	       $helmet->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
 	       $helmet->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($helmet);
                 //chestplate
-	       $chest = Item::get($config->get("chestplate") 1);
+	       $chest = Item::get($config->get("chestplate"), 1);
 	       $chest->setCustomName($kits->get("button3"));
 	       $chest->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
 	       $chest->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
@@ -393,13 +393,13 @@ class Kit extends PluginCommand{
 	       $tool2 = Enchantment::getEnchantment($config->get("Toolenchant2"));
 	    	
 	       $inv = $player->getInventory();
-	       $helmet = Item::get($config->get("helmet") 1);
+	       $helmet = Item::get($config->get("helmet"), 1);
 	       $helmet->setCustomName($kits->get("button4"));
 	       $helmet->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
 	       $helmet->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($helmet);
                 //chestplate
-	       $chest = Item::get($config->get("chestplate") 1);
+	       $chest = Item::get($config->get("chestplate"), 1);
 	       $chest->setCustomName($kits->get("button4"));
 	       $chest->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
 	       $chest->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
@@ -453,13 +453,13 @@ class Kit extends PluginCommand{
 	       $tool2 = Enchantment::getEnchantment($config->get("Toolenchant2"));
 	    	
 	       $inv = $player->getInventory();
-	       $helmet = Item::get($config->get("helmet") 1);
+	       $helmet = Item::get($config->get("helmet"), 1);
 	       $helmet->setCustomName($kits->get("button5"));
 	       $helmet->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
 	       $helmet->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($helmet);
                 //chestplate
-	       $chest = Item::get($config->get("chestplate") 1);
+	       $chest = Item::get($config->get("chestplate"), 1);
 	       $chest->setCustomName($kits->get("button5"));
 	       $chest->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
 	       $chest->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
