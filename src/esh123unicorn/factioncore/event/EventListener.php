@@ -125,7 +125,7 @@ class EventListener implements Listener{
 	    $blockName = $block->getName();
 	    $blockId = $block->getId();
 	    $config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
-	    $gen = Item::get($config->get("gen-id"), $config->get("gen-meta"));
+	    $gen = Item::get((int) $config->get("gen-id"), (int) $config->get("gen-meta"));
 	    
 	    if($blockName == $config->get("gen-name") and $blockId == $gen->getId()) { 
 	       $level = $block->getLevel();
