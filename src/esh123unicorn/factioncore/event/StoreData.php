@@ -36,7 +36,7 @@ use function ucfirst; //first letter of string capital
 
 use esh123unicorn\factioncore\Main;
 
-class DataBackUps implements Listener{
+class StoreData implements Listener{
 
     private $plugin;
 	
