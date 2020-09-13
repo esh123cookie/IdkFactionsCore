@@ -44,7 +44,7 @@ class Spawn extends PluginCommand{
     public function openSpawn(Player $sender)
     {
         	$this->config = new Config($this->getPlugin()->getDataFolder() . "/warps.yml", Config::YAML);
-        	$this->cords = new Config($this->getPlugin()->getDataFolder() . "/cords.yml", Config::YAML);] 
+        	$this->cords = new Config($this->getPlugin()->getDataFolder() . "/cords.yml", Config::YAML);
 	        $x = $this->cords->get("warp1x");
 	        $y = $this->cords->get("warp1y");
 	        $z = $this->cords->get("warp1z");
