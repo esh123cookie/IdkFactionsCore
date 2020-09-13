@@ -145,15 +145,15 @@ class Main extends PluginBase implements Listener {
         $commandMap->register("fcore", new LevelUp("levelup", $this));
 	
 	    
-	$this->getServer()->storeConfig();
-	$this->getServer()->storeKitsItems();
-	$this->getServer()->storeKitsUI();
-	$this->getServer()->storeCoordinates();
-	$this->getServer()->storeWarpsUI();
-	$this->getServer()->storeLevelUpInfo();
-	$this->getServer()->storeShopUI();
-	$this->getServer()->storeShopPrices();
-	$this->getServer()->storeShopNames();
+	$this->getPlugin()->storeConfig();
+	$this->getPlugin()->storeKitsItems();
+	$this->getPlugin()->storeKitsUI();
+	$this->getPlugin()->storeCoordinates();
+	$this->getPlugin()->storeWarpsUI();
+	$this->getPlugin()->storeLevelUpInfo();
+	$this->getPlugin()->storeShopUI();
+	$this->getPlugin()->storeShopPrices();
+	$this->getPlugin()->storeShopNames();
     }
 	
     public function getAPI()
