@@ -49,7 +49,7 @@ class Make extends PluginCommand{
 			$this->config->set("warp1y", $this->valueY);
 			$this->config->set("warp1z", $this->valueZ);
 			$this->config->set("warp1level", $this->level);
-			$sender->sendMessage("§7(§a!§7) §aYou create spawn in world §c" . $level . $this->valueX . $this->valueY . $this->valueZ);
+			$sender->sendMessage("§7(§a!§7) §aYou create spawn in world §c" . $this->level . $this->valueX . $this->valueY . $this->valueZ);
 			$this->config->save();
                         break;
                     case 'bosses':
@@ -57,7 +57,7 @@ class Make extends PluginCommand{
 			$this->config->set("warp2y", $this->valueY);
 			$this->config->set("warp2z", $this->valueZ);
 			$this->config->set("warp2level", $this->level);
-			$sender->sendMessage("§7(§a!§7) §aYou create bosses in world §c" . $level . $this->valueX . $this->valueY . $this->valueZ);
+			$sender->sendMessage("§7(§a!§7) §aYou create bosses in world §c" . $this->level . $this->valueX . $this->valueY . $this->valueZ);
 			$this->config->save();
                         break;
                     case 'pvp':
@@ -65,7 +65,7 @@ class Make extends PluginCommand{
 			$this->config->set("warp3y", $this->valueY);
 			$this->config->set("warp3z", $this->valueZ);
 			$this->config->set("warp3level", $this->level);
-			$sender->sendMessage("§7(§a!§7) §aYou create pvp in world §c" . $level . $this->valueX . $this->valueY . $this->valueZ);
+			$sender->sendMessage("§7(§a!§7) §aYou create pvp in world §c" . $this->level . $this->valueX . $this->valueY . $this->valueZ);
 			$this->config->save();
                         break;
 			}
