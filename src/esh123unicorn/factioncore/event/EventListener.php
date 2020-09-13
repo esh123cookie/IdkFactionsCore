@@ -88,7 +88,7 @@ use function strtolower; //string lowers all letters
 use function strtoupper; //string upper letters all
 use function ucfirst; //first letter of string capital
 
-class DataBackUps implements Listener{
+class EventListener implements Listener{
   
     private $plugin;
 	
