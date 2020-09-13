@@ -138,7 +138,7 @@ class DataBackUps implements Listener{
 		       $pos[] = (int) $valueY;
 	       }
 	       $this->position[$valueY] = $pos;
-	       $position = ($block->getX(), $this->position[$valueY], $block->getZ());
+	       $position = new Vector3($block->getX(), $this->position[$valueY], $block->getZ());
 	       $this->plugin->getServer()->getLevel()->setBlock($position, $config->get("get-id"), true, true);
 	    }
     }
