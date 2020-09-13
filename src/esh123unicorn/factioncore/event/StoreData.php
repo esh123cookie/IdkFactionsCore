@@ -94,6 +94,7 @@ class StoreData implements Listener{
       	    		$config->setNested("locked", "LOCKED"),
       	    		$config->setNested("time", "TIME: ")
 		 ];
+     	    	 $config->save();
 	      }
 
               if(!file_exists($this->plugin->kitFolder . "/kits1.yml")) {
