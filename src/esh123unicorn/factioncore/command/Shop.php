@@ -44,7 +44,7 @@ class Shop extends PluginCommand{
     public function openShop(Player $player) { 
         $this->config = new Config($this->getPlugin()->getDataFolder() . "/shop.yml", Config::YAML);
 		$api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
-		$form = $api->createSimpleForm(function (Player $sender, int $data = null){
+		$form = $api->createSimpleForm(function (Player $player, int $data = null){
 		$result = $data;
 		if($result === null){
 			return true;
@@ -74,7 +74,7 @@ class Shop extends PluginCommand{
         $this->config = new Config($this->getPlugin()->getDataFolder() . "/shop.yml", Config::YAML);
 		$name = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
 		$api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
-		$form = $api->createSimpleForm(function (Player $sender, int $data = null){
+		$form = $api->createSimpleForm(function (Player $player, int $data = null){
 		$result = $data;
 		if($result === null){
 			return true;
