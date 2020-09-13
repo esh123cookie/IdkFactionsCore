@@ -37,9 +37,6 @@ use function ucfirst; //first letter of string capital
 use esh123unicorn\factioncore\Main;
 
 class StoreData implements Listener{
-	
-    /** @var null  */
-    private static $instance = null;
 
     private $plugin;
 	
@@ -425,12 +422,5 @@ class StoreData implements Listener{
       	    	 ];
       	    	 $config->save(); 
 	      }
-    }
-	
-    /**
-    * @return static
-    */
-    public static function getInstance() : self {
-        return self::$instance;
     }
 }
