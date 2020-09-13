@@ -362,12 +362,12 @@ class StoreData implements Listener{
               if(!file_exists($this->plugin->getDataFolder() . "/shopnames.yml")) {
 		 $config = new Config($this->plugin->getDataFolder() . "/shopnames.yml", Config::YAML);
             	 $shop = [
-      	    		$config->setNested("oak-logs", "log"),
-      	    		$config->setNested("spruce-logs", "log"),
-      	    		$config->setNested("birch-logs", "log"),
-      	    		$config->setNested("jungle-logs", "log"),
-      	    		$config->setNested("dark-logs", "log"),
-      	    		$config->setNested("acacia-logs", "log"),
+      	    		$config->setNested("oak-log", "log"),
+      	    		$config->setNested("spruce-log", "log"),
+      	    		$config->setNested("birch-log", "log"),
+      	    		$config->setNested("jungle-log", "log"),
+      	    		$config->setNested("dark-log", "log"),
+      	    		$config->setNested("acacia-log", "log"),
       	    		$config->setNested("oak-wood", "wood"),
       	    		$config->setNested("spruce-wood", "wood"),
       	    		$config->setNested("birch-wood", "wood"),
