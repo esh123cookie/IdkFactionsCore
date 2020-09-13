@@ -132,7 +132,6 @@ class Main extends PluginBase implements Listener {
 	}
         //var
         $this->server = Main::getInstance()->getServer();
-	$this->data = StoreData::getInstance()->getServer();
       
         //events
         $this->server->getPluginManager()->registerEvents($this, $this);
@@ -148,6 +147,7 @@ class Main extends PluginBase implements Listener {
         $commandMap->register("fcore", new LevelUp("levelup", $this));
 	
 	    
+	$this->data = new StoreData($this);
 	$this->data->storeConfig();
 	$this->data->storeKitsItems();
 	$this->data->storeKitsUI();
