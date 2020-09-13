@@ -301,7 +301,7 @@ class Kit extends PluginCommand{
 	       $sword = Item::get($config->get("sword"), 0, 1);
 	       $sword->setCustomName($kits->get("button2"));
 	       $sword->addEnchantment(new EnchantmentInstance($sword, $config->get("Swordlevel1")));
-	       $sword->addEnchantment(new EnchantmentInstance($sword2, $config->get("Swordlevel1")));
+	       $sword->addEnchantment(new EnchantmentInstance($sword2, $config->get("Swordlevel2")));
                $player->getInventory()->addItem($sword);
 		//pickaxe
 	       $pickaxe = Item::get($config->get("pickaxe"), 0, 1);
@@ -361,7 +361,7 @@ class Kit extends PluginCommand{
 	       $sword = Item::get($config->get("sword"), 0, 1);
 	       $sword->setCustomName($kits->get("button3"));
 	       $sword->addEnchantment(new EnchantmentInstance($sword, $config->get("Swordlevel1")));
-	       $sword->addEnchantment(new EnchantmentInstance($sword2, $config->get("Swordlevel1")));
+	       $sword->addEnchantment(new EnchantmentInstance($sword2, $config->get("Swordlevel2")));
                $player->getInventory()->addItem($sword);
 		//pickaxe
 	       $pickaxe = Item::get($config->get("pickaxe"), 0, 1);
@@ -421,7 +421,7 @@ class Kit extends PluginCommand{
 	       $sword = Item::get($config->get("sword"), 0, 1);
 	       $sword->setCustomName($kits->get("button4"));
 	       $sword->addEnchantment(new EnchantmentInstance($sword, $config->get("Swordlevel1")));
-	       $sword->addEnchantment(new EnchantmentInstance($sword2, $config->get("Swordlevel1")));
+	       $sword->addEnchantment(new EnchantmentInstance($sword2, $config->get("Swordlevel2")));
                $player->getInventory()->addItem($sword);
 		//pickaxe
 	       $pickaxe = Item::get($config->get("pickaxe"), 0, 1);
@@ -481,7 +481,7 @@ class Kit extends PluginCommand{
 	       $sword = Item::get($config->get("sword"), 0, 1);
 	       $sword->setCustomName($kits->get("button5"));
 	       $sword->addEnchantment(new EnchantmentInstance($sword, $config->get("Swordlevel1")));
-	       $sword->addEnchantment(new EnchantmentInstance($sword2, $config->get("Swordlevel1")));
+	       $sword->addEnchantment(new EnchantmentInstance($sword2, $config->get("Swordlevel2")));
                $player->getInventory()->addItem($sword);
 		//pickaxe
 	       $pickaxe = Item::get($config->get("pickaxe"), 0, 1);
