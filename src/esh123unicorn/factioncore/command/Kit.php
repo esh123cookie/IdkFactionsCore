@@ -206,9 +206,9 @@ class Kit extends PluginCommand{
     public function kit1Items(Player $player) { 
 	       $config = new Config($this->getPlugin()->kitFolder . "/kit1.yml", Config::YAML);
 	       $kits = new Config($this->getPlugin()->kitFolder . "/kits.yml", Config::YAML);
-	       $sword = Enchantment::getEnchantment($config->get("Swordenchant1"));
+	       $swordench = Enchantment::getEnchantment($config->get("Swordenchant1"));
 	       $armor = Enchantment::getEnchantment($config->get("Armorenchant1"));
-	       $sword2 = Enchantment::getEnchantment($config->get("Swordenchant2"));
+	       $swordench2 = Enchantment::getEnchantment($config->get("Swordenchant2"));
 	       $armor2 = Enchantment::getEnchantment($config->get("Armorenchant2"));
 	       $tool = Enchantment::getEnchantment($config->get("Toolenchant1"));
 	       $tool2 = Enchantment::getEnchantment($config->get("Toolenchant2"));
@@ -240,8 +240,8 @@ class Kit extends PluginCommand{
 		//sword
 	       $sword = Item::get($config->get("sword"), 0, 1);
 	       $sword->setCustomName($kits->get("button1"));
-	       $sword->addEnchantment(new EnchantmentInstance($sword, $config->get("Swordlevel1")));
-	       $sword->addEnchantment(new EnchantmentInstance($sword2, $config->get("Swordlevel2")));
+	       $sword->addEnchantment(new EnchantmentInstance($swordench, $config->get("Swordlevel1")));
+	       $sword->addEnchantment(new EnchantmentInstance($swordench2, $config->get("Swordlevel2")));
                $player->getInventory()->addItem($sword);
 		//pickaxe
 	       $pickaxe = Item::get($config->get("pickaxe"), 0, 1);
@@ -266,9 +266,9 @@ class Kit extends PluginCommand{
     public function kit2Items(Player $player) { 
 	       $config = new Config($this->getPlugin()->kitFolder . "/kit2.yml", Config::YAML);
 	       $kits = new Config($this->getPlugin()->kitFolder . "/kits.yml", Config::YAML);
-	       $sword = Enchantment::getEnchantment($config->get("Swordenchant1"));
+	       $swordench = Enchantment::getEnchantment($config->get("Swordenchant1"));
 	       $armor = Enchantment::getEnchantment($config->get("Armorenchant1"));
-	       $sword2 = Enchantment::getEnchantment($config->get("Swordenchant2"));
+	       $swordench2 = Enchantment::getEnchantment($config->get("Swordenchant2"));
 	       $armor2 = Enchantment::getEnchantment($config->get("Armorenchant2"));
 	       $tool = Enchantment::getEnchantment($config->get("Toolenchant1"));
 	       $tool2 = Enchantment::getEnchantment($config->get("Toolenchant2"));
@@ -300,8 +300,8 @@ class Kit extends PluginCommand{
 		//sword
 	       $sword = Item::get($config->get("sword"), 0, 1);
 	       $sword->setCustomName($kits->get("button2"));
-	       $sword->addEnchantment(new EnchantmentInstance($sword, $config->get("Swordlevel1")));
-	       $sword->addEnchantment(new EnchantmentInstance($sword2, $config->get("Swordlevel2")));
+	       $sword->addEnchantment(new EnchantmentInstance($swordench, $config->get("Swordlevel1")));
+	       $sword->addEnchantment(new EnchantmentInstance($swordench2, $config->get("Swordlevel2")));
                $player->getInventory()->addItem($sword);
 		//pickaxe
 	       $pickaxe = Item::get($config->get("pickaxe"), 0, 1);
@@ -326,9 +326,9 @@ class Kit extends PluginCommand{
     public function kit3Items(Player $player) { 
 	       $config = new Config($this->getPlugin()->kitFolder . "/kit3.yml", Config::YAML);
 	       $kits = new Config($this->getPlugin()->kitFolder . "/kits.yml", Config::YAML);
-	       $sword = Enchantment::getEnchantment($config->get("Swordenchant1"));
+	       $swordench = Enchantment::getEnchantment($config->get("Swordenchant1"));
 	       $armor = Enchantment::getEnchantment($config->get("Armorenchant1"));
-	       $sword2 = Enchantment::getEnchantment($config->get("Swordenchant2"));
+	       $swordench2 = Enchantment::getEnchantment($config->get("Swordenchant2"));
 	       $armor2 = Enchantment::getEnchantment($config->get("Armorenchant2"));
 	       $tool = Enchantment::getEnchantment($config->get("Toolenchant1"));
 	       $tool2 = Enchantment::getEnchantment($config->get("Toolenchant2"));
@@ -360,8 +360,8 @@ class Kit extends PluginCommand{
 		//sword
 	       $sword = Item::get($config->get("sword"), 0, 1);
 	       $sword->setCustomName($kits->get("button3"));
-	       $sword->addEnchantment(new EnchantmentInstance($sword, $config->get("Swordlevel1")));
-	       $sword->addEnchantment(new EnchantmentInstance($sword2, $config->get("Swordlevel2")));
+	       $sword->addEnchantment(new EnchantmentInstance($swordench, $config->get("Swordlevel1")));
+	       $sword->addEnchantment(new EnchantmentInstance($swordench2, $config->get("Swordlevel2")));
                $player->getInventory()->addItem($sword);
 		//pickaxe
 	       $pickaxe = Item::get($config->get("pickaxe"), 0, 1);
@@ -386,9 +386,9 @@ class Kit extends PluginCommand{
     public function kit4Items(Player $player) { 
 	       $config = new Config($this->getPlugin()->kitFolder . "/kit4.yml", Config::YAML);
 	       $kits = new Config($this->getPlugin()->kitFolder . "/kits.yml", Config::YAML);
-	       $sword = Enchantment::getEnchantment($config->get("Swordenchant1"));
+	       $swordench = Enchantment::getEnchantment($config->get("Swordenchant1"));
 	       $armor = Enchantment::getEnchantment($config->get("Armorenchant1"));
-	       $sword2 = Enchantment::getEnchantment($config->get("Swordenchant2"));
+	       $swordench2 = Enchantment::getEnchantment($config->get("Swordenchant2"));
 	       $armor2 = Enchantment::getEnchantment($config->get("Armorenchant2"));
 	       $tool = Enchantment::getEnchantment($config->get("Toolenchant1"));
 	       $tool2 = Enchantment::getEnchantment($config->get("Toolenchant2"));
@@ -420,8 +420,8 @@ class Kit extends PluginCommand{
 		//sword
 	       $sword = Item::get($config->get("sword"), 0, 1);
 	       $sword->setCustomName($kits->get("button4"));
-	       $sword->addEnchantment(new EnchantmentInstance($sword, $config->get("Swordlevel1")));
-	       $sword->addEnchantment(new EnchantmentInstance($sword2, $config->get("Swordlevel2")));
+	       $sword->addEnchantment(new EnchantmentInstance($swordench, $config->get("Swordlevel1")));
+	       $sword->addEnchantment(new EnchantmentInstance($swordench2, $config->get("Swordlevel2")));
                $player->getInventory()->addItem($sword);
 		//pickaxe
 	       $pickaxe = Item::get($config->get("pickaxe"), 0, 1);
@@ -446,9 +446,9 @@ class Kit extends PluginCommand{
     public function kit5Items(Player $player) { 
 	       $config = new Config($this->getPlugin()->kitFolder . "/kit5.yml", Config::YAML);
 	       $kits = new Config($this->getPlugin()->kitFolder . "/kits.yml", Config::YAML);
-	       $sword = Enchantment::getEnchantment($config->get("Swordenchant1"));
+	       $swordench = Enchantment::getEnchantment($config->get("Swordenchant1"));
 	       $armor = Enchantment::getEnchantment($config->get("Armorenchant1"));
-	       $sword2 = Enchantment::getEnchantment($config->get("Swordenchant2"));
+	       $swordench2 = Enchantment::getEnchantment($config->get("Swordenchant2"));
 	       $armor2 = Enchantment::getEnchantment($config->get("Armorenchant2"));
 	       $tool = Enchantment::getEnchantment($config->get("Toolenchant1"));
 	       $tool2 = Enchantment::getEnchantment($config->get("Toolenchant2"));
@@ -480,8 +480,8 @@ class Kit extends PluginCommand{
 		//sword
 	       $sword = Item::get($config->get("sword"), 0, 1);
 	       $sword->setCustomName($kits->get("button5"));
-	       $sword->addEnchantment(new EnchantmentInstance($sword, $config->get("Swordlevel1")));
-	       $sword->addEnchantment(new EnchantmentInstance($sword2, $config->get("Swordlevel2")));
+	       $sword->addEnchantment(new EnchantmentInstance($swordench, $config->get("Swordlevel1")));
+	       $sword->addEnchantment(new EnchantmentInstance($swordench2, $config->get("Swordlevel2")));
                $player->getInventory()->addItem($sword);
 		//pickaxe
 	       $pickaxe = Item::get($config->get("pickaxe"), 0, 1);
