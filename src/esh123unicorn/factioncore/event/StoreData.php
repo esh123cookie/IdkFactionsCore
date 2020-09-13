@@ -54,6 +54,8 @@ class DataBackUps implements Listener{
               if(!file_exists($this->plugin->getDataFolder() . "/config.yml")) {
 		 $config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
             	 $array = [
+      	    		$config->setNested("vote-message", "you voted"),
+      	    		$config->setNested("vote-broadcast", " has voted for cosmicpe"),
       	    		$config->setNested("faction-text-prefix", "§7["),
       	    		$config->setNested("faction-text-suffix", "§7]"),
       	    		$config->setNested("level-text-prefix", "§7["),
