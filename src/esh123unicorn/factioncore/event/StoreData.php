@@ -318,6 +318,7 @@ class StoreData implements Listener{
               if(!file_exists($this->plugin->getDataFolder() . "/prices.yml")) {
 		 $config = new Config($this->plugin->getDataFolder() . "/prices.yml", Config::YAML);
             	 $shop = [
+      	    		$config->setNested("wall-price", 5),
       	    		$config->setNested("logs", 5),
       	    		$config->setNested("wood", 2),
       	    		$config->setNested("stone", 3),
