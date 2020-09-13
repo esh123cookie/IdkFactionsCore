@@ -166,7 +166,7 @@ class Kit extends PluginCommand{
  	       }
 	});
 	$config = new Config($this->getPlugin()->kitFolder . "/kits.yml", Config::YAML);
-	$config2 = new Config($this->getPlugin()->kitFolder . "/config.yml", Config::YAML);
+	$id = new Config($this->getPlugin()->kitFolder . "/config.yml", Config::YAML);
         $kit1 = new Config($this->getPlugin()->kitFolder . "/kit1.yml", Config::YAML);
         $kit2 = new Config($this->getPlugin()->kitFolder . "/kit2.yml", Config::YAML);
         $kit3 = new Config($this->getPlugin()->kitFolder . "/kit3.yml", Config::YAML);
@@ -175,27 +175,27 @@ class Kit extends PluginCommand{
         $form->setTitle($config->get("title"));
 	$form->setContent($config->get("content"));
 	if(!isset($this->kit1[$sender->getName()])){
-	   $form->addButton($sender->hasPermission($kit1->get("perm")) === true ? $config->get("button1")." \n ".$config2->get("unlocked") : $config->get("button1")." \n ".$config2->get("locked"));
+	   $form->addButton($sender->hasPermission($kit1->get("perm")) === true ? $config->get("button1")." \n " . $id->get("unlocked") : $config->get("button1")." \n " . $id->get("locked"));
 	}elseif(($this->kit1[$sender->getName()] >= 0) and ($sender->hasPermission($kit1->get("perm")))){
 	   $form->addButton($config->get("button1") . " \n§c " . (round(($this->kit1[$sender->getName()] - time()) / 60)). "Minutes");
 	}
 	if(!isset($this->kit2[$sender->getName()])){
-	   $form->addButton($sender->hasPermission($kit2->get("perm")) === true ? $config->get("button2")." \n ".$config2->get("unlocked") : $config->get("button2")." \n ".$config2->get("locked"));
+	   $form->addButton($sender->hasPermission($kit2->get("perm")) === true ? $config->get("button2")." \n " . $id->get("unlocked") : $config->get("button2")." \n " . $id->get("locked"));
 	}elseif(($this->kit2[$sender->getName()] >= 0) and ($sender->hasPermission($kit2->get("perm")))){
 	    $form->addButton($config->get("button2") . " \n§c " . (round(($this->kit2[$sender->getName()] - time()) / 60)). "Minutes");
 	}
 	if(!isset($this->kit3[$sender->getName()])){
-	   $form->addButton($sender->hasPermission($kit3->get("perm")) === true ? $config->get("button3")." \n ".$config2->get("unlocked") : $config->get("button3")." \n ".$config2->get("locked"));
+	   $form->addButton($sender->hasPermission($kit3->get("perm")) === true ? $config->get("button3")." \n " . $id->get("unlocked") : $config->get("button3")." \n " . $id->get("locked"));
 	}elseif(($this->kit3[$sender->getName()] >= 0) and ($sender->hasPermission($kit3->get("perm")))){
 	    $form->addButton($config->get("button3") . " \n§c " . (round(($this->kit3[$sender->getName()] - time()) / 60)). "Minutes");
 	}
 	if(!isset($this->kit4[$sender->getName()])){
-	   $form->addButton($sender->hasPermission($kit4->get("perm")) === true ? $config->get("button4")." \n ".$config2->get("unlocked") : $config->get("button4")." \n ".$config2->get("locked"));
+	   $form->addButton($sender->hasPermission($kit4->get("perm")) === true ? $config->get("button4")." \n " . $id->get("unlocked") : $config->get("button4")." \n " . $id->get("locked"));
 	}elseif(($this->kit4[$sender->getName()] >= 0) and ($sender->hasPermission($kit4->get("perm")))){
 	    $form->addButton($config->get("button4") . " \n§c " . (round(($this->kit4[$sender->getName()] - time()) / 60)). "Minutes");
 	}
 	if(!isset($this->kit5[$sender->getName()])){
-	   $form->addButton($sender->hasPermission($kit5->get("perm")) === true ? $config->get("button5")." \n ".$config2->get("unlocked") : $config->get("button6")." \n ".$config2->get("locked"));
+	   $form->addButton($sender->hasPermission($kit5->get("perm")) === true ? $config->get("button5")." \n " . $id->get("unlocked") : $config->get("button6")." \n " . $id->get("locked"));
 	}elseif(($this->kit5[$sender->getName()] >= 0) and ($sender->hasPermission($kit5->get("perm")))){
 	    $form->addButton($config->get("button5") . " \n§c " . (round(($this->kit5[$sender->getName()] - time()) / 60)). "Minutes");
 	}
@@ -217,25 +217,25 @@ class Kit extends PluginCommand{
 	       $helmet = Item::get($config->get("helmet"), 0, 1);
 	       $helmet->setCustomName($kits->get("button1"));
 	       $helmet->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
-	       $helmet->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+	       $helmet->addEnchantment(new EnchantmentInstance($armor2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($helmet);
                 //chestplate
 	       $chest = Item::get($config->get("chestplate"), 0, 1);
 	       $chest->setCustomName($kits->get("button1"));
 	       $chest->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
-	       $chest->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+	       $chest->addEnchantment(new EnchantmentInstance($armor2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($chest);
                 //leggings
 	       $legs = Item::get($config->get("leggings"), 0, 1);
 	       $legs->setCustomName($kits->get("button1"));
 	       $legs->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
-	       $legs->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+	       $legs->addEnchantment(new EnchantmentInstance($armor2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($legs);
                 //boots
 	       $boots = Item::get($config->get("boots"), 0, 1);
 	       $boots->setCustomName($kits->get("button1"));
 	       $boots->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
-	       $boots->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+	       $boots->addEnchantment(new EnchantmentInstance($armor2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($boots);
 		//sword
 	       $sword = Item::get($config->get("sword"), 0, 1);
@@ -277,25 +277,25 @@ class Kit extends PluginCommand{
 	       $helmet = Item::get($config->get("helmet"), 0, 1);
 	       $helmet->setCustomName($kits->get("button2"));
 	       $helmet->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
-	       $helmet->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+	       $helmet->addEnchantment(new EnchantmentInstance($armor2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($helmet);
                 //chestplate
 	       $chest = Item::get($config->get("chestplate"), 0, 1);
 	       $chest->setCustomName($kits->get("button2"));
 	       $chest->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
-	       $chest->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+	       $chest->addEnchantment(new EnchantmentInstance($armor2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($chest);
                 //leggings
 	       $legs = Item::get($config->get("leggings"), 0, 1);
 	       $legs->setCustomName($kits->get("button2"));
 	       $legs->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
-	       $legs->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+	       $legs->addEnchantment(new EnchantmentInstance($armor2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($legs);
                 //boots
 	       $boots = Item::get($config->get("boots"), 0, 1);
 	       $boots->setCustomName($kits->get("button2"));
 	       $boots->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
-	       $boots->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+	       $boots->addEnchantment(new EnchantmentInstance($armor2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($boots);
 		//sword
 	       $sword = Item::get($config->get("sword"), 0, 1);
@@ -337,25 +337,25 @@ class Kit extends PluginCommand{
 	       $helmet = Item::get($config->get("helmet"), 0, 1);
 	       $helmet->setCustomName($kits->get("button3"));
 	       $helmet->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
-	       $helmet->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+	       $helmet->addEnchantment(new EnchantmentInstance($armor2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($helmet);
                 //chestplate
 	       $chest = Item::get($config->get("chestplate"), 0, 1);
 	       $chest->setCustomName($kits->get("button3"));
 	       $chest->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
-	       $chest->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+	       $chest->addEnchantment(new EnchantmentInstance($armor2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($chest);
                 //leggings
 	       $legs = Item::get($config->get("leggings"), 0, 1);
 	       $legs->setCustomName($kits->get("button3"));
 	       $legs->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
-	       $legs->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+	       $legs->addEnchantment(new EnchantmentInstance($armor2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($legs);
                 //boots
 	       $boots = Item::get($config->get("boots"), 0, 1);
 	       $boots->setCustomName($kits->get("button3"));
 	       $boots->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
-	       $boots->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+	       $boots->addEnchantment(new EnchantmentInstance($armor2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($boots);
 		//sword
 	       $sword = Item::get($config->get("sword"), 0, 1);
@@ -397,25 +397,25 @@ class Kit extends PluginCommand{
 	       $helmet = Item::get($config->get("helmet"), 0, 1);
 	       $helmet->setCustomName($kits->get("button4"));
 	       $helmet->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
-	       $helmet->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+	       $helmet->addEnchantment(new EnchantmentInstance($armor2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($helmet);
                 //chestplate
 	       $chest = Item::get($config->get("chestplate"), 0, 1);
 	       $chest->setCustomName($kits->get("button4"));
 	       $chest->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
-	       $chest->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+	       $chest->addEnchantment(new EnchantmentInstance($armor2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($chest);
                 //leggings
 	       $legs = Item::get($config->get("leggings"), 0, 1);
 	       $legs->setCustomName($kits->get("button4"));
 	       $legs->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
-	       $legs->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+	       $legs->addEnchantment(new EnchantmentInstance($armor2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($legs);
                 //boots
 	       $boots = Item::get($config->get("boots"), 0, 1);
 	       $boots->setCustomName($kits->get("button4"));
 	       $boots->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
-	       $boots->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+	       $boots->addEnchantment(new EnchantmentInstance($armor2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($boots);
 		//sword
 	       $sword = Item::get($config->get("sword"), 0, 1);
@@ -457,25 +457,25 @@ class Kit extends PluginCommand{
 	       $helmet = Item::get($config->get("helmet"), 0, 1);
 	       $helmet->setCustomName($kits->get("button5"));
 	       $helmet->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
-	       $helmet->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+	       $helmet->addEnchantment(new EnchantmentInstance($armor2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($helmet);
                 //chestplate
 	       $chest = Item::get($config->get("chestplate"), 0, 1);
 	       $chest->setCustomName($kits->get("button5"));
 	       $chest->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
-	       $chest->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+	       $chest->addEnchantment(new EnchantmentInstance($armor2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($chest);
                 //leggings
 	       $legs = Item::get($config->get("leggings"), 0, 1);
 	       $legs->setCustomName($kits->get("button5"));
 	       $legs->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
-	       $legs->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+	       $legs->addEnchantment(new EnchantmentInstance($armor2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($legs);
                 //boots
 	       $boots = Item::get($config->get("boots"), 0, 1);
 	       $boots->setCustomName($kits->get("button5"));
 	       $boots->addEnchantment(new EnchantmentInstance($armor, $config->get("Armorlevel1")));
-	       $boots->addEnchantment(new EnchantmentInstance($amror2, $config->get("Armorlevel2")));
+	       $boots->addEnchantment(new EnchantmentInstance($armor2, $config->get("Armorlevel2")));
                $sender->getInventory()->addItem($boots);
 	       $boots = Item::get(301, 0, 1);
 		//sword
