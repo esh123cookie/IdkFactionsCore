@@ -1,6 +1,6 @@
 <?php
 
-namespace esh123unicorn\factioncore\commands;
+namespace esh123unicorn\factioncore\command;
 
 use esh123unicorn\factioncore\Main;
 use pocketmine\command\CommandSender;
