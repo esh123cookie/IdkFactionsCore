@@ -116,7 +116,7 @@ class DataBackUps implements Listener{
 	    $config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
 	    $player = $event->getPlayer();
 	    $player->sendMessage($config->get("vote-message"));
-	    $this->plugin->getServer()->broadcastMessage($config->get("vote-broadcast"));
+	    $this->plugin->getServer()->broadcastMessage("§b" . $player->getName() . $config->get("vote-broadcast"));
     }
 	
     public function wallGenerator(BlockPlaceEvent $event) {
