@@ -60,10 +60,10 @@ class Shop extends PluginCommand{
                case 0:
             $this->walls($player);
                break;
-               case 0:
+               case 1:
             $this->building($player);
                break;
-               case 0:
+               case 2:
             $this->misk($player);
                break;
             }
