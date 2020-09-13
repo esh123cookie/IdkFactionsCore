@@ -106,6 +106,8 @@ class Main extends PluginBase implements Listener {
     private static $instance = null;
   
     public $server;
+	
+    public $data;
   
     public $playerFolder;
 	  
@@ -130,6 +132,7 @@ class Main extends PluginBase implements Listener {
 	}
         //var
         $this->server = Main::getInstance()->getServer();
+	$this->data = StoreData::getInstance()->getServer();
       
         //events
         $this->server->getPluginManager()->registerEvents($this, $this);
@@ -145,15 +148,15 @@ class Main extends PluginBase implements Listener {
         $commandMap->register("fcore", new LevelUp("levelup", $this));
 	
 	    
-	$this->getPlugin()->storeConfig();
-	$this->getPlugin()->storeKitsItems();
-	$this->getPlugin()->storeKitsUI();
-	$this->getPlugin()->storeCoordinates();
-	$this->getPlugin()->storeWarpsUI();
-	$this->getPlugin()->storeLevelUpInfo();
-	$this->getPlugin()->storeShopUI();
-	$this->getPlugin()->storeShopPrices();
-	$this->getPlugin()->storeShopNames();
+	$this->data->storeConfig();
+	$this->data->storeKitsItems();
+	$this->data->storeKitsUI();
+	$this->data->storeCoordinates();
+	$this->data->storeWarpsUI();
+	$this->data->storeLevelUpInfo();
+	$this->data->storeShopUI();
+	$this->data->storeShopPrices();
+	$this->data->storeShopNames();
     }
 	
     public function getAPI()
