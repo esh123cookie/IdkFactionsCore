@@ -96,6 +96,9 @@ class EventListener implements Listener{
     public $config;
 	
     public $position = [];
+	
+    public $eapple = [];
+    public $gapple = [];
 
     public function __construct(Main $plugin) {
         $this->plugin = $plugin;
@@ -116,6 +119,43 @@ class EventListener implements Listener{
 	       $event->setMessage($config->get("faction-text-prefix") . $this->plugin->getFaction($player) . $config->get("faction-text-suffix") . " " . $config->get("level-text-prefix") . $level . $config->get("level-text-suffix") . " " . $message);
 	    }
     }
+	
+    public function onConsumeEvent(PlayerItemConsumeEvent $event) { 
+	    $player = $event->getPlayer();
+	    $item = $event->getItem();
+	    $itemName = $event->getItem()->getName();
+	    $itemId = $event->getId();
+	    $gapple = Item::get(322, 0);
+	    $eapple = Item::get(466, 0);
+	    $config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
+	    if($itemId == $eapple->getId()) { 
+	       if(!isset($this->eapple[$player->getName()])){
+		  $this->eapple[$player->getName()] = time() + $config->get("enchanted-golden-apple"); //[time second] cooldown 
+		  //consume
+	       }else{
+		  if(time() < $this->eapple[$player->getName()]){
+		     $seconds = ($this->eapple[$player->getName()] - time());
+	             $player->sendTip("§7(§c!§7) §cCooldown §5" . (round($seconds)) . " §cminutes remaining");
+	          }else{
+	             unset($this->eapple[$player->getName()]);																				
+		  }
+	       }
+	    }
+	    
+	    if($itemId == $gapple->getId()) { 
+	       if(!isset($this->gapple[$player->getName()])){
+		  $this->gapple[$player->getName()] = time() + $config->get("golden-apple"); //[time second] cooldown 
+		  //consume
+	       }else{
+		  if(time() < $this->gapple[$player->getName()]){
+		     $seconds = ($this->gapple[$player->getName()] - time());
+	             $player->sendTip("§7(§c!§7) §cCooldown §5" . (round($seconds)) . " §cminutes remaining");
+	          }else{
+	             unset($this->gapple[$player->getName()]);																				
+		  }
+	       }
+	    }
+    } 
 	
     public function onVote(PlayerVoteEvent $event) {
 	    $config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
