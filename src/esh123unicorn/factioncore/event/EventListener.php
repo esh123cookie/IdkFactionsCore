@@ -142,14 +142,9 @@ class EventListener implements Listener{
 	       $y = $b->getY();
 	       $z = $b->getZ();
 	       $valueY = (int) $config->get("max-distance") - $y;
-	       $list = [];
-	       foreach($valueY as $yint) {
-		       $list[] = $yint;
-	       }
-	       $this->position[] = $list;
-		       
-		       
-	       $level->setBlock(new Vector3($x, $this->position, $z), Block::get($gen->getId()), false, false);
+	       foreach(count($valueY) as $yint) {
+		         
+	       $level->setBlock(new Vector3($x, $y + $yint, $z), Block::get($gen->getId()), false, false);
 	       $y--;
 	       break;
 	       }
