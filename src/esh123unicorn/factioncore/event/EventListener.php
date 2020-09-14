@@ -123,28 +123,58 @@ class EventListener implements Listener{
 	    $this->plugin->getServer()->broadcastMessage("§b" . $player->getName() . $config->get("vote-broadcast"));
     }
 	
-    public function wallGenerator(BlockPlaceEvent $event) {
+    public function wallGenerator(PlayerInteractEvent $event) {
 	    $player = $event->getPlayer();
-	    $block = $event->getBlock();
-	    $blockName = $block->getName();
-	    $blockId = $block->getId();
+	    $blockName = $event->getItem()->getName();
+	    $blockId = $event->getItem()->getId();
+	    $b = $event->getBlock();
+	    $i = $player->getInventory()->getItemInHand();
+	    $face = $event->getFace();
+
 	    $config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
 	    $gen = Item::get((int) $config->get("gen-id"), (int) $config->get("gen-meta"));
 	    
-	    if($blockName == $config->get("gen-name") and $blockId == $gen->getId()) { 
+	    if($i->getCustomName() == $config->get("gen-name") and $i->getId() == $gen->getId()) { 
+	       $player->getInventory()->removeItem($i);
 	       $level = $block->getLevel();
-	       $x = $block->getX();
-	       $y = $block->getY();
-	       $z = $block->getZ();
+	       $x = $b->getX();
+	       $evY = $b->getY();
+	       $y = $evY;
+	       $z = $b->getZ();
 	       
-	       $place = $y->distance($config->get("max-distance"));
-	       $pos = [];
-	       foreach($place as $valueY) {
-		       $pos[] = (int) $valueY;
+	       switch($face){
+		   case 2:
+		   $z--;
+		   break;
+			       
+		   case 3:
+		   $z++;
+		   break;
+
+		   case 4:
+		   $x--;
+		   break;
+			       
+		   case 5:
+		   $x++;
+		   break;
+
+		   case 1:
+		   $y++;
+		   break;
+			       
+		   case 0:
+		   $y--;
+		   break;
 	       }
+		    
+	       while($y > 1) {
+							
 	       $this->position[$valueY] = $pos;
-	       $position = new Vector3($block->getX(), $this->position[$valueY], $block->getZ());
-	       $this->plugin->getServer()->getLevel()->setBlock($position, $config->get("get-id"), true, true);
+	       $level->setBlock(new Vector3($x, $y, $z), Block::get($gen->getId()) false, false);
+	       $y--;
+	       break;
+	       }
 	    }
     }
 }
