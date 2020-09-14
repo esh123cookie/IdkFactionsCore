@@ -47,6 +47,7 @@ use pocketmine\item\Item;
 use pocketmine\item\Armor;
 use pocketmine\item\Tool;
 use pocketmine\item\ItemFactory;
+use pocketmine\block\Block;
 
 //effect
 use pocketmine\entity\Effect;
