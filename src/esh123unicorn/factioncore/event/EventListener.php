@@ -139,39 +139,17 @@ class EventListener implements Listener{
 	       $player->getInventory()->removeItem($i);
 	       $level = $b->getLevel();
 	       $x = $b->getX();
-	       $evY = $b->getY();
-	       $y = $evY;
+	       $y = $b->getY();
 	       $z = $b->getZ();
-	       
-	       switch($face){
-		   case 2:
-		   $z--;
-		   break;
-			       
-		   case 3:
-		   $z++;
-		   break;
-
-		   case 4:
-		   $x--;
-		   break;
-			       
-		   case 5:
-		   $x++;
-		   break;
-
-		   case 1:
-		   $y++;
-		   break;
-			       
-		   case 0:
-		   $y--;
-		   break;
+	       $valueY = (int) $config->get("max-distance") - $y;
+	       $list = [];
+	       foreach($valueY as $yint) {
+		       $list[] = $yint;
 	       }
-		    
-	       while($y > 1) {
-
-	       $level->setBlock(new Vector3($x, $y, $z), Block::get($gen->getId()), false, false);
+	       $this->position[] = $list;
+		       
+		       
+	       $level->setBlock(new Vector3($x, $this->position, $z), Block::get($gen->getId()), false, false);
 	       $y--;
 	       break;
 	       }
