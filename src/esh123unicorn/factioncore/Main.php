@@ -9,6 +9,7 @@ use esh123unicorn\factioncore\command\warp\Make;
 use esh123unicorn\factioncore\command\warp\Spawn;
 use esh123unicorn\factioncore\command\LevelUp;
 use esh123unicorn\factioncore\command\Shop;
+use esh123unicorn\factioncore\command\extra\Fly;
 
 //core events
 use esh123unicorn\factioncore\event\EventListener;
@@ -145,6 +146,7 @@ class Main extends PluginBase implements Listener {
         $commandMap->register("fcore", new Spawn("spawn", $this));
         $commandMap->register("fcore", new Shop("shopui", $this));
         $commandMap->register("fcore", new LevelUp("levelup", $this));
+        $commandMap->register("fcore", new FLy("fly", $this));
 	
 	    
 	$this->data = new StoreData($this);
