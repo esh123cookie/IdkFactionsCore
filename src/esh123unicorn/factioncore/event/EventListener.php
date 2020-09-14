@@ -169,8 +169,7 @@ class EventListener implements Listener{
 	       }
 		    
 	       while($y > 1) {
-							
-	       $this->position[$valueY] = $pos;
+
 	       $level->setBlock(new Vector3($x, $y, $z), Block::get($gen->getId()), false, false);
 	       $y--;
 	       break;
