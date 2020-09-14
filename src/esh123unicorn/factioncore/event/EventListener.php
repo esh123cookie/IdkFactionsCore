@@ -136,7 +136,7 @@ class EventListener implements Listener{
 	    
 	    if($i->getCustomName() == $config->get("gen-name") and $i->getId() == $gen->getId()) { 
 	       $player->getInventory()->removeItem($i);
-	       $level = $block->getLevel();
+	       $level = $b->getLevel();
 	       $x = $b->getX();
 	       $evY = $b->getY();
 	       $y = $evY;
