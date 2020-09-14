@@ -27,3 +27,27 @@ class Fly extends PluginCommand{
     }
     
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
+        if(!$sender->hasPermission("fly.use")) { 
+           $this->openFly($sender);   
+        } else {
+           $sender->sendMessage("§7(§c!§7) §cYou do not have permission to use this command");
+           }
+    }
+    
+    public function openFly(Player $player) { 
+	   $config = new Config($this->getPlugin()->getDataFolder() . "/config.yml", Config::YAML);
+       if($player->isFlying()) { 
+          $player->setAllowFlight(false);
+          $player->sendMessage($config->get("fly-disable"));
+       }else{
+          $player->setAllowFlight(true);
+          $player->sendMessage($config->get("fly-enabled"));
+       }
+    }
+}
+           
+        
+        
+        
+        
+        
