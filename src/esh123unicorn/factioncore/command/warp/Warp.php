@@ -73,12 +73,12 @@ class Warp extends PluginCommand{
 	        $z = $cords->get("warp2z");
 	        $world1 = $cords->get("warp2level");
 	        if($world1 == null) {
-	           $sender->sendMessage("§7(§c!§7) §cSpawn has not been set yet");
+	           $sender->sendMessage("§7(§c!§7) §cBosses has not been set yet");
 	        }else{
      	       $world = $this->getPlugin()->getServer()->getLevelByName($world1);
      	       $sender->teleport($world->getSafeSpawn());
                $sender->teleport(new Vector3($x, $y, $z, 0, 0));
-               $sender->sendMessage("§7(§a!§7) §aYou are being warped to spawn..."); 
+               $sender->sendMessage("§7(§a!§7) §aYou are being warped to bosses..."); 
                }
                break;  
                case 2: 
@@ -88,12 +88,12 @@ class Warp extends PluginCommand{
 	        $z = $cords->get("warp3z");
 	        $world1 = $cords->get("warp3level");
 	        if($world1 == null) {
-	           $sender->sendMessage("§7(§c!§7) §cSpawn has not been set yet");
+	           $sender->sendMessage("§7(§c!§7) §cPvP has not been set yet");
 	        }else{
      	       $world = $this->getPlugin()->getServer()->getLevelByName($world1);
      	       $sender->teleport($world->getSafeSpawn());
                $sender->teleport(new Vector3($x, $y, $z, 0, 0));
-               $sender->sendMessage("§7(§a!§7) §aYou are being warped to spawn..."); 
+               $sender->sendMessage("§7(§a!§7) §aYou are being warped to pvp..."); 
                }
                break;
                case 3:
