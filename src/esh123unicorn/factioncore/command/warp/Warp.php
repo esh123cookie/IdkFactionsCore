@@ -43,7 +43,6 @@ class Warp extends PluginCommand{
     public function openWarpUI(CommandSender $sender)
     {
         $this->config = new Config($this->getPlugin()->getDataFolder() . "/warps.yml", Config::YAML);
-        $cords = new Config($this->getPlugin()->getDataFolder() . "/cords.yml", Config::YAML);
         if(!($sender instanceof Player)){
                 return true;
             }
@@ -53,6 +52,7 @@ class Warp extends PluginCommand{
             }
             switch ($data) {
             	case 0: 
+        	$cords = new Config($this->getPlugin()->getDataFolder() . "/cords.yml", Config::YAML);
 	        $x = $cords->get("warp1x");
 	        $y = $cords->get("warp1y");
 	        $z = $cords->get("warp1z");
@@ -67,6 +67,7 @@ class Warp extends PluginCommand{
                }
                break;
                case 1: 
+        	$cords = new Config($this->getPlugin()->getDataFolder() . "/cords.yml", Config::YAML);
 	        $x = $cords->get("warp2x");
 	        $y = $cords->get("warp2y");
 	        $z = $cords->get("warp2z");
@@ -81,6 +82,7 @@ class Warp extends PluginCommand{
                }
                break;  
                case 2: 
+        	$cords = new Config($this->getPlugin()->getDataFolder() . "/cords.yml", Config::YAML);
 	        $x = $cords->get("warp3x");
 	        $y = $cords->get("warp3y");
 	        $z = $cords->get("warp3z");
