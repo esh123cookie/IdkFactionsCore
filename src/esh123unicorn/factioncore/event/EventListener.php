@@ -151,10 +151,13 @@ class EventListener implements Listener{
             $message = $event->getMessage();
 	    $level = $this->plugin->getLevel($player);
 	    $config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
-	    if($this->plugin->getFaction($player) == null) { 
-	       $event->setMessage($config->get("faction-text-prefix") . $config->get("faction-text-suffix") . " " . $config->get("level-text-prefix") . $level . $config->get("level-text-suffix") . " " . $message);
+	    $rank = $this->plugin->getRank($player);
+	    if($this->plugin->getFaction($player) == null) {
+	       $player->setNameTag($config->get("faction-text-prefix") . $config->get("faction-text-suffix") . " " . $config->get("level-text-prefix") . $level . $config->get("level-text-suffix") . " " . $config->get("level-text-prefix") . $rank . $config->get("level-text-suffix"));
+	       $event->setMessage($message);
 	    }else{
-	       $event->setMessage($config->get("faction-text-prefix") . $this->plugin->getFaction($player) . $config->get("faction-text-suffix") . " " . $config->get("level-text-prefix") . $level . $config->get("level-text-suffix") . " " . $message);
+	       $player->setNameTag($config->get("faction-text-prefix") . $this->plugin->getFaction($player) . $config->get("faction-text-suffix") . " " . $config->get("level-text-prefix") . $level . $config->get("level-text-suffix") . " " . $config->get("level-text-prefix") . $rank . $config->get("level-text-suffix"));
+	       $event->setMessage($message);
 	    }
     }
 	
