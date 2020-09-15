@@ -54,6 +54,8 @@ class StoreData implements Listener{
               if(!file_exists($this->plugin->getDataFolder() . "/config.yml")) {
 		 $config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
             	 $array = [
+      	    		$config->setNested("respawn-tp", true),
+      	    		$config->setNested("join-tp", true),
       	    		$config->setNested("fly-disable", "disable fly"),
       	    		$config->setNested("fly-enable", "enabled fly"),
       	    		$config->setNested("enchanted-golden-apple", 30),
