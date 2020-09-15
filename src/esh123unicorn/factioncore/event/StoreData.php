@@ -306,7 +306,7 @@ class StoreData implements Listener{
             	 $shop = [
       	    		$config->setNested("title", "Shop"),
       	    		$config->setNested("content", "Shop"),
-      	    		$config->setNested("wall-gen-button", "Wall Gen"),
+      	    		$config->setNested("spawner-button", "Spawners"),
       	    		$config->setNested("building-button", "Building"),
       	    		$config->setNested("misk-button", "Misk")
 			//addmore soon
