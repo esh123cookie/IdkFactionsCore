@@ -17,6 +17,7 @@ use pocketmine\level\Position;
 use jojoe77777\FormAPI;
 use jojoe77777\FormAPI\SimpleForm;
 use jojoe77777\FormAPI\CustomForm;
+use pocketmine\math\Vector3;
 
 class Warp extends PluginCommand{
 
