@@ -23,7 +23,6 @@ class Warp extends PluginCommand{
     private $owner;
     
     private $config;
-    private $cords;
     
     public function __construct(string $name, Main $owner)
     {
@@ -44,7 +43,7 @@ class Warp extends PluginCommand{
     public function openWarpUI(CommandSender $sender)
     {
         $this->config = new Config($this->getPlugin()->getDataFolder() . "/warps.yml", Config::YAML);
-        $this->cords = new Config($this->getPlugin()->getDataFolder() . "/cords.yml", Config::YAML);
+        $cords = new Config($this->getPlugin()->getDataFolder() . "/cords.yml", Config::YAML);
         if(!($sender instanceof Player)){
                 return true;
             }
@@ -54,42 +53,42 @@ class Warp extends PluginCommand{
             }
             switch ($data) {
             	case 0: 
-	        $x = $this->cords->get("warp1x");
-	        $y = $this->cords->get("warp1y");
-	        $z = $this->cords->get("warp1z");
-	        $world = $this->cords->get("warp1level");
-	        if($world == null) {
+	        $x = $cords->get("warp1x");
+	        $y = $cords->get("warp1y");
+	        $z = $cords->get("warp1z");
+	        $world1 = $cords->get("warp1level");
+	        if($world1 == null) {
 	           $sender->sendMessage("§7(§c!§7) §cSpawn has not been set yet");
 	        }else{
-     	       $world = $this->getPlugin()->getServer()->getLevelByName($world);
+     	       $world = $this->getPlugin()->getServer()->getLevelByName($world1);
      	       $sender->teleport($world->getSafeSpawn());
                $sender->teleport(new Vector3($x, $y, $z, 0, 0));
                $sender->sendMessage("§7(§a!§7) §aYou are being warped to spawn..."); 
                }
                break;
                case 1: 
-	        $x = $this->cords->get("warp2x");
-	        $y = $this->cords->get("warp2y");
-	        $z = $this->cords->get("warp2z");
-	        $world = $this->cords->get("warp2level");
-	        if($world == null) {
+	        $x = $cords->get("warp2x");
+	        $y = $cords->get("warp2y");
+	        $z = $cords->get("warp2z");
+	        $world1 = $cords->get("warp2level");
+	        if($world1 == null) {
 	           $sender->sendMessage("§7(§c!§7) §cSpawn has not been set yet");
 	        }else{
-     	       $world = $this->getPlugin()->getServer()->getLevelByName($world);
+     	       $world = $this->getPlugin()->getServer()->getLevelByName($world1);
      	       $sender->teleport($world->getSafeSpawn());
                $sender->teleport(new Vector3($x, $y, $z, 0, 0));
                $sender->sendMessage("§7(§a!§7) §aYou are being warped to spawn..."); 
                }
                break;  
                case 2: 
-	        $x = $this->cords->get("warp3x");
-	        $y = $this->cords->get("warp3y");
-	        $z = $this->cords->get("warp3z");
-	        $world = $this->cords->get("warp3level");
-	        if($world == null) {
+	        $x = $cords->get("warp3x");
+	        $y = $cords->get("warp3y");
+	        $z = $cords->get("warp3z");
+	        $world1 = $cords->get("warp3level");
+	        if($world1 == null) {
 	           $sender->sendMessage("§7(§c!§7) §cSpawn has not been set yet");
 	        }else{
-     	       $world = $this->getPlugin()->getServer()->getLevelByName($world);
+     	       $world = $this->getPlugin()->getServer()->getLevelByName($world1);
      	       $sender->teleport($world->getSafeSpawn());
                $sender->teleport(new Vector3($x, $y, $z, 0, 0));
                $sender->sendMessage("§7(§a!§7) §aYou are being warped to spawn..."); 
