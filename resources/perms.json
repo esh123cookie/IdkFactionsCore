@@ -1,0 +1,9 @@
+{
+shop: shop.use,
+kit: kit.use,
+levelup: levelup.use, 
+make: make.use,
+spawn: spawn.use,
+warp: warp.use,
+fly: fly.use
+}
