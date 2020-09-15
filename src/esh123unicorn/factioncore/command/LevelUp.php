@@ -54,11 +54,11 @@ class LevelUp extends PluginCommand{
            $playerConfig->set("level", $level + 1);
            $playerConfig->save();
 	   if($this->config->get("player-command") == true) {
-              $this->getPlugin()->getServer()->broadcastCommand($player, $this->config->get("command1"));
-              $this->getPlugin()->getServer()->broadcastCommand($player, $this->config->get("command2"));
+              $this->getPlugin()->getServer()->dispatchCommand($player, $this->config->get("command1"));
+              $this->getPlugin()->getServer()->dispatchCommand($player, $this->config->get("command2"));
 	   }else{
-              $this->getPlugin()->getServer()->broadcastCommand(new \pocketmine\command\ConsoleCommandSender(), $this->config->get("command1"));
-              $this->getPlugin()->getServer()->broadcastCommand(new \pocketmine\command\ConsoleCommandSender(), $this->config->get("command2"));
+              $this->getPlugin()->getServer()->dispatchCommand(new \pocketmine\command\ConsoleCommandSender(), $this->config->get("command1"));
+              $this->getPlugin()->getServer()->dispatchCommand(new \pocketmine\command\ConsoleCommandSender(), $this->config->get("command2"));
 	   }
         }else{
            $player->sendMessage($this->config->get("not-enough-money-message"));
