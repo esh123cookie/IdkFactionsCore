@@ -176,7 +176,7 @@ class EventListener implements Listener{
 	       }else{
 		  if(time() < $this->eapple[$player->getName()]){
 		     $seconds = ($this->eapple[$player->getName()] - time());
-	             $player->sendTip("§7(§c!§7) §cCooldown §5" . (round($seconds)) . " §cminutes remaining");
+	             $player->sendTip("§7(§c!§7) §cCooldown §5" . (round($seconds)) . " §cseconds remaining");
 	          }else{
 	             unset($this->eapple[$player->getName()]);																				
 		  }
@@ -190,7 +190,7 @@ class EventListener implements Listener{
 	       }else{
 		  if(time() < $this->gapple[$player->getName()]){
 		     $seconds = ($this->gapple[$player->getName()] - time());
-	             $player->sendTip("§7(§c!§7) §cCooldown §5" . (round($seconds)) . " §cminutes remaining");
+	             $player->sendTip("§7(§c!§7) §cCooldown §5" . (round($seconds)) . " §cseconds remaining");
 	          }else{
 	             unset($this->gapple[$player->getName()]);																				
 		  }
