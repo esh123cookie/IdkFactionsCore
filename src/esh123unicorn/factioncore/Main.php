@@ -146,7 +146,7 @@ class Main extends PluginBase implements Listener {
         $commandMap->register("fcore", new Warp("warps", $this));
         $commandMap->register("fcore", new Make("make", $this));
         $commandMap->register("fcore", new Spawn("spawn", $this));
-        $commandMap->register("fcore", new Shop("shopui", $this));
+        $commandMap->register("fcore", new Shop("shop", $this));
         $commandMap->register("fcore", new LevelUp("levelup", $this));
         $commandMap->register("fcore", new FLy("fly", $this));
 	
