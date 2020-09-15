@@ -269,7 +269,7 @@ class StoreData implements Listener{
               if(!file_exists($this->plugin->getDataFolder() . "/cords.yml")) {
 		 $cord = new Config($this->plugin->getDataFolder() . "/cords.yml", Config::YAML);
             	 $setup = [
-      	    		$cord->setNested("warp1level", "none"),
+      	    		$cord->setNested("warp1level", null),
       	    		$cord->setNested("warp1x", null),
       	    		$cord->setNested("warp1y", null),
       	    		$cord->setNested("warp1z", null),
@@ -279,7 +279,7 @@ class StoreData implements Listener{
       	    		$cord->setNested("warp2y", null),
       	    		$cord->setNested("warp2z", null),
 			 
-      	    		$cord->setNested("warp3level", "none"),
+      	    		$cord->setNested("warp3level", null),
       	    		$cord->setNested("warp3x", null),
       	    		$cord->setNested("warp3y", null),
       	    		$cord->setNested("warp3z", null)
