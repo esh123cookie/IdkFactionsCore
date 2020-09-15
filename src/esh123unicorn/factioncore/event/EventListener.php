@@ -112,6 +112,13 @@ class EventListener implements Listener{
 	    $player = $event->getPlayer();
             $cords = new Config($this->plugin->getDataFolder() . "/cords.yml", Config::YAML);
 	    $config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
+	    $rank = $this->plugin->getRank($player);
+	    if($this->plugin->getFaction($player) == null) {
+	       $player->setNameTag($config->get("faction-text-prefix") . $config->get("faction-text-suffix") . " " . $config->get("level-text-prefix") . $level . $config->get("level-text-suffix") . " " . $config->get("level-text-prefix") . $rank . $config->get("level-text-suffix"));
+	       $event->setMessage($message);
+	    }else{
+	       $player->setNameTag($config->get("faction-text-prefix") . $this->plugin->getFaction($player) . $config->get("faction-text-suffix") . " " . $config->get("level-text-prefix") . $level . $config->get("level-text-suffix") . " " . $config->get("level-text-prefix") . $rank . $config->get("level-text-suffix"));
+	    }
 	    if($config->get("join-tp") == true) { 
 	       $x = $cords->get("warp1x");
 	       $y = $cords->get("warp1y");
@@ -177,6 +184,7 @@ class EventListener implements Listener{
 		  if(time() < $this->eapple[$player->getName()]){
 		     $seconds = ($this->eapple[$player->getName()] - time());
 	             $player->sendTip("§7(§c!§7) §cCooldown §5" . (round($seconds)) . " §cseconds remaining");
+		     $event->setCancelled();
 	          }else{
 	             unset($this->eapple[$player->getName()]);																				
 		  }
@@ -191,6 +199,7 @@ class EventListener implements Listener{
 		  if(time() < $this->gapple[$player->getName()]){
 		     $seconds = ($this->gapple[$player->getName()] - time());
 	             $player->sendTip("§7(§c!§7) §cCooldown §5" . (round($seconds)) . " §cseconds remaining");
+		     $event->setCancelled();
 	          }else{
 	             unset($this->gapple[$player->getName()]);																				
 		  }
