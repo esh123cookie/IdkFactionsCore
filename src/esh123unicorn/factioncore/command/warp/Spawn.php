@@ -23,7 +23,6 @@ class Spawn extends PluginCommand{
     private $owner;
     
     private $config;
-    private $cords;
     
     public function __construct(string $name, Main $owner)
     {
@@ -33,22 +32,20 @@ class Spawn extends PluginCommand{
     }
     
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
-            if($sender->hasPermission("spawn.use")) {
+            if(!$sender->hasPermission("spawn.use")) {
                $this->openSpawn($sender);   
             } else {
                $sender->sendMessage("§7(§c!§7) §cYou do not have permission to use this command");
             }
     }
-               
                 
-    public function openSpawn(Player $sender)
-    {
+    public function openSpawn(Player $sender) {
         	$this->config = new Config($this->getPlugin()->getDataFolder() . "/warps.yml", Config::YAML);
-        	$this->cords = new Config($this->getPlugin()->getDataFolder() . "/cords.yml", Config::YAML);
-	        $x = $this->cords->get("warp1x");
-	        $y = $this->cords->get("warp1y");
-	        $z = $this->cords->get("warp1z");
-	        $world1 = $this->cords->get("warp1level");
+        	$cord = new Config($this->getPlugin()->getDataFolder() . "/cords.yml", Config::YAML);
+	        $x = $cord->get("warp1x");
+	        $y = $cord->get("warp1y");
+	        $z = $cord->get("warp1z");
+	        $world1 = $cord->get("warp1level");
 	    
 	        if($world1 == null) {
 	           $sender->sendMessage("§7(§c!§7) §cSpawn has not been set yet");
