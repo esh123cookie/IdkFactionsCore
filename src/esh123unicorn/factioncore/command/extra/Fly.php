@@ -35,19 +35,13 @@ class Fly extends PluginCommand{
     }
     
     public function openFly(Player $player) { 
-	   $config = new Config($this->getPlugin()->getDataFolder() . "/config.yml", Config::YAML);
+       $config = new Config($this->getPlugin()->getDataFolder() . "/config.yml", Config::YAML);
        if($player->isFlying()) { 
           $player->setAllowFlight(false);
           $player->sendMessage($config->get("fly-disable"));
        }else{
           $player->setAllowFlight(true);
-          $player->sendMessage($config->get("fly-enabled"));
+          $player->sendMessage($config->get("fly-enable"));
        }
     }
 }
-           
-        
-        
-        
-        
-        
