@@ -101,7 +101,7 @@ class Warp extends PluginCommand{
             }
         });
         $form->setTitle($this->config->get("title"));
-	    $form->setContent($this->config->get("content"));
+	$form->setContent($this->config->get("content"));
         $form->addButton($this->config->get("button1"));
         $form->addButton($this->config->get("button2"));
         $form->addButton($this->config->get("button3"));
