@@ -12,6 +12,7 @@ use pocketmine\level\LevelExpection;
 use pocketmine\level\LevelProvider;
 use pocketmine\level\ProviderManager;
 use pocketmine\level\Position;
+use pocketmine\math\Vector3;
 
 //form ui
 use jojoe77777\FormAPI;
