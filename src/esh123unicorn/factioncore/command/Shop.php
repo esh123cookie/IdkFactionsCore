@@ -77,6 +77,173 @@ class Shop extends PluginCommand{
         $form->sendToPlayer($player);
     }
 	
+    public function spawners(Player $player) { 
+        $this->config = new Config($this->getPlugin()->getDataFolder() . "/shop.yml", Config::YAML);
+		$api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+		$form = $api->createSimpleForm(function (Player $player, int $data = null){
+		$result = $data;
+		if($result === null){
+			return true;
+			}
+			switch($result){
+               case 0:
+            $this->blaze($player);
+               break;
+               case 1:
+            $this->iron($player);
+               break;
+               case 2:
+            $this->chicken($player);
+               break;
+               case 3:
+            $this->skeleton($player);
+               break;
+               case 4:
+            $this->zombie($player);
+               break;
+            }
+        });
+        $form->setTitle($this->config->get("title"));
+	$form->setContent($this->config->get("content") . "§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($player));
+        $form->addButton($this->config->get("blaze"));
+	$form->addButton($this->config->get("irongolem"));
+        $form->addButton($this->config->get("chicken"));
+        $form->addButton($this->config->get("skeleton"));
+        $form->addButton($this->config->get("zombie"));
+        $form->addButton("§cExit");
+        $form->sendToPlayer($player);
+    }
+	
+    public function zombie(Player $sender) { 
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("zombie");
+      $price = $p->get("zombie");
+      $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+      $f = $api->createCustomForm(function(Player $sender, ?array $data){
+      if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("zombie");
+      $price = $p->get("zombie");
+	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
+	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
+	     $this->getPlugin()->getServer()->dispatchCommand(new \pocketmine\command\ConsoleCommandSender(), "spawner zombie 1 " . $sender->getName());
+             EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
+	  }else{
+	     $sender->sendMessage("§7(§c!§7) §cYou do not have enough money to buy $data[1] " . $itemName);
+             }
+	  });
+	  $f->setTitle($this->config->get("title"));
+	  $f->addLabel("§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($sender) . "\n\n§aPrice§7: §e" . $price);
+      	  $f->addInput("Amount: ");
+	  $f->sendToPlayer($sender);
+    }
+	
+    public function skeleton(Player $sender) { 
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("skeleton");
+      $price = $p->get("skeleton");
+      $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+      $f = $api->createCustomForm(function(Player $sender, ?array $data){
+      if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("skeleton");
+      $price = $p->get("skeleton");
+	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
+	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
+	     $this->getPlugin()->getServer()->dispatchCommand(new \pocketmine\command\ConsoleCommandSender(), "spawner skeleton 1 " . $sender->getName());
+             EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
+	  }else{
+	     $sender->sendMessage("§7(§c!§7) §cYou do not have enough money to buy $data[1] " . $itemName);
+             }
+	  });
+	  $f->setTitle($this->config->get("title"));
+	  $f->addLabel("§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($sender) . "\n\n§aPrice§7: §e" . $price);
+      	  $f->addInput("Amount: ");
+	  $f->sendToPlayer($sender);
+    }
+	
+    public function chicken(Player $sender) { 
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("chicken");
+      $price = $p->get("chicken");
+      $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+      $f = $api->createCustomForm(function(Player $sender, ?array $data){
+      if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("chicken");
+      $price = $p->get("chicken");
+	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
+	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
+	     $this->getPlugin()->getServer()->dispatchCommand(new \pocketmine\command\ConsoleCommandSender(), "spawner chicken 1 " . $sender->getName());
+             EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
+	  }else{
+	     $sender->sendMessage("§7(§c!§7) §cYou do not have enough money to buy $data[1] " . $itemName);
+             }
+	  });
+	  $f->setTitle($this->config->get("title"));
+	  $f->addLabel("§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($sender) . "\n\n§aPrice§7: §e" . $price);
+      	  $f->addInput("Amount: ");
+	  $f->sendToPlayer($sender);
+    }
+
+    public function iron(Player $sender) { 
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("irongolem");
+      $price = $p->get("irongolem");
+      $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+      $f = $api->createCustomForm(function(Player $sender, ?array $data){
+      if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("irongolem");
+      $price = $p->get("irongolem");
+	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
+	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
+	     $this->getPlugin()->getServer()->dispatchCommand(new \pocketmine\command\ConsoleCommandSender(), "spawner iron_golem 1 " . $sender->getName());
+             EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
+	  }else{
+	     $sender->sendMessage("§7(§c!§7) §cYou do not have enough money to buy $data[1] " . $itemName);
+             }
+	  });
+	  $f->setTitle($this->config->get("title"));
+	  $f->addLabel("§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($sender) . "\n\n§aPrice§7: §e" . $price);
+      	  $f->addInput("Amount: ");
+	  $f->sendToPlayer($sender);
+    }
+	
+    public function blaze(Player $sender) { 
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("blaze");
+      $price = $p->get("blaze");
+      $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+      $f = $api->createCustomForm(function(Player $sender, ?array $data){
+      if(!isset($data)) return;
+      $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
+      $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
+      $itemName = $config->get("blaze");
+      $price = $p->get("blaze");
+	  if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($sender) >= ($price * $data[1])){
+	     $sender->sendMessage("§7(§a!§7) §aYou purchased $data[1] " . $itemName);
+	     $this->getPlugin()->getServer()->dispatchCommand(new \pocketmine\command\ConsoleCommandSender(), "spawner blaze 1 " . $sender->getName());
+             EconomyAPI::getInstance()->reduceMoney($sender, ($price * $data[1]));
+	  }else{
+	     $sender->sendMessage("§7(§c!§7) §cYou do not have enough money to buy $data[1] " . $itemName);
+             }
+	  });
+	  $f->setTitle($this->config->get("title"));
+	  $f->addLabel("§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($sender) . "\n\n§aPrice§7: §e" . $price);
+      	  $f->addInput("Amount: ");
+	  $f->sendToPlayer($sender);
+    }  
+	
     public function misk(Player $player) { 
         $this->config = new Config($this->getPlugin()->getDataFolder() . "/shop.yml", Config::YAML);
 		$name = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
