@@ -109,16 +109,40 @@ class EventListener implements Listener{
     }
 	
     public function onJoinTp(PlayerJoinEvent $event) { 
+	    $player = $event->getPlayer();
+            $cords = new Config($this->plugin->getDataFolder() . "/cords.yml", Config::YAML);
 	    $config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
 	    if($config->get("join-tp") == true) { 
-	       $player->teleport();
+	       $x = $cords->get("warp1x");
+	       $y = $cords->get("warp1y");
+	       $z = $cords->get("warp1z");
+	       $world = $cords->get("warp1level");
+	       if($world == null) {
+	          $player->sendMessage("§7(§c!§7) §cSpawn has not been set yet");
+	     }else{
+     	       	  $world = $this->getPlugin()->getServer()->getLevelByName($world);
+     	       	  $player->teleport($world->getSafeSpawn());
+               	  $player->teleport(new Vector3($x, $y, $z, 0, 0)); 
+	       }
 	    }
     }
 	
     public function onJoinTp(PlayerRespawnEvent $event) { 
+	    $player = $event->getPlayer();
+            $cords = new Config($this->plugin->getDataFolder() . "/cords.yml", Config::YAML);
 	    $config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
-	    if($config->get("join-tp") == true) { 
-	       $player->teleport();
+	    if($config->get("respawn-tp") == true) { 
+	       $x = $cords->get("warp1x");
+	       $y = $cords->get("warp1y");
+	       $z = $cords->get("warp1z");
+	       $world = $cords->get("warp1level");
+	       if($world == null) {
+	          $player->sendMessage("§7(§c!§7) §cSpawn has not been set yet");
+	     }else{
+     	       	  $world = $this->getPlugin()->getServer()->getLevelByName($world);
+     	       	  $player->teleport($world->getSafeSpawn());
+               	  $player->teleport(new Vector3($x, $y, $z, 0, 0)); 
+	       }
 	    }
     }
 	
