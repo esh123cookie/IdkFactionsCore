@@ -162,7 +162,7 @@ class EventListener implements Listener{
 	    $player = $event->getPlayer();
 	    $item = $event->getItem();
 	    $itemName = $event->getItem()->getName();
-	    $itemId = $event->getId();
+	    $itemId = $item->getId();
 	    $gapple = Item::get(322, 0);
 	    $eapple = Item::get(466, 0);
 	    $config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
