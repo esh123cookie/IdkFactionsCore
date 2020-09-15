@@ -48,14 +48,13 @@ class Spawn extends PluginCommand{
 	        $x = $this->cords->get("warp1x");
 	        $y = $this->cords->get("warp1y");
 	        $z = $this->cords->get("warp1z");
-	        $world = $this->cords->get("warp1level");
+	        $world1 = $this->cords->get("warp1level");
 	    
-	        if($world == null) {
+	        if($world1 == null) {
 	           $sender->sendMessage("§7(§c!§7) §cSpawn has not been set yet");
 	        }else{
-			
+     	       	   $world = $this->getPlugin()->getServer()->getLevelByName($world1);
      	       	   $sender->teleport($world->getSafeSpawn());
-     	       	   $world = $this->getPlugin()->getServer()->getLevelByName($world);
                	   $sender->teleport(new Vector3($x, $y, $z, 0, 0));
                	   $sender->sendMessage("§7(§a!§7) §aYou are being warped to spawn..."); 
 		}
