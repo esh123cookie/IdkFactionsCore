@@ -90,7 +90,7 @@ class Shop extends PluginCommand{
             $this->blaze($player);
                break;
                case 1:
-            $this->iron($player);
+            $this->irong($player);
                break;
                case 2:
             $this->chicken($player);
@@ -192,7 +192,7 @@ class Shop extends PluginCommand{
 	  $f->sendToPlayer($sender);
     }
 
-    public function iron(Player $sender) { 
+    public function irong(Player $sender) { 
       $config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
       $p = new Config($this->getPlugin()->getDataFolder() . "/prices.yml", Config::YAML);
       $itemName = $config->get("irongolem");
