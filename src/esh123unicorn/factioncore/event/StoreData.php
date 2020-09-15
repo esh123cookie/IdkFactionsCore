@@ -358,7 +358,12 @@ class StoreData implements Listener{
       	    		$config->setNested("brick", 30),
       	    		$config->setNested("goldenapple", 30),
       	    		$config->setNested("enchantedapple", 30),
-      	    		$config->setNested("steak", 30)
+      	    		$config->setNested("steak", 30),
+      	    		$config->setNested("blaze", 10),
+      	    		$config->setNested("irongolem", 10),
+      	    		$config->setNested("chicken", 10),
+      	    		$config->setNested("skeleton", 10),
+      	    		$config->setNested("zombie", 10)
       	    	 ];
       	    	 $config->save(); 
 	      }
@@ -426,7 +431,12 @@ class StoreData implements Listener{
       	    		$config->setNested("brick", "name"),
       	    		$config->setNested("goldenapple", "name"),
       	    		$config->setNested("enchantedapple", "name"),
-      	    		$config->setNested("steak", "name")
+      	    		$config->setNested("steak", "name"),
+      	    		$config->setNested("blaze", "name"),
+      	    		$config->setNested("irongolem", "name"),
+      	    		$config->setNested("chicken", "name"),
+      	    		$config->setNested("skeleton", "name"),
+      	    		$config->setNested("zombie", "name")
       	    	 ];
       	    	 $config->save(); 
 	      }
