@@ -27,7 +27,7 @@ class Fly extends PluginCommand{
     }
     
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
-        if(!$sender->hasPermission("fly.use")) { 
+        if($sender->hasPermission("fly.use")) { 
            $this->openFly($sender);   
         } else {
            $sender->sendMessage("§7(§c!§7) §cYou do not have permission to use this command");
