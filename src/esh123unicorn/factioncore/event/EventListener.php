@@ -116,7 +116,6 @@ class EventListener implements Listener{
 	    $rank = $this->plugin->getRank($player);
 	    if($this->plugin->getFaction($player) == null) {
 	       $player->setNameTag($config->get("faction-text-prefix") . $config->get("faction-text-suffix") . " " . $config->get("level-text-prefix") . $level . $config->get("level-text-suffix") . " " . $config->get("level-text-prefix") . $rank . $config->get("level-text-suffix"));
-	       $event->setMessage($message);
 	    }else{
 	       $player->setNameTag($config->get("faction-text-prefix") . $this->plugin->getFaction($player) . $config->get("faction-text-suffix") . " " . $config->get("level-text-prefix") . $level . $config->get("level-text-suffix") . " " . $config->get("level-text-prefix") . $rank . $config->get("level-text-suffix"));
 	    }
