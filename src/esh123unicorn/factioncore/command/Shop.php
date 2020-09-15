@@ -79,6 +79,7 @@ class Shop extends PluginCommand{
 	
     public function spawners(Player $player) { 
         $this->config = new Config($this->getPlugin()->getDataFolder() . "/shop.yml", Config::YAML);
+	$config = new Config($this->getPlugin()->getDataFolder() . "/shopnames.yml", Config::YAML);
 		$api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
 		$form = $api->createSimpleForm(function (Player $player, int $data = null){
 		$result = $data;
@@ -104,12 +105,12 @@ class Shop extends PluginCommand{
             }
         });
         $form->setTitle($this->config->get("title"));
-	$form->setContent($this->config->get("content") . "§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($player));
-        $form->addButton($this->config->get("blaze"));
-	$form->addButton($this->config->get("irongolem"));
-        $form->addButton($this->config->get("chicken"));
-        $form->addButton($this->config->get("skeleton"));
-        $form->addButton($this->config->get("zombie"));
+	$form->setContent($config->get("content") . "§bCurrent Money§8:§e ". EconomyAPI::getInstance()->myMoney($player));
+        $form->addButton($config->get("blaze"));
+	$form->addButton($config->get("irongolem"));
+        $form->addButton($config->get("chicken"));
+        $form->addButton($config->get("skeleton"));
+        $form->addButton($config->get("zombie"));
         $form->addButton("§cExit");
         $form->sendToPlayer($player);
     }
