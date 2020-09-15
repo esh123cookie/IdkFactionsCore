@@ -119,7 +119,7 @@ class EventListener implements Listener{
 	       $world = $cords->get("warp1level");
 	       if($world == null) {
 	          $player->sendMessage("§7(§c!§7) §cSpawn has not been set yet");
-	     }else{
+	        }else{
      	       	  $world = $this->getPlugin()->getServer()->getLevelByName($world);
      	       	  $player->teleport($world->getSafeSpawn());
                	  $player->teleport(new Vector3($x, $y, $z, 0, 0)); 
