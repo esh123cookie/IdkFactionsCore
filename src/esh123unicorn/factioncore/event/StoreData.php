@@ -274,7 +274,7 @@ class StoreData implements Listener{
       	    		$cord->setNested("warp1y", null),
       	    		$cord->setNested("warp1z", null),
 			 
-      	    		$cord->setNested("warp2level", "none"),
+      	    		$cord->setNested("warp2level", null),
       	    		$cord->setNested("warp2x", null),
       	    		$cord->setNested("warp2y", null),
       	    		$cord->setNested("warp2z", null),
