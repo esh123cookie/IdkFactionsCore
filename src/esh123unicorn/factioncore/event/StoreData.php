@@ -292,6 +292,9 @@ class StoreData implements Listener{
               if(!file_exists($this->plugin->getDataFolder() . "/levelup.yml")) {
 		 $config = new Config($this->plugin->getDataFolder() . "/levelup.yml", Config::YAML);
             	 $level = [
+      	    		$config->setNested("player-command", true),
+      	    		$config->setNested("command1", "reward"),
+      	    		$config->setNested("command2", "reward"),
       	    		$config->setNested("levels", 10),
       	    		$config->setNested("economy-multiplier", 50),
       	    		$config->setNested("levelup-message", "You leveled up to level "),
