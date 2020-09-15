@@ -63,11 +63,7 @@ class StoreData implements Listener{
       	    		$config->setNested("faction-text-prefix", "§7["),
       	    		$config->setNested("faction-text-suffix", "§7]"),
       	    		$config->setNested("level-text-prefix", "§7["),
-      	    		$config->setNested("level-text-suffix", "§7]"),
-      	    		$config->setNested("gen-id", 1),
-      	    		$config->setNested("gen-meta", 0),
-      	    		$config->setNested("gen-name", "WALL-GENERATOR"),
-      	    		$config->setNested("max-distance", "120")
+      	    		$config->setNested("level-text-suffix", "§7]")
       	    	 ];
       	    	 $config->save();
 	      }
