@@ -119,6 +119,8 @@ class Main extends PluginBase implements Listener {
     public $level;
 	
     public $faction;
+	
+    public $group;
   
     public function onEnable()
     {
@@ -170,10 +172,19 @@ class Main extends PluginBase implements Listener {
     * @param Player $player
     * @return bool
     */
-    public function getFaction(Player $player): string{ 
+    public function getFaction(Player $player) { 
 	$this->faction = $this->getAPI()->getFaction($player->getName());
 	return $this->faction;
-    }				     
+    }		
+	
+    /**
+    * @param Player $player
+    * @return bool
+    */
+    public function getRank(Player $player) { 
+	 $this->group = $this->getServer()->getPluginManager()->getPlugin("PurePerms")->getUserDataMgr()->getGroup($player)->getName();	    
+    	 return $this->group;
+    }
 	
     /**
     * @param Player $player
