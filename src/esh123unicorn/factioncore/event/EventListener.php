@@ -163,31 +163,4 @@ class EventListener implements Listener{
 	    $player->sendMessage($config->get("vote-message"));
 	    $this->plugin->getServer()->broadcastMessage("§b" . $player->getName() . $config->get("vote-broadcast"));
     }
-	
-    public function wallGenerator(PlayerInteractEvent $event) {
-	    $player = $event->getPlayer();
-	    $blockName = $event->getItem()->getName();
-	    $blockId = $event->getItem()->getId();
-	    $b = $event->getBlock();
-	    $i = $player->getInventory()->getItemInHand();
-	    $face = $event->getFace();
-
-	    $config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
-	    $gen = Item::get((int) $config->get("gen-id"), (int) $config->get("gen-meta"));
-	    
-	    if($i->getCustomName() == $config->get("gen-name") and $i->getId() == $gen->getId()) { 
-	       $player->getInventory()->removeItem($i);
-	       $level = $b->getLevel();
-	       $x = $b->getX();
-	       $y = $b->getY();
-	       $z = $b->getZ();
-	       $valueY = (int) $config->get("max-distance") - $y;
-	       foreach(count($valueY) as $yint) {
-		         
-	       $level->setBlock(new Vector3($x, $y + $yint, $z), Block::get($gen->getId()), false, false);
-	       $y--;
-	       break;
-	       }
-	    }
-    }
 }
