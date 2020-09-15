@@ -32,7 +32,7 @@ class Make extends PluginCommand{
     }
     
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
-	$this->config = new Config($this->getPlugin()->getDataFolder() . "/config.yml", Config::YAML);
+	$this->config = new Config($this->getPlugin()->getDataFolder() . "/cords.yml", Config::YAML);
 	$this->valueX = $sender->getX();
 	$this->valueY = $sender->getY();
 	$this->valueZ = $sender->getZ();
