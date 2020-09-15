@@ -108,6 +108,20 @@ class EventListener implements Listener{
 	return $this->plugin;
     }
 	
+    public function onJoinTp(PlayerJoinEvent $event) { 
+	    $config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
+	    if($config->get("join-tp") == true) { 
+	       $player->teleport();
+	    }
+    }
+	
+    public function onJoinTp(PlayerRespawnEvent $event) { 
+	    $config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
+	    if($config->get("join-tp") == true) { 
+	       $player->teleport();
+	    }
+    }
+	
     public function displayFaction(PlayerChatEvent $event) {
 	    $player = $event->getPlayer();
             $message = $event->getMessage();
