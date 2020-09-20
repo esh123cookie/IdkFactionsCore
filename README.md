@@ -1,1 +1,4 @@
 # FactionsCore
+
+This was supposed to be a core for this server called ChronicPe, but I was scammed by them.
+Don't get scammed if someone trys to sell it to you!
