@@ -122,7 +122,7 @@ class Kit extends PluginCommand{
                }   
                break;
                     
-               case 0:
+               case 3:
                $this->config4 = new Config($this->getPlugin()->kitFolder . "/kit4.yml", Config::YAML);
                if(!$sender->hasPermission($this->config4->get("perm"))){
                   $sender->sendMessage("§7(§c!§7) §cYou don't have permission to use this kit");
@@ -143,7 +143,7 @@ class Kit extends PluginCommand{
                }   
                break;
                     
-               case 0:
+	       case 4:
                $this->config5 = new Config($this->getPlugin()->kitFolder . "/kit5.yml", Config::YAML);
                if(!$sender->hasPermission($this->config5->get("perm"))){
                   $sender->sendMessage("§7(§c!§7) §cYou don't have permission to use this kit");
